@@ -6,8 +6,13 @@ import GoogleMapsLoader from 'google-maps'
 
 import configureStore from './store'
 import { BASE_URL } from './utilities/constants'
+import checkTokenAvailability from './utilities/checkTokenAvailability'
 
 import Home from './components/Home.jsx'
+import Measurement from './components/Measurement.jsx'
+import History from './components/History.jsx'
+import Login from './components/auth/Login.jsx'
+import Register from './components/auth/Register.jsx'
 
 const store = configureStore()
 
@@ -17,7 +22,11 @@ GoogleMapsLoader.LIBRARIES = ['visualization']
 render(
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path='/' component={Home} />
+            <Route path="/" onEnter={checkTokenAvailability} component={Home} />            
+            <Route path="measurement" onEnter={checkTokenAvailability} component={Measurement} />
+            <Route path="history" onEnter={checkTokenAvailability} component={History} />
+            <Route path="login" component={Login} />
+            <Route path="register" component={Register} />
         </Router>
     </Provider>,
 

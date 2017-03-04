@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 import * as constants from '../../utilities/constants'
+import NavBarNoToken from './NavBarNoToken.jsx'
+import NavBarWithToken from './NavBarWithToken.jsx'
 
 export default class Header extends Component {
     render() {
@@ -15,10 +17,15 @@ export default class Header extends Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <Link className="navbar-brand" to={'/'}>                            
+                        <Link className="navbar-brand" to={'/'}>
                             {constants.APPNAME}
                         </Link>
                     </div>
+                    {localStorage.token ?
+                        <NavBarWithToken />
+                        :
+                        <NavBarNoToken />
+                    }                    
                 </div>
             </nav>
         )

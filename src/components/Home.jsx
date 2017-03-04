@@ -15,7 +15,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        const {mapReducer} = this.props
+        const { mapReducer } = this.props
 
         GoogleMapsLoader.load((google) => {
             var map = new google.maps.Map(document.getElementById('map'), {
