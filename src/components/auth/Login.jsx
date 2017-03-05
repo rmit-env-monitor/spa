@@ -2,22 +2,29 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'react-bootstrap'
 import { Control, Form, Errors } from 'react-redux-form'
+import Loader from 'react-loader'
 
 import * as authAction from '../../actions/authAction'
 import clearLocalStorage from '../../utilities/clearLocalStorage'
+import options from '../../utilities/spinOptions'
+import { changeSpinLoaded } from '../../actions/authAction'
 import Header from '../shared/Header.jsx'
 
 class Login extends Component {
     componentWillMount() {
+        const { dispatch } = this.props
+        dispatch(changeSpinLoaded(true))
         clearLocalStorage()
     }
-    
+
     render() {
-        const required = (val) => val && val.length
+        const { auth } = this.props
+        const required = (val) => val && val.length        
 
         return (
             <div>
                 <Header />
+
                 <Form model="deep.login" onSubmit={(val) => this.handleLoginSubmit(val)} className="login-form">
                     <h2 className="form-signin-heading">LOGIN</h2>
 
@@ -50,21 +57,31 @@ class Login extends Component {
                     <br />
                     <Button bsStyle="primary" bsSize="large" block type="submit">Login</Button>
                 </Form>
+
+                <Loader loaded={auth.loaded} options={options} className="spinner" />
             </div>
         )
     }
-    
+
     redirectToMain() {
-        const { router } = this.props
+        const { dispatch, router } = this.props
+        dispatch(changeSpinLoaded(true))
         router.push('/')
     }
 
     handleLoginSubmit(value) {
         const { dispatch } = this.props
+        dispatch(changeSpinLoaded(false))
         dispatch(authAction.authenticate(value, () => this.redirectToMain()))
     }
 }
 
 Login.propTypes = {}
 
-export default connect()(Login)
+function select(state) {
+    return {
+        auth: state.authReducer
+    }
+}
+
+export default connect(select)(Login)
