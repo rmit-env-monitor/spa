@@ -12,14 +12,12 @@ import Header from '../shared/Header.jsx'
 
 class Login extends Component {
     componentWillMount() {
-        const { dispatch } = this.props
-        dispatch(changeSpinLoaded(true))
         clearLocalStorage()
     }
 
     render() {
         const { auth } = this.props
-        const required = (val) => val && val.length        
+        const required = (val) => val && val.length
 
         return (
             <div>
@@ -63,16 +61,21 @@ class Login extends Component {
         )
     }
 
+    changeSpin(loaded) {
+        const { dispatch } = this.props
+        dispatch(changeSpinLoaded(loaded))
+    }
+
     redirectToMain() {
-        const { dispatch, router } = this.props
-        dispatch(changeSpinLoaded(true))
+        const { router } = this.props
+        this.changeSpin(true)
         router.push('/')
     }
 
     handleLoginSubmit(value) {
         const { dispatch } = this.props
-        dispatch(changeSpinLoaded(false))
-        dispatch(authAction.authenticate(value, () => this.redirectToMain()))
+        this.changeSpin(false)
+        dispatch(authAction.authenticate(value, (l) => this.changeSpin(l), () => this.redirectToMain()))
     }
 }
 

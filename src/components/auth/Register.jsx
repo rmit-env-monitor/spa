@@ -76,16 +76,21 @@ class Register extends Component {
         )
     }
 
+    changeSpin(loaded) {
+        const { dispatch } = this.props
+        dispatch(changeSpinLoaded(loaded))
+    }
+
     redirectToMain() {
-        const { dispatch, router } = this.props
-        dispatch(changeSpinLoaded(true))
+        const { router } = this.props
+        this.changeSpin(true)
         router.push('/')
     }
 
     handleRegister(value) {
         const { dispatch } = this.props
-        dispatch(changeSpinLoaded(false))
-        dispatch(authAction.register(value, () => this.redirectToMain()))
+        this.changeSpin(false)
+        dispatch(authAction.register(value, (l) => this.changeSpin(l), () => this.redirectToMain()))
     }
 }
 

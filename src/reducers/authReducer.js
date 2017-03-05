@@ -1,12 +1,11 @@
 import * as types from '../actions/actionTypes'
 
 export default function authReducer(state = {
-    loaded: false
+    loaded: true
 }, action) {
     switch (action.type) {
         case types.UPDATE_SPIN_STATE:
-            state.loaded = action.loaded
-            return state
+            return Object.assign({}, state, { loaded: action.loaded });
 
         default:
             return state

@@ -1,14 +1,14 @@
 import * as authService from '../services/authService'
 import * as types from './actionTypes';
 
-export function authenticate(value, redirectToChat) {
+export function authenticate(value, changeSpin, redirectToChat) {
     var data = JSON.stringify({ username: value.username.trim(), password: value.password.trim() })
-    return authService.postAuthentication(data, redirectToChat)
+    return authService.postAuthentication(data, changeSpin, redirectToChat)
 }
 
-export function register(value, redirectToChat) {
+export function register(value, changeSpin, redirectToChat) {
     var data = JSON.stringify({ username: value.username.trim(), password: value.password.trim() })
-    return authService.postRegister(data, redirectToChat)
+    return authService.postRegister(data, changeSpin, redirectToChat)
 }
 
 export function changeSpinLoaded(loaded) {
