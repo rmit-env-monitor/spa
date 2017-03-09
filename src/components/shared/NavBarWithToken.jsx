@@ -8,9 +8,15 @@ class NavBarWithToken extends Component {
         return (
             <nav className="collapse navbar-collapse">
                 <ul className="nav navbar-nav">
-                    <li><Link to={'/'}>Map</Link></li>
-                    <li><Link to={'measurement'}>Measurement</Link></li>
-                    <li><Link to={'history'}>History</Link></li>
+                    {this.props.location === '/' ?
+                        <li className="active"><Link to={'/'}>Measurement</Link></li> : <li><Link to={'/'}>Measurement</Link></li>
+                    }
+                    {this.props.location.indexOf('history') > -1 ?
+                        <li className="active"><Link to={'history'}>History</Link></li> : <li><Link to={'history'}>History</Link></li>
+                    }
+                    {this.props.location.indexOf('map') > -1 ?
+                        <li className="active"><Link to={'map'}>Map</Link></li> : <li><Link to={'map'}>Map</Link></li>
+                    }
                 </ul>
                 <ul className="nav navbar-nav navbar-right">
                     <li><Link>Welcome, {username}</Link></li>
@@ -21,6 +27,8 @@ class NavBarWithToken extends Component {
     }
 }
 
-NavBarWithToken.propTypes = {}
+NavBarWithToken.propTypes = {
+    location: PropTypes.string.isRequired
+}
 
 export default NavBarWithToken

@@ -5,7 +5,7 @@ export default function authReducer(state = {
 }, action) {
     switch (action.type) {
         case types.UPDATE_SPIN_STATE:
-            return Object.assign({}, state, { loaded: action.loaded });
+            return Object.assign({}, state, { loaded: action.loaded })
 
         default:
             return state
