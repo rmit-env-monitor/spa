@@ -17,13 +17,13 @@ class Register extends Component {
     }
 
     render() {
-        const { auth } = this.props
+        const { auth, location } = this.props
         const usernameRequired = (val) => val && val.length
         const passwordRequired = (val) => val && val.length > 5
 
         return (
             <div>
-                <Header />
+                <Header location={location.pathname} />
 
                 <Form model="deep.newAccount" onSubmit={(val) => this.handleRegister(val)} className="login-form"
                     validators={{

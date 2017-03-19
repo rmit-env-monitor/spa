@@ -7,7 +7,7 @@ class StatusBar extends Component {
             <Col md={4}>
                 <p>{this.props.name}</p>
                 <div className="progress">
-                    <div className={this.props.color} role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    <div className={'progress-bar ' + this.props.color} role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
                         <span>{this.props.data}</span>
                     </div>
                 </div>

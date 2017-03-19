@@ -8,7 +8,7 @@ class NavBarWithToken extends Component {
         return (
             <nav className="collapse navbar-collapse">
                 <ul className="nav navbar-nav">
-                    {this.props.location === '/' ?
+                    {this.props.location === '/' || this.props.location.indexOf('sensors') ?
                         <li className="active"><Link to={'/'}>Measurement</Link></li> : <li><Link to={'/'}>Measurement</Link></li>
                     }
                     {this.props.location.indexOf('history') > -1 ?

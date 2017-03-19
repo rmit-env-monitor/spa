@@ -16,12 +16,12 @@ class Login extends Component {
     }
 
     render() {
-        const { auth } = this.props
+        const { auth, location } = this.props
         const required = (val) => val && val.length
 
         return (
             <div>
-                <Header />
+                <Header location={location.pathname} />
 
                 <Form model="deep.login" onSubmit={(val) => this.handleLoginSubmit(val)} className="login-form">
                     <h2 className="form-signin-heading">LOGIN</h2>

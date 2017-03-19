@@ -15,6 +15,7 @@ import Measurement from './components/measurement/Measurement.jsx'
 import History from './components/History.jsx'
 import Login from './components/auth/Login.jsx'
 import Register from './components/auth/Register.jsx'
+import DistrictSensors from './components/measurement/DistrictSensors.jsx'
 
 const store = configureStore()
 const socket = io.connect(BASE_URL)
@@ -27,6 +28,7 @@ render(
         <SocketProvider socket={socket}>
             <Router history={browserHistory}>
                 <Route path="/" onEnter={checkTokenAvailability} component={Measurement} />
+                <Route path="sensors" onEnter={checkTokenAvailability} component={DistrictSensors} />
                 <Route path="map" onEnter={checkTokenAvailability} component={Map} />
                 <Route path="history" onEnter={checkTokenAvailability} component={History} />
                 <Route path="login" component={Login} />

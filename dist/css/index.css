@@ -30,7 +30,7 @@
     border-radius: 0;
 }
 
-.login-form {
+.login-form, .measurement-form {
     max-width: 400px;
     padding: 15px;
     margin: 0 auto;
@@ -63,6 +63,30 @@
     width: 100%;
     font-size: 20px;        
     padding: 10px;
+}
+
+.good {
+    background-color: green;
+}
+
+.moderate {
+    background-color: yellow;
+}
+
+.sensitive {
+    background-color: orange;
+}
+
+.unhealthy {
+    background-color: red;
+}
+
+.very-unhealthy {
+    background-color: purple;
+}
+
+.hazardous {
+    background-color: maroon;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {

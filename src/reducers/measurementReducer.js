@@ -1,28 +1,54 @@
 import * as types from '../actions/actionTypes'
 
 export default function measurementReducer(state = {
-    no: 0,
-    so2: 0,
-    pm: 0,
-    o3: 0,
-    sound: 0,
-    address: '',
-    aqhi: 0
+    cities: [],
+    districts: [],
+    selectedCity: null,
+    selectedDistrict: null,
+    error: null
 }, action) {
     switch (action.type) {
-        case types.GET_AIR_DATA_SUCCESS:
-            return Object.assign({}, state, {
-                no: action.air.no, so2: action.air.so2, aqhi: 10,
-                pm: action.air.pm, o3: action.air.o3, sound: action.air.sound
-            })
-
         case types.GET_LOCATION_DETAIL_SUCCESS:
             return Object.assign({}, state, { address: action.address })
 
         case types.GET_LOCATION_DETAIL_ERROR:
-            return Object.assign({}, state, { address: action.message })
+            return Object.assign({}, state, { error: action.message })
+
+        case types.GET_CITIES_SUCCESS:
+            return Object.assign({}, state, { cities: action.cities })
+
+        case types.GET_CITIES_ERROR:
+            return Object.assign({}, state, { error: action.message })
+
+        case types.GET_DISTRICT_SUCCESS:
+            return Object.assign({}, state, { districts: action.districts })
+
+        case types.GET_DISTRICT_ERROR:
+            return Object.assign({}, state, { error: action.message })
+
+        case types.SET_SELECTED_CITY:
+            return Object.assign({}, state, { selectedCity: action.cityId })
+
+        case types.SET_SELECTED_DISTRICT:
+            return Object.assign({}, state, { selectedDistrict: action.districtId })
 
         default:
             return state
+    }
+}
+
+function getAQIStatus(air) {
+    if (air >= 0 && air <= 50) {
+        return 'good'
+    } else if (air >= 51 && air <= 100) {
+        return 'moderate'
+    } else if (air >= 101 && air <= 150) {
+        return 'sensitive'
+    } else if (air >= 151 && air <= 200) {
+        return 'unhealthy'
+    } else if (air >= 201 && air <= 300) {
+        return 'very-unhealthy'
+    } else {
+        return 'hazardous'
     }
 }
