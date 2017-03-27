@@ -3,15 +3,25 @@ import * as types from '../actions/actionTypes'
 export default function measurementReducer(state = {
     cities: [],
     districts: [],
+    devices: [],
+    records: [],
     selectedCity: null,
     selectedDistrict: null,
     error: null
 }, action) {
     switch (action.type) {
-        case types.GET_LOCATION_DETAIL_SUCCESS:
-            return Object.assign({}, state, { address: action.address })
+        case types.GET_DEVICE_LIST_SUCCESS:
+            return Object.assign({}, state, { devices: action.devices })
 
-        case types.GET_LOCATION_DETAIL_ERROR:
+        case types.GET_DEVICE_LIST_ERROR:
+            return Object.assign({}, state, { error: action.message })
+
+        case types.GET_LATEST_DEVICE_RECORD_SUCCESS:
+            var newRecords = state.records
+            newRecords.push(action.record[0])
+            return Object.assign({}, state, { records: newRecords })
+
+        case types.GET_LATEST_DEVICE_RECORD_ERROR:
             return Object.assign({}, state, { error: action.message })
 
         case types.GET_CITIES_SUCCESS:
@@ -34,21 +44,5 @@ export default function measurementReducer(state = {
 
         default:
             return state
-    }
-}
-
-function getAQIStatus(air) {
-    if (air >= 0 && air <= 50) {
-        return 'good'
-    } else if (air >= 51 && air <= 100) {
-        return 'moderate'
-    } else if (air >= 101 && air <= 150) {
-        return 'sensitive'
-    } else if (air >= 151 && air <= 200) {
-        return 'unhealthy'
-    } else if (air >= 201 && air <= 300) {
-        return 'very-unhealthy'
-    } else {
-        return 'hazardous'
     }
 }

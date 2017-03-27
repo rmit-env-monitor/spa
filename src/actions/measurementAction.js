@@ -38,8 +38,12 @@ export function setSelectedDistrict(districtId) {
     }
 }
 
-export function getRecord(city, district) {
-    return services.getRecords(city, district, getRecordSuccess, getRecordError)
+export function getDeviceList(city, district) {
+    return services.getDeviceList(city, district, getDeviceSuccess, getDeviceError)
+}
+
+export function getLatestDeviceRecord(deviceID) {
+    return services.getLatestDeviceRecord(deviceID, getLatestDeviceRecordSuccess, getLatestDeviceRecordError)
 }
 /** Flux actions */
 
@@ -85,16 +89,30 @@ function getListOfDistrictOfCityError(data) {
     }
 }
 
-function getRecordSuccess(data) {
+function getDeviceSuccess(data) {
     return {
-        type: types.GET_RECORDS_SUCCESS,
-        records: data
+        type: types.GET_DEVICE_LIST_SUCCESS,
+        devices: data
     }
 }
 
-function getRecordError(data) {
+function getDeviceError(data) {
     return {
-        type: types.GET_RECORDS_ERROR,
+        type: types.GET_DEVICE_LIST_ERROR,
+        message: data
+    }
+}
+
+function getLatestDeviceRecordSuccess(data) {
+    return {
+        type: types.GET_LATEST_DEVICE_RECORD_SUCCESS,
+        record: data
+    }
+}
+
+function getLatestDeviceRecordError(data) {
+    return {
+        type: types.GET_LATEST_DEVICE_RECORD_ERROR,
         message: data
     }
 }

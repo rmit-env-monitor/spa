@@ -41,9 +41,9 @@ export function getListOfDistrictOfCity(city, success, error) {
     }
 }
 
-export function getRecords(city, district, success, error) {
+export function getDeviceList(city, district, success, error) {
     return dispatch => {
-        return baseService(constants.GET_METHOD, '/api/web/records/' + city + '/' + district)
+        return baseService(constants.GET_METHOD, '/api/web/devices?city=' + city + '&district=' + district)
             .then(res => {
                 dispatch(success(res.data))
             })
@@ -51,4 +51,8 @@ export function getRecords(city, district, success, error) {
                 dispatch(error(err))
             })
     }
+}
+
+export function getLatestDeviceRecord(deviceID) {
+    return baseService(constants.GET_METHOD, '/api/web/records/' + deviceID)
 }

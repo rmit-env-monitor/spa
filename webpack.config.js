@@ -1,3 +1,5 @@
+var webpack = require("webpack")
+
 var config = {
     entry: './src/index.jsx',
 
@@ -5,6 +7,14 @@ var config = {
         path: '/dist',
         filename: 'index.js',
     },
+
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        })
+    ],
 
     module: {
         rules: [
