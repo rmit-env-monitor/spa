@@ -110,3 +110,7 @@
 .container-fluid {
     margin: 15px;
 }
+
+.modal-content {
+    border-radius: 0;
+}
