@@ -7,6 +7,7 @@ export default function measurementReducer(state = {
     records: [],
     selectedCity: null,
     selectedDistrict: null,
+    isShowed: false,
     error: null
 }, action) {
     switch (action.type) {
@@ -41,6 +42,9 @@ export default function measurementReducer(state = {
 
         case types.SET_SELECTED_DISTRICT:
             return Object.assign({}, state, { selectedDistrict: action.districtId })
+
+        case types.UPDATE_SHOW_COLOR_INDEX:
+            return Object.assign({}, state, { isShowed: action.isShowed })
 
         default:
             return state

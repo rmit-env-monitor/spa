@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { Row, Button, FormControl, Breadcrumb } from 'react-bootstrap'
+import { Row, Button, FormControl, Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { socketConnect } from 'socket.io-react'
 
@@ -7,11 +7,12 @@ import * as actions from '../../actions/measurementAction'
 import Header from '../shared/Header.jsx'
 import StatusBar from './StatusBar.jsx'
 import DistrictDevice from './DistrictDevice.jsx'
+import ColorIndexModal from './ColorIndexModal.jsx'
 
 class Measurement extends Component {
     componentDidMount() {
         const { dispatch } = this.props
-        dispatch(actions.getCities())        
+        dispatch(actions.getCities())
     }
 
     render() {
@@ -38,9 +39,13 @@ class Measurement extends Component {
                             )
                         }
                     </select>
+                    <div className="space"></div>
+                    <Button onClick={() => this.updateColorIndexModal(true)}>Color Index</Button>
                 </div>
                 <hr />
                 <DistrictDevice socket={socket} reducer={reducer} />
+
+                <ColorIndexModal reducer={reducer} updateColorIndexModal={state => this.updateColorIndexModal(state)} />
             </div>
         )
     }
@@ -55,6 +60,10 @@ class Measurement extends Component {
         const { dispatch, reducer } = this.props
         dispatch(actions.setSelectedDistrict(e.target.value))
         dispatch(actions.getDeviceList(reducer.cities[reducer.selectedCity], reducer.districts[e.target.value]))
+    }
+
+    updateColorIndexModal(state) {
+        this.props.dispatch(actions.updateShowColorIndex(state))
     }
 }
 

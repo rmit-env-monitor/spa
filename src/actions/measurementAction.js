@@ -45,6 +45,13 @@ export function getDeviceList(city, district) {
 export function getLatestDeviceRecord(deviceID) {
     return services.getLatestDeviceRecord(deviceID, getLatestDeviceRecordSuccess, getLatestDeviceRecordError)
 }
+
+export function updateShowColorIndex(isShowed) {
+    return {
+        type: types.UPDATE_SHOW_COLOR_INDEX,
+        isShowed: isShowed
+    }
+}
 /** Flux actions */
 
 function getCurrentLocationDetailSuccess(data) {
