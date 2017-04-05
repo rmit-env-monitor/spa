@@ -26,7 +26,7 @@ class Device extends Component {
         })
 
         socket.on(device._id, data => {
-            this.editState(data)
+            this.editStateRealTime(data)
         })
     }
 
@@ -77,6 +77,19 @@ class Device extends Component {
             o3: data.o3,
             co: data.co,
             sound: data.sound
+        })
+    }
+    
+    editStateRealTime(data) {
+        this.setState({
+            no: data[2],
+            so2: data[3],
+            pm2: data[4],
+            pm10: data[5],
+            o3: data[6],
+            co: data[7],
+            sound: data[8],
+            uv: data[9]
         })
     }
 }
