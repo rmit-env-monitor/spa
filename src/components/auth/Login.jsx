@@ -13,6 +13,7 @@ import Header from '../shared/Header.jsx'
 class Login extends Component {
     componentWillMount() {
         clearLocalStorage()
+        this.props.dispatch({ type: 'RESET' })
     }
 
     render() {

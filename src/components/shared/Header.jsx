@@ -21,10 +21,11 @@ class Header extends Component {
                             {constants.APPNAME}
                         </Link>
                     </div>
-                    {localStorage.token ?
-                        <NavBarWithToken location={this.props.location} />
-                        :
-                        <NavBarNoToken />
+                    {
+                        localStorage.token ?
+                            <NavBarWithToken location={this.props.location} />
+                            :
+                            <NavBarNoToken />
                     }
                 </div>
             </nav>

@@ -12,6 +12,7 @@ import checkTokenAvailability from './utilities/checkTokenAvailability'
 
 import Map from './components/Map.jsx'
 import Measurement from './components/measurement/Measurement.jsx'
+import Nearby from './components/measurement/Nearby.jsx'
 import History from './components/History.jsx'
 import Login from './components/auth/Login.jsx'
 import Register from './components/auth/Register.jsx'
@@ -26,7 +27,8 @@ render(
     <Provider store={store}>
         <SocketProvider socket={socket}>
             <Router history={browserHistory}>
-                <Route path="/" onEnter={checkTokenAvailability} component={Measurement} />                
+                <Route path="/" onEnter={checkTokenAvailability} component={Measurement} />
+                <Route path="nearby" onEnter={checkTokenAvailability} component={Nearby} />
                 <Route path="map" onEnter={checkTokenAvailability} component={Map} />
                 <Route path="history" onEnter={checkTokenAvailability} component={History} />
                 <Route path="login" component={Login} />
