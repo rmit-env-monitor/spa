@@ -1,10 +1,11 @@
-var webpack = require("webpack")
+const webpack = require("webpack")
+const path = require('path')
 
-var config = {
+const config = {
     entry: './src/index.jsx',
 
     output: {
-        path: '/dist/js',
+        path: path.resolve(__dirname, 'dist'),
         filename: 'index.min.js',
     },
 

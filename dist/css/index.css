@@ -114,3 +114,15 @@
 .modal-content {
     border-radius: 0;
 }
+
+.panel {
+    border-radius: 0;
+}
+
+.panel-body {
+    padding: 0;
+}
+
+#nearby-city {
+    display: inline-block;
+}
