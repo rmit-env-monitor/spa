@@ -4,7 +4,7 @@ var config = {
     entry: './src/index.jsx',
 
     output: {
-        path: './dist/js',
+        path: '/dist/js',
         filename: 'index.min.js',
     },
 

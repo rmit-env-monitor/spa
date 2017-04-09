@@ -41,8 +41,7 @@ class Device extends Component {
                     <StatusBar name={'PM10'} color={this.getAQIStatus(this.state.pm10)} data={this.state.pm10} />
                     <StatusBar name={'O3'} color={this.getAQIStatus(this.state.o3)} data={this.state.o3} />
                     <StatusBar name={'CO'} color={this.getAQIStatus(this.state.co)} data={this.state.co} />
-                </Row>
-                <hr />
+                </Row>                
             </Col>
         )
     }

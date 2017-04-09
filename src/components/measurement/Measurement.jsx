@@ -43,7 +43,7 @@ class Measurement extends Component {
                     <Button onClick={() => this.updateColorIndexModal(true)}>Color Index</Button>
                 </div>
                 <hr />
-                <DistrictDevice socket={socket} reducer={reducer} />
+                <DistrictDevice socket={socket} devices={reducer.devices} />
 
                 <ColorIndexModal reducer={reducer} updateColorIndexModal={state => this.updateColorIndexModal(state)} />
             </div>
