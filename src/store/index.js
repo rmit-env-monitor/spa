@@ -5,10 +5,16 @@ import reduxReset from 'redux-reset'
 
 import mainReducer from '../reducers'
 
-const logger = createLogger()
+const middleware = []
+
+middleware.push(thunkMiddleware)
+if (process.env.NODE_ENV === 'development') {
+	const logger = createLogger()
+	middleware.push(logger)
+}
 
 const createAppStore = compose(
-	applyMiddleware(thunkMiddleware, logger),
+	applyMiddleware(...middleware),
 	reduxReset()
 )(createStore)
 
