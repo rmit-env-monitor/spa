@@ -28,10 +28,11 @@ class Nearby extends Component {
                 <Header location={location.pathname} />
 
                 <div className="container-fluid">
-                    <h3 id="nearby-city">Nearby sensors - City: {reducer.city}</h3>
+                    <h3 id="nearby-city">Your location: City: {reducer.city} - District: {reducer.district}</h3>
                     <div className="space"></div>
                     <Button onClick={() => this.updateColorIndexModal(true)}>Color Index</Button>
                     <hr />
+                    <h3>Nearby districts</h3>
                     {
                         reducer.nearby.map((district, key) =>
                             <District key={key} pane={key} socket={socket} city={reducer.city} district={district} />

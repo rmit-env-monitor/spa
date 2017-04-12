@@ -11,8 +11,8 @@ import ColorIndexModal from './ColorIndexModal.jsx'
 
 class Measurement extends Component {
     componentDidMount() {
-        const { dispatch } = this.props
-        dispatch(actions.getCities())
+        const { dispatch, reducer } = this.props
+        if (reducer.cities.length === 0) dispatch(actions.getCities())
     }
 
     render() {
