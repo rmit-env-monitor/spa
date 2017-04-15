@@ -6,4 +6,4 @@ export const PUT = 'PUT'
 export const DELETE_METHOD = 'DELETE'
 export const BASE_URL = process.env.NODE_ENV === 'development' ?
     'http://localhost:3000' :
-    'https://evn-monitor.herokuapp.com'
+    'https://172.104.45.207'
