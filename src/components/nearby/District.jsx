@@ -22,7 +22,7 @@ class District extends Component {
     render() {
         const { district, socket } = this.props
         return (
-            <Panel collapsible defaultExpanded header={district}>
+            <Panel collapsible defaultChecked header={district + ' - click me'}>
                 <DistrictDevice socket={socket} devices={this.state.devices} />
             </Panel>
         )

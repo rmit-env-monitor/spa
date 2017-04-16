@@ -126,3 +126,7 @@
 #nearby-city {
     display: inline-block;
 }
+
+.nearby-index {
+    margin-bottom: 10px;
+}

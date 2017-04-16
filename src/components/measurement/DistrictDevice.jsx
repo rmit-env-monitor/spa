@@ -12,7 +12,7 @@ class DistrictDevice extends Component {
                 <Row>
                     {
                         devices.map(value =>
-                            <Device key={value._id} device={value} socket={socket} />
+                            <Device key={value._id} md={4} device={value} socket={socket} />
                         )
                     }
                 </Row>

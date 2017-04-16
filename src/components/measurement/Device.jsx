@@ -32,7 +32,7 @@ class Device extends Component {
 
     render() {
         return (
-            <Col className="device" md={4}>
+            <Col className="device" md={this.props.md}>
                 <h3>Device: {this.props.device.name}</h3>
                 <Row>
                     <StatusBar name={'NO'} color={this.getAQIStatus(this.state.no)} data={this.state.no} />

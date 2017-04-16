@@ -1,8 +1,8 @@
 import * as services from '../services/nearbyService'
 import * as types from './actionTypes'
 
-export function getCurrentCityDistrictAndNearby(lat, lng) {
-    return services.getCurrentCityDistrictAndNearby(lat, lng, getCurrentCityDistrictAndNearbySuccess)
+export function getCurrentCityDistrictNearbyCurrentDevice(lat, lng) {
+    return services.getCurrentCityDistrictAndNearby(lat, lng, getCurrentCityDistrictAndNearbySuccess, getDeviceListOfCurrentLocationSuccess)
 }
 
 export function updateShowColorIndex(isShowed) {
@@ -18,5 +18,12 @@ function getCurrentCityDistrictAndNearbySuccess(city, district, nearby) {
         city: city,
         district: district,
         nearby: nearby.nearby
+    }
+}
+
+function getDeviceListOfCurrentLocationSuccess(data) {
+    return {
+        type: types.GET_DEVICES_IN_CURRENT_DISTRICT_SUCCESS,
+        devices: data
     }
 }
