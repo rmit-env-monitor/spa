@@ -12,7 +12,7 @@ class District extends Component {
 
     componentDidMount() {
         const { city, district } = this.props
-        services.getDeviceList(city, district).then(res => {
+        services.getOneDevice(city, district).then(res => {
             this.setState({
                 devices: res.data
             })
@@ -22,8 +22,8 @@ class District extends Component {
     render() {
         const { district, socket } = this.props
         return (
-            <Panel collapsible defaultChecked header={district + ' - click me'}>
-                <DistrictDevice socket={socket} devices={this.state.devices} />
+            <Panel defaultExpanded header={district}>
+                <DistrictDevice socket={socket} md={12} devices={this.state.devices} />
             </Panel>
         )
     }
