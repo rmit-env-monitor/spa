@@ -7,7 +7,12 @@ class ProB extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            sensors: []
+            co: 0,
+            temp: 0,
+            no: 0,
+            o3: 0,
+            noise: 0,
+            gps: ''
         }
     }
 
@@ -15,7 +20,12 @@ class ProB extends Component {
         const { socket } = this.props
         socket.on('data', data => {
             this.setState({
-                sensors: data
+                co: data.co,
+                temp: data.temp,
+                no: data.no,
+                o3: data.o3,
+                noise: data.noise,
+                gps: data.gps
             })
         })
     }
@@ -34,11 +44,12 @@ class ProB extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            this.state.sensors.map((sensor, id) => (
-                                <Sensor key={id} sensor={sensor} />
-                            ))
-                        }
+                        <Sensor name={'CO'} value={this.state.co} />
+                        <Sensor name={'Temperature'} value={this.state.temp} />
+                        <Sensor name={'NO'} value={this.state.no} />
+                        <Sensor name={'O3'} value={this.state.o3} />
+                        <Sensor name={'Noise'} value={this.state.noise} />
+                        <Sensor name={'GPS'} value={this.state.gps} />
                     </tbody>
                 </table>
             </div>
