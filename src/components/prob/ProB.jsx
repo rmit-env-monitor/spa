@@ -9,10 +9,11 @@ class ProB extends Component {
         this.state = {
             co: 0,
             temp: 0,
-            no: 0,
+            no2: 0,
             o3: 0,
             noise: 0,
-            gps: ''
+            dust: 0,
+            gps: '0,0'
         }
     }
 
@@ -22,9 +23,10 @@ class ProB extends Component {
             this.setState({
                 co: data.co,
                 temp: data.temp,
-                no: data.no,
+                no2: data.no2,
                 o3: data.o3,
                 noise: data.noise,
+                dust: data.dust,
                 gps: data.gps
             })
         })
@@ -46,9 +48,10 @@ class ProB extends Component {
                     <tbody>
                         <Sensor name={'CO'} value={this.state.co} />
                         <Sensor name={'Temperature'} value={this.state.temp} />
-                        <Sensor name={'NO'} value={this.state.no} />
+                        <Sensor name={'NO2'} value={this.state.no2} />
                         <Sensor name={'O3'} value={this.state.o3} />
                         <Sensor name={'Noise'} value={this.state.noise} />
+                        <Sensor name={'Dust'} value={this.state.dust} />
                         <Sensor name={'GPS'} value={this.state.gps} />
                     </tbody>
                 </table>
