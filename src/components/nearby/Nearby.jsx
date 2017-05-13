@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import { socketConnect } from 'socket.io-react'
-import { Button, Col, Row } from 'react-bootstrap'
+import { Button, Col, Row } from 'react-bootstrap'  
 
 import * as actions from '../../actions/nearbyAction'
 import options from '../../utilities/spinOptions'
