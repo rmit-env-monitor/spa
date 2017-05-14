@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { Row, Col } from 'react-bootstrap'
 
 import StatusBar from './StatusBar.jsx'
-import { getLatestDeviceRecord } from '../../services/measurementService'
 
 class Device extends Component {
     constructor(props) {
@@ -20,11 +19,8 @@ class Device extends Component {
 
     componentDidMount() {
         const { socket, device } = this.props
-
-        getLatestDeviceRecord(device._id).then(res => {
-            if (res.data.length > 0) this.editState(res.data[0])
-        })
-
+        
+        if (device.record) this.editState(device.record)
         socket.on(device._id, data => {
             this.editStateRealTime(data)
         })
@@ -41,7 +37,7 @@ class Device extends Component {
                     <StatusBar name={'PM10'} color={this.getAQIStatus(this.state.pm10)} data={this.state.pm10} />
                     <StatusBar name={'O3'} color={this.getAQIStatus(this.state.o3)} data={this.state.o3} />
                     <StatusBar name={'CO'} color={this.getAQIStatus(this.state.co)} data={this.state.co} />
-                </Row>                
+                </Row>
             </Col>
         )
     }
@@ -78,7 +74,7 @@ class Device extends Component {
             sound: data.sound
         })
     }
-    
+
     editStateRealTime(data) {
         this.setState({
             no: data[2],
