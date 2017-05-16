@@ -15,6 +15,11 @@ export default function nearbyReducer(state = {
                 city: action.city, district: action.district, nearby: action.nearby
             })
 
+        case types.UPDATE_NEARBY_DEVICE_LATEST_RECORD:
+            const newDevices = state.devices
+            newDevices[action.id].record = action.record
+            return Object.assign({}, state, { devices: newDevices })
+
         case types.UPDATE_SHOW_COLOR_INDEX:
             return Object.assign({}, state, { isShowed: action.isShowed })
 

@@ -2,41 +2,32 @@ import React, { Component, PropTypes } from 'react'
 import { Row, Col } from 'react-bootstrap'
 
 import StatusBar from './StatusBar.jsx'
+import { updateNDeviceLatestRecord } from '../../actions/nearbyAction'
+import { updateMDeviceLatestRecord } from '../../actions/measurementAction'
 
 class Device extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            no: 0,
-            so2: 0,
-            pm2: 0,
-            pm10: 0,
-            o3: 0,
-            co: 0,
-            sound: 0
-        }
-    }
-
     componentDidMount() {
-        const { socket, device } = this.props
-        
-        if (device.record) this.editState(device.record)
+        const { socket, device, id, dispatch, page } = this.props
+
         socket.on(device._id, data => {
-            this.editStateRealTime(data)
+            if (page === 'nearby') dispatch(updateNDeviceLatestRecord(id, data))
+            else dispatch(updateMDeviceLatestRecord(id, data))
         })
     }
 
     render() {
+        const { device } = this.props
+
         return (
             <Col className="device" md={this.props.md}>
                 <h3>Device: {this.props.device.name}</h3>
                 <Row>
-                    <StatusBar name={'NO'} color={this.getAQIStatus(this.state.no)} data={this.state.no} />
-                    <StatusBar name={'SO2'} color={this.getAQIStatus(this.state.so2)} data={this.state.so2} />
-                    <StatusBar name={'PM2.5'} color={this.getAQIStatus(this.state.pm2)} data={this.state.pm2} />
-                    <StatusBar name={'PM10'} color={this.getAQIStatus(this.state.pm10)} data={this.state.pm10} />
-                    <StatusBar name={'O3'} color={this.getAQIStatus(this.state.o3)} data={this.state.o3} />
-                    <StatusBar name={'CO'} color={this.getAQIStatus(this.state.co)} data={this.state.co} />
+                    <StatusBar name={'NO'} color={this.getAQIStatus(device.record.no || 0)} data={device.record.no || 0} />
+                    <StatusBar name={'SO2'} color={this.getAQIStatus(device.record.so2 || 0)} data={device.record.so2 || 0} />
+                    <StatusBar name={'PM2.5'} color={this.getAQIStatus(device.record.pm2 || 0)} data={device.record.pm2 || 0} />
+                    <StatusBar name={'PM10'} color={this.getAQIStatus(device.record.pm10 || 0)} data={device.record.pm10 || 0} />
+                    <StatusBar name={'O3'} color={this.getAQIStatus(device.record.o3 || 0)} data={device.record.o3 || 0} />
+                    <StatusBar name={'CO'} color={this.getAQIStatus(device.record.co || 0)} data={device.record.co || 0} />
                 </Row>
             </Col>
         )
@@ -72,19 +63,6 @@ class Device extends Component {
             o3: data.o3,
             co: data.co,
             sound: data.sound
-        })
-    }
-
-    editStateRealTime(data) {
-        this.setState({
-            no: data[2],
-            so2: data[3],
-            pm2: data[4],
-            pm10: data[5],
-            o3: data[6],
-            co: data[7],
-            sound: data[8],
-            uv: data[9]
         })
     }
 }

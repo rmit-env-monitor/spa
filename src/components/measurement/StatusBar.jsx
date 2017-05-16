@@ -19,7 +19,7 @@ class StatusBar extends Component {
 StatusBar.propTypes = {
     name: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
-    data: PropTypes.number.isRequired
+    data: PropTypes.any.isRequired
 }
 
 export default StatusBar

@@ -16,7 +16,7 @@ class Measurement extends Component {
     }
 
     render() {
-        const { reducer, location, socket } = this.props
+        const { reducer, location, socket, dispatch } = this.props
 
         return (
             <div>
@@ -43,7 +43,7 @@ class Measurement extends Component {
                     <Button onClick={() => this.updateColorIndexModal(true)}>Color Index</Button>
                 </div>
                 <hr />
-                <DistrictDevice socket={socket} md={4} devices={reducer.devices} />
+                <DistrictDevice socket={socket} md={4} devices={reducer.devices} dispatch={dispatch} />
 
                 <ColorIndexModal reducer={reducer} updateColorIndexModal={state => this.updateColorIndexModal(state)} />
             </div>

@@ -12,6 +12,14 @@ export function updateShowColorIndex(isShowed) {
     }
 }
 
+export function updateNDeviceLatestRecord(id, record) {
+    return {
+        type: types.UPDATE_NEARBY_DEVICE_LATEST_RECORD,
+        id: id,
+        record: record
+    }
+}
+
 function getCurrentCityDistrictAndNearbySuccess(city, district, nearby) {
     return {
         type: types.GET_CURRENT_CITY_DISTRICT_AND_NEARBY_SUCCESS,

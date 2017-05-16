@@ -6,13 +6,13 @@ import Device from './Device.jsx'
 
 class DistrictDevice extends Component {
     render() {
-        const { devices, socket, md } = this.props
+        const { devices, socket, md, dispatch } = this.props
         return (
             <div className="container-fluid">
                 <Row>
                     {
-                        devices.map(value =>
-                            <Device key={value._id} md={md} device={value} socket={socket} />
+                        devices.map((value, key) =>
+                            <Device key={key} id={key} md={md} device={value} socket={socket} dispatch={dispatch} page={'measurement'} />
                         )
                     }
                 </Row>

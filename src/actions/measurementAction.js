@@ -52,6 +52,14 @@ export function updateShowColorIndex(isShowed) {
         isShowed: isShowed
     }
 }
+
+export function updateMDeviceLatestRecord(id, record) {
+    return {
+        type: types.UPDATE_MEASUREMENT_DEVICE_LATEST_RECORD,
+        id: id,
+        record: record
+    }
+}
 /** Flux actions */
 
 function getCurrentLocationDetailSuccess(data) {

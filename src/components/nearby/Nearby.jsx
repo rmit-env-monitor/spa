@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import { socketConnect } from 'socket.io-react'
-import { Button, Col, Row } from 'react-bootstrap'  
+import { Button, Col, Row } from 'react-bootstrap'
 
 import * as actions from '../../actions/nearbyAction'
 import options from '../../utilities/spinOptions'
@@ -24,7 +24,7 @@ class Nearby extends Component {
     }
 
     render() {
-        const { location, reducer, socket } = this.props
+        const { location, reducer, socket, dispatch } = this.props
 
         return (
             <div>
@@ -36,7 +36,7 @@ class Nearby extends Component {
                     <Button onClick={() => this.updateColorIndexModal(true)} className={'nearby-index'}>Color Index</Button>
                     <Row>
                         <Col md={6}>
-                            <CurrentDistrict socket={socket} devices={reducer.devices} />
+                            <CurrentDistrict socket={socket} dispatch={dispatch} devices={reducer.devices} />
                         </Col>
                     </Row>
                     <hr />

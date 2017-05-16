@@ -43,6 +43,11 @@ export default function measurementReducer(state = {
         case types.SET_SELECTED_DISTRICT:
             return Object.assign({}, state, { selectedDistrict: action.districtId })
 
+        case types.UPDATE_MEASUREMENT_DEVICE_LATEST_RECORD:
+            const newDevices = state.devices
+            newDevices[action.id].record = action.record
+            return Object.assign({}, state, { devices: newDevices })
+
         case types.UPDATE_SHOW_COLOR_INDEX:
             return Object.assign({}, state, { isShowed: action.isShowed })
 
