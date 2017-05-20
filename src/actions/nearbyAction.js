@@ -25,7 +25,7 @@ function getCurrentCityDistrictAndNearbySuccess(city, district, nearby) {
         type: types.GET_CURRENT_CITY_DISTRICT_AND_NEARBY_SUCCESS,
         city: city,
         district: district,
-        nearby: nearby.nearby
+        nearby: nearby
     }
 }
 
