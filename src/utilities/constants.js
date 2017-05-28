@@ -6,4 +6,4 @@ export const PUT = 'PUT'
 export const DELETE_METHOD = 'DELETE'
 export const BASE_URL = process.env.NODE_ENV === 'development' ?
     'http://localhost:3000' :
-    'http://restful-service.ap-southeast-1.elasticbeanstalk.com'
+    'http://ec2-52-221-209-59.ap-southeast-1.compute.amazonaws.com'
