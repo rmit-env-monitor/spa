@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import Loader from 'react-loader'
 import { connect } from 'react-redux'
 import { socketConnect } from 'socket.io-react'
 import { Button, Col, Row } from 'react-bootstrap'
@@ -32,20 +31,21 @@ class Nearby extends Component {
                 <Header location={location.pathname} />
 
                 <div className="container-fluid">
-                    <h3 id="nearby-city">City: {reducer.city} - District: {reducer.district}</h3>
+                    {
+                        reducer.city ? <h3 id="nearby-city">City: {reducer.city} - District: {reducer.district}</h3> : <h3 id="nearby-city">Detecting your location...</h3>
+                    }
                     <div className="space"></div>
                     <Button onClick={() => this.updateColorIndexModal(true)} className={'nearby-index'}>Color Index</Button>
                     <Row>
-                        <Col md={6}>
+                        <Col md={9}>
                             <CurrentDistrict socket={socket} dispatch={dispatch} devices={reducer.devices} />
                         </Col>
-                        <Col md={6}>
+                        {/*<Col md={6}>
                             <Map />
-                        </Col>
+                        </Col>*/}
                     </Row>
-                    <hr />
 
-                    <h3>Nearby districts</h3>
+                    {/*<h3>Nearby districts</h3>
                     <Row>
                         {
                             reducer.nearby.map((district, key) =>
@@ -54,11 +54,10 @@ class Nearby extends Component {
                                 </Col>
                             )
                         }
-                    </Row>
+                    </Row>*/}
                 </div>
 
                 <ColorIndexModal reducer={reducer} updateColorIndexModal={state => this.updateColorIndexModal(state)} />
-                <Loader loaded={reducer.loaded} options={options} className="spinner" />
             </div>
         )
     }

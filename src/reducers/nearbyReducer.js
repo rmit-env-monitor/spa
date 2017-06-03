@@ -24,7 +24,7 @@ export default function nearbyReducer(state = {
             return Object.assign({}, state, { isShowed: action.isShowed })
 
         case types.GET_DEVICES_IN_CURRENT_DISTRICT_SUCCESS:
-            return Object.assign({}, state, { devices: action.devices, loaded: true })
+            return Object.assign({}, state, { devices: action.devices })
 
         default:
             return state
