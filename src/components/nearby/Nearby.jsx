@@ -11,6 +11,7 @@ import Header from '../shared/Header.jsx'
 import District from './District.jsx'
 import CurrentDistrict from './CurrentDistrict.jsx'
 import ColorIndexModal from '../measurement/ColorIndexModal.jsx'
+import Map from './Map.jsx'
 
 class Nearby extends Component {
     componentDidMount() {
@@ -37,6 +38,9 @@ class Nearby extends Component {
                     <Row>
                         <Col md={6}>
                             <CurrentDistrict socket={socket} dispatch={dispatch} devices={reducer.devices} />
+                        </Col>
+                        <Col md={6}>
+                            <Map />
                         </Col>
                     </Row>
                     <hr />

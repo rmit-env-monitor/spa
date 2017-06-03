@@ -75,7 +75,7 @@
 
 .progress-bar {
     width: 100%;
-    font-size: 20px;        
+    font-size: 20px;
     padding: 10px;
 }
 
@@ -129,4 +129,8 @@
 
 .nearby-index {
     margin-bottom: 10px;
+}
+
+#map-nearby {
+    height: 276px;
 }
