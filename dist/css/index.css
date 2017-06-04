@@ -84,7 +84,7 @@
 }
 
 .moderate {
-    background-color: yellow;
+    background-color: #fec60d;
 }
 
 .sensitive {
@@ -133,4 +133,65 @@
 
 #map-nearby {
     height: 276px;
+}
+
+#nearest-device {
+    border: 2px solid #00c800;
+}
+
+#nearest-status {
+    max-width: 70px;
+}
+
+#summary {
+    text-align: center;
+    background: #00c800;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#summary > #district-title {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#summary > .row {
+    margin-bottom: 30px;
+}
+
+#summary > .row > .col-md-8 {
+    text-align: left;
+}
+
+#summary > .row .future-day {
+    margin-top: 10px;
+}
+
+#summary > .row #aqi-summary {
+    font-size: 20px;
+}
+
+#aqi-temp {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#aqi-temp .col-md-6 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#aqi-temp #pollution, #temp {
+    height: 28px;
+}
+
+#aqi-temp .value {
+    margin-top: 10px;
+}
+
+#aqi-temp .aqi-area, .temp-area {
+    border: 3px solid #00c800;
+    border-radius: 50%;
 }

@@ -22,12 +22,12 @@ class Device extends Component {
             <Col className="device" md={this.props.md}>
                 <h3>Device: {this.props.device.name}</h3>
                 <Row>
-                    <StatusBar name={'NO'} color={this.getAQIStatus(device.record.no || 0)} data={device.record.no || 0} />
-                    <StatusBar name={'SO2'} color={this.getAQIStatus(device.record.so2 || 0)} data={device.record.so2 || 0} />
-                    <StatusBar name={'PM2.5'} color={this.getAQIStatus(device.record.pm2 || 0)} data={device.record.pm2 || 0} />
-                    <StatusBar name={'PM10'} color={this.getAQIStatus(device.record.pm10 || 0)} data={device.record.pm10 || 0} />
-                    <StatusBar name={'O3'} color={this.getAQIStatus(device.record.o3 || 0)} data={device.record.o3 || 0} />
-                    <StatusBar name={'CO'} color={this.getAQIStatus(device.record.co || 0)} data={device.record.co || 0} />
+                    <StatusBar name={'NO'} color={this.getAQIStatus(device.record.noAQI || 0)} data={device.record.noAQI || 0} />
+                    <StatusBar name={'SO2'} color={this.getAQIStatus(device.record.so2AQI || 0)} data={device.record.so2AQI || 0} />
+                    <StatusBar name={'PM2.5'} color={this.getAQIStatus(device.record.pm25AQI || 0)} data={device.record.pm25AQI || 0} />
+                    <StatusBar name={'PM10'} color={this.getAQIStatus(device.record.pm10AQI || 0)} data={device.record.pm10AQI || 0} />
+                    <StatusBar name={'O3'} color={this.getAQIStatus(device.record.o3AQI || 0)} data={device.record.o3AQI || 0} />
+                    <StatusBar name={'CO'} color={this.getAQIStatus(device.record.coAQI || 0)} data={device.record.coAQI || 0} />
                 </Row>
             </Col>
         )

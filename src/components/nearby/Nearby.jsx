@@ -31,30 +31,16 @@ class Nearby extends Component {
                 <Header location={location.pathname} />
 
                 <div className="container-fluid">
-                    {
+                    {/*{
                         reducer.city ? <h3 id="nearby-city">City: {reducer.city} - District: {reducer.district}</h3> : <h3 id="nearby-city">Detecting your location...</h3>
                     }
                     <div className="space"></div>
-                    <Button onClick={() => this.updateColorIndexModal(true)} className={'nearby-index'}>Color Index</Button>
+                    <Button onClick={() => this.updateColorIndexModal(true)} className={'nearby-index'}>Color Index</Button>*/}
                     <Row>
-                        <Col md={9}>
-                            <CurrentDistrict socket={socket} dispatch={dispatch} devices={reducer.devices} />
+                        <Col md={9} id="nearest-device">
+                            <CurrentDistrict socket={socket} dispatch={dispatch} reducer={reducer} nearestDevice={reducer.nearestDevice} />
                         </Col>
-                        {/*<Col md={6}>
-                            <Map />
-                        </Col>*/}
                     </Row>
-
-                    {/*<h3>Nearby districts</h3>
-                    <Row>
-                        {
-                            reducer.nearby.map((district, key) =>
-                                <Col md={4} key={key}>
-                                    <District pane={key} socket={socket} city={reducer.city} district={district} />
-                                </Col>
-                            )
-                        }
-                    </Row>*/}
                 </div>
 
                 <ColorIndexModal reducer={reducer} updateColorIndexModal={state => this.updateColorIndexModal(state)} />

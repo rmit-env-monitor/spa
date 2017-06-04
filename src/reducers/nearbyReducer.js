@@ -3,10 +3,10 @@ import * as types from '../actions/actionTypes'
 export default function nearbyReducer(state = {
     city: null,
     district: null,
+    nearestDevice: { record: {} },
     devices: [],
     nearby: [],
     isShowed: false,
-    loaded: false,
     message: null
 }, action) {
     switch (action.type) {
@@ -24,7 +24,14 @@ export default function nearbyReducer(state = {
             return Object.assign({}, state, { isShowed: action.isShowed })
 
         case types.GET_DEVICES_IN_CURRENT_DISTRICT_SUCCESS:
-            return Object.assign({}, state, { devices: action.devices })
+            const deviceLength = action.devices.length
+            if (deviceLength < 2) {
+                return Object.assign({}, state, { devices: action.devices })
+            } else {
+                const newNearestDevice = action.devices[0]
+                const newDevicesaction = action.devices.slice(1, deviceLength)
+                return Object.assign({}, state, { nearestDevice: newNearestDevice, devices: newDevicesaction })
+            }
 
         default:
             return state
