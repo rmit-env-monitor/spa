@@ -10,7 +10,6 @@ import Header from '../shared/Header.jsx'
 import District from './District.jsx'
 import CurrentDistrict from './CurrentDistrict.jsx'
 import ColorIndexModal from '../measurement/ColorIndexModal.jsx'
-import Map from './Map.jsx'
 
 class Nearby extends Component {
     componentDidMount() {
@@ -34,8 +33,8 @@ class Nearby extends Component {
                     {/*{
                         reducer.city ? <h3 id="nearby-city">City: {reducer.city} - District: {reducer.district}</h3> : <h3 id="nearby-city">Detecting your location...</h3>
                     }
-                    <div className="space"></div>
-                    <Button onClick={() => this.updateColorIndexModal(true)} className={'nearby-index'}>Color Index</Button>*/}
+                    <div className="space"></div>*/}
+                    {/*<Button onClick={() => this.updateColorIndexModal(true)} className={'nearby-index'}>Color Index</Button>*/}
                     <Row>
                         <Col md={9} id="nearest-device">
                             <CurrentDistrict socket={socket} dispatch={dispatch} reducer={reducer} nearestDevice={reducer.nearestDevice} />

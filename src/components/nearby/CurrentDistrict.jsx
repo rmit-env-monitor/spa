@@ -15,7 +15,7 @@ class CurrentDistrict extends Component {
                     {reducer.district ? <h3 id="district-title">{reducer.city + ' - ' + reducer.district}</h3> : <h3 id="district-title">Detecting your location...</h3>}
                     <Row>
                         <Col md={4}>
-                            <img src="/images/face-with-i.png" alt="Status face" id="nearest-status" />
+                            <img src={this.getFaceColor(nearestDevice.record.aqi)} alt="Status face" id="nearest-status" />
                         </Col>
                         <Col md={8}>
                             <p>AIR QUALITY</p>
@@ -29,6 +29,9 @@ class CurrentDistrict extends Component {
                     <AQIPrediction />
                 </Col>
                 <CurrentDistrictDetail aqi={nearestDevice.record.aqi} temp={nearestDevice.record.temperature} />
+                <Col md={4}>
+                    <Device device={nearestDevice} />
+                </Col>
             </div>
         )
     }
@@ -46,6 +49,22 @@ class CurrentDistrict extends Component {
             return 'very-unhealthy'
         } else {
             return 'hazardous'
+        }
+    }
+
+    getFaceColor(air) {
+        if (air >= 0 && air <= 50) {
+            return '/images/green-face.png'
+        } else if (air >= 51 && air <= 100) {
+            return '/images/yellow-face.png'
+        } else if (air >= 101 && air <= 150) {
+            return '/images/orange-face.png'
+        } else if (air >= 151 && air <= 200) {
+            return '/images/red-face.png'
+        } else if (air >= 201 && air <= 300) {
+            return '/images/purple-face.png'
+        } else {
+            return '/images/maroon-face.png'
         }
     }
 }

@@ -70,13 +70,13 @@
 
 .progress {
     border-radius: 0;
-    height: 40px;
+    /*height: 30px;*/
 }
 
 .progress-bar {
     width: 100%;
-    font-size: 20px;
-    padding: 10px;
+    /*font-size: 20px;*/
+    /*padding: 10px;*/
 }
 
 .good {
@@ -131,8 +131,13 @@
     margin-bottom: 10px;
 }
 
+#nearby-map-area {
+    height: 176px;
+    border: 1px solid #00c800;
+}
+
 #map-nearby {
-    height: 276px;
+    height: 174px;
 }
 
 #nearest-device {
@@ -149,6 +154,11 @@
     color: white;
     margin-top: 15px;
     margin-bottom: 15px;
+    height: 321px;
+}
+
+.device-detail {
+    margin-top: 15px;
 }
 
 #summary > #district-title {
@@ -175,6 +185,8 @@
 #aqi-temp {
     margin-left: 10px;
     margin-right: 10px;
+    height: 30%;
+    font-size: 15px;
 }
 
 #aqi-temp .col-md-6 {
@@ -184,14 +196,39 @@
 }
 
 #aqi-temp #pollution, #temp {
-    height: 28px;
+    height: 30px;
+    margin-top: 25px;
 }
 
 #aqi-temp .value {
     margin-top: 10px;
 }
 
-#aqi-temp .aqi-area, .temp-area {
-    border: 3px solid #00c800;
-    border-radius: 50%;
+#aqi-temp .aqi {
+    padding-left: 0;
 }
+
+#aqi-temp .temp {
+    padding-right: 0;
+    float: right;
+}
+
+#aqi-temp .aqi-area, .temp-area {
+    border: 5px solid #00c800;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+}
+
+#aqi-temp .temp-area {
+    float: right;
+}
+
+#aqi-temp .border {
+    border: 2px solid #00c800;
+    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    margin: 5px;
+}
+
