@@ -7,7 +7,8 @@
   },
   "scripts": {
     "start": "node dev-server.js",
-    "build": "gulp && webpack -p --config ./webpack.config.prod.js --progress"
+    "build": "gulp sass && gulp && webpack -p --config ./webpack.config.prod.js --progress",
+    "compile": "gulp sass:watch"
   },
   "author": "",
   "license": "ISC",
@@ -24,8 +25,10 @@
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.0.3",
     "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
     "morgan": "^1.7.0",
     "path": "^0.12.7",
+    "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",
