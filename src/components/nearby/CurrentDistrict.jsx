@@ -8,30 +8,42 @@ import CurrentDistrictDetail from './CurrentDistrictDetail.jsx'
 
 class CurrentDistrict extends Component {
     render() {
-        const { socket, reducer, nearestDevice, dispatch } = this.props
+        const { socket, reducer, nearestDevice, dispatch, summaryMd, detailMd } = this.props
         return (
             <div>
-                <Col md={4} id="summary">
-                    {reducer.district ? <h3 id="district-title">{reducer.city + ' - ' + reducer.district}</h3> : <h3 id="district-title">Detecting your location...</h3>}
+                <Col md={summaryMd} id="summary">
+                    {
+                        reducer.district ? <h3 id="district-title">{reducer.city + ' - ' + reducer.district}</h3>
+                            : <h3 id="district-title">Detecting your location...</h3>
+                    }
                     <Row>
                         <Col md={4}>
-                            <img src={this.getFaceColor(nearestDevice.record.aqi)} alt="Status face" id="nearest-status" />
-                        </Col>
-                        <Col md={8}>
-                            <p>AIR QUALITY</p>
                             {
                                 nearestDevice.record.aqi ?
-                                    <p id="aqi-summary"><strong>{this.getAQIStatus(nearestDevice.record.aqi).toUpperCase()}</strong></p> : <p></p>
+                                    <img src={this.getFaceColor(nearestDevice.record.aqi)} alt="Status face" id="nearest-status" />
+                                    :
+                                    <div></div>
                             }
-                            {nearestDevice.record.aqi ? <p>Last Updated: 14:00</p> : <p></p>}
+                        </Col>
+                        <Col md={8}>
+                            {
+                                nearestDevice.record.aqi ?
+                                    <div>
+                                        <p>AIR QUALITY</p>
+                                        <p id="aqi-summary"><strong>{this.getAQIStatus(nearestDevice.record.aqi).toUpperCase()}</strong></p>
+                                        <p>Last Updated: 14:00</p>
+                                    </div>
+                                    :
+                                    <p></p>
+                            }
                         </Col>
                     </Row>
                     <AQIPrediction />
                 </Col>
-                <CurrentDistrictDetail aqi={nearestDevice.record.aqi} temp={nearestDevice.record.temperature} />
-                <Col md={4}>
-                    <Device device={nearestDevice} />
-                </Col>
+                <CurrentDistrictDetail aqi={nearestDevice.record.aqi} temp={nearestDevice.record.temperature} detailMd={detailMd} />
+                {
+                    reducer.detailedDeviceShowed ? <Col md={4}><Device device={nearestDevice} /></Col> : <div></div>
+                }
             </div>
         )
     }

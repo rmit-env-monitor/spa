@@ -6,7 +6,7 @@ export default function nearbyReducer(state = {
     nearestDevice: { record: {} },
     devices: [],
     nearby: [],
-    isShowed: false,
+    detailedDeviceShowed: true,
     message: null
 }, action) {
     switch (action.type) {
@@ -20,9 +20,6 @@ export default function nearbyReducer(state = {
             newDevices[action.id].record = action.record
             return Object.assign({}, state, { devices: newDevices })
 
-        case types.UPDATE_SHOW_COLOR_INDEX:
-            return Object.assign({}, state, { isShowed: action.isShowed })
-
         case types.GET_DEVICES_IN_CURRENT_DISTRICT_SUCCESS:
             const deviceLength = action.devices.length
             if (deviceLength < 2) {
@@ -32,6 +29,9 @@ export default function nearbyReducer(state = {
                 const newDevicesaction = action.devices.slice(1, deviceLength)
                 return Object.assign({}, state, { nearestDevice: newNearestDevice, devices: newDevicesaction })
             }
+
+        case types.SHOW_HIDE_DEVICE_DETAIL:
+            return Object.assign({}, state, { detailedDeviceShowed: action.detailedDeviceShowed })
 
         default:
             return state

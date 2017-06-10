@@ -20,6 +20,13 @@ export function updateNDeviceLatestRecord(id, record) {
     }
 }
 
+export function updateDeviceDetailShowed(state) {
+    return {
+        type: types.SHOW_HIDE_DEVICE_DETAIL,
+        detailedDeviceShowed: state
+    }
+}
+
 function getCurrentCityDistrictAndNearbySuccess(city, district, nearby) {
     return {
         type: types.GET_CURRENT_CITY_DISTRICT_AND_NEARBY_SUCCESS,

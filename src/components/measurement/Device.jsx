@@ -6,34 +6,27 @@ import { updateNDeviceLatestRecord } from '../../actions/nearbyAction'
 import { updateMDeviceLatestRecord } from '../../actions/measurementAction'
 
 class Device extends Component {
-    // componentDidMount() {
-    //     const { socket, device, id, dispatch, page } = this.props
-
-    //     socket.on(device._id, data => {
-    //         if (page === 'nearby') dispatch(updateNDeviceLatestRecord(id, data))
-    //         else dispatch(updateMDeviceLatestRecord(id, data))
-    //     })
-    // }
-
     render() {
         const { device } = this.props
 
         return (
             <div className="device-detail">
-                <StatusBar name={'NO'} color={this.getAQIStatus(device.record.noAQI || 0)} data={device.record.noAQI || 0} />
-                <StatusBar name={'SO2'} color={this.getAQIStatus(device.record.so2AQI || 0)} data={device.record.so2AQI || 0} />
-                <StatusBar name={'PM2.5'} color={this.getAQIStatus(device.record.pm25AQI || 0)} data={device.record.pm25AQI || 0} />
-                <StatusBar name={'PM10'} color={this.getAQIStatus(device.record.pm10AQI || 0)} data={device.record.pm10AQI || 0} />
-                <StatusBar name={'O3'} color={this.getAQIStatus(device.record.o3AQI || 0)} data={device.record.o3AQI || 0} />
-                <StatusBar name={'CO'} color={this.getAQIStatus(device.record.coAQI || 0)} data={device.record.coAQI || 0} />
+                {
+                    device.record.noAQI ?
+                        <div>
+                            <StatusBar name={'NO'} color={this.getAQIStatus(device.record.noAQI)} data={device.record.noAQI} />
+                            <StatusBar name={'SO2'} color={this.getAQIStatus(device.record.so2AQI)} data={device.record.so2AQI} />
+                            <StatusBar name={'PM2.5'} color={this.getAQIStatus(device.record.pm25AQI)} data={device.record.pm25AQI} />
+                            <StatusBar name={'PM10'} color={this.getAQIStatus(device.record.pm10AQI)} data={device.record.pm10AQI} />
+                            <StatusBar name={'O3'} color={this.getAQIStatus(device.record.o3AQI)} data={device.record.o3AQI} />
+                            <StatusBar name={'CO'} color={this.getAQIStatus(device.record.coAQI)} data={device.record.coAQI} />
+                        </div>
+                        :
+                        <div></div>
+                }
             </div>
         )
     }
-
-    // componentWillUnmount() {
-    //     const { socket, device } = this.props
-    //     socket.off(device._id)
-    // }
 
     getAQIStatus(air) {
         if (air >= 0 && air <= 50) {

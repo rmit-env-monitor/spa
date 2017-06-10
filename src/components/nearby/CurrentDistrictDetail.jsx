@@ -5,10 +5,10 @@ import Map from './Map.jsx'
 
 class CurrentDistrictDetail extends Component {
     render() {
-        const { aqi, temp } = this.props
+        const { aqi, temp, detailMd } = this.props
 
         return (
-            <Col md={4}>
+            <Col md={detailMd}>
                 <Row id="aqi-temp">
                     <Col md={6} className="aqi">
                         <div className="aqi-area">
@@ -22,7 +22,9 @@ class CurrentDistrictDetail extends Component {
                         <div className="temp-area">
                             <div className="border">
                                 <img src="/images/temperature.png" alt="Status face" id="temp" />
-                                <p className="value"><strong>{temp} Cel</strong></p>
+                                {
+                                    temp ? <p className="value"><strong>{temp} Cel</strong></p> : <p></p>
+                                }
                             </div>
                         </div>
                     </Col>

@@ -55,11 +55,12 @@
   z-index: 9999; }
 
 .progress {
-  border-radius: 0;
-  /*height: 30px;*/ }
+  border-radius: 0; }
 
 .progress-bar {
   width: 100%; }
+  .progress-bar span {
+    font-size: 15px; }
 
 .good {
   background-color: green; }
@@ -105,7 +106,7 @@
   height: 174px; }
 
 #nearest-device {
-  border: 2px solid #00c800; }
+  border: 3px solid #00c800; }
 
 #nearest-status {
   max-width: 70px; }
@@ -130,7 +131,8 @@
       font-size: 20px; }
 
 .device-detail {
-  margin-top: 15px; }
+  margin-top: 15px;
+  margin-right: 5px; }
 
 #aqi-temp {
   margin-left: 10px;
@@ -144,6 +146,8 @@
   #aqi-temp #pollution, #aqi-temp #temp {
     height: 30px;
     margin-top: 25px; }
+  #aqi-temp .temp {
+    padding-right: 0; }
   #aqi-temp .value {
     margin-top: 10px; }
   #aqi-temp .aqi {
@@ -161,3 +165,23 @@
     width: 110px;
     height: 110px;
     margin: 5px; }
+
+#collapse-button {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  width: 20px;
+  height: 40px;
+  top: 43%;
+  right: 0px;
+  background: #00c800;
+  vertical-align: middle; }
+  #collapse-button #collapse-icon {
+    top: 25%;
+    color: white; }
+
+#district-ranking {
+  background-color: gray;
+  height: 200px;
+  color: white;
+  text-align: center; }

@@ -77,11 +77,13 @@
 
 .progress {
     border-radius: 0;
-    /*height: 30px;*/
 }
 
 .progress-bar {
     width: 100%;
+    span {
+        font-size: 15px;
+    }
 }
 
 .good {
@@ -142,7 +144,7 @@
 }
 
 #nearest-device {
-    border: 2px solid #00c800;
+    border: 3px solid #00c800;
 }
 
 #nearest-status {
@@ -176,6 +178,7 @@
 
 .device-detail {
     margin-top: 15px;
+    margin-right: 5px;
 }
 
 #aqi-temp {
@@ -191,6 +194,9 @@
     #pollution, #temp {
         height: 30px;
         margin-top: 25px;
+    }
+    .temp {
+        padding-right: 0;
     }
     .value {
         margin-top: 10px;
@@ -214,4 +220,27 @@
         height: 110px;
         margin: 5px;
     }
+}
+
+#collapse-button {
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    width: 20px;
+    height: 40px;
+    top: 43%;
+    right: 0px;
+    background: #00c800;
+    vertical-align: middle;
+    #collapse-icon {
+        top: 25%;
+        color: white;
+    }
+}
+
+#district-ranking {
+    background-color: gray;
+    height: 200px;
+    color: white;
+    text-align: center;
 }

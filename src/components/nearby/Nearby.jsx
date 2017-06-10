@@ -10,6 +10,7 @@ import Header from '../shared/Header.jsx'
 import District from './District.jsx'
 import CurrentDistrict from './CurrentDistrict.jsx'
 import ColorIndexModal from '../measurement/ColorIndexModal.jsx'
+import DistrictRanking from './DistrictRanking.jsx'
 
 class Nearby extends Component {
     componentDidMount() {
@@ -30,25 +31,42 @@ class Nearby extends Component {
                 <Header location={location.pathname} />
 
                 <div className="container-fluid">
-                    {/*{
-                        reducer.city ? <h3 id="nearby-city">City: {reducer.city} - District: {reducer.district}</h3> : <h3 id="nearby-city">Detecting your location...</h3>
-                    }
-                    <div className="space"></div>*/}
-                    {/*<Button onClick={() => this.updateColorIndexModal(true)} className={'nearby-index'}>Color Index</Button>*/}
                     <Row>
-                        <Col md={9} id="nearest-device">
-                            <CurrentDistrict socket={socket} dispatch={dispatch} reducer={reducer} nearestDevice={reducer.nearestDevice} />
-                        </Col>
+                        {
+                            reducer.detailedDeviceShowed ?
+                                <Col md={9} id="nearest-device">
+                                    <CurrentDistrict socket={socket} dispatch={dispatch} reducer={reducer} nearestDevice={reducer.nearestDevice}
+                                        detailedDeviceShowed={reducer.detailedDeviceShowed} summaryMd={4} detailMd={4} />
+                                    <div id="collapse-button">
+                                        <a onClick={() => this.collapseExpandPane()} href="#"><span id="collapse-icon" className="glyphicon glyphicon-chevron-left"></span></a>
+                                    </div>
+                                </Col>
+                                :
+                                <div>
+                                    <Col md={6} id="nearest-device">
+                                        <CurrentDistrict socket={socket} dispatch={dispatch} reducer={reducer} nearestDevice={reducer.nearestDevice}
+                                            detailedDeviceShowed={reducer.detailedDeviceShowed} summaryMd={6} detailMd={6} />
+                                        <div id="collapse-button">
+                                            <a onClick={() => this.collapseExpandPane()} href="#"><span id="collapse-icon" className="glyphicon glyphicon-chevron-right"></span></a>
+                                        </div>
+                                    </Col>
+                                    <Col md={3}></Col>
+                                </div>
+                        }
                     </Row>
                 </div>
-
-                <ColorIndexModal reducer={reducer} updateColorIndexModal={state => this.updateColorIndexModal(state)} />
             </div>
         )
     }
 
     updateColorIndexModal(state) {
         this.props.dispatch(actions.updateShowColorIndex(state))
+    }
+
+    collapseExpandPane() {
+        const { reducer, dispatch } = this.props
+        reducer.detailedDeviceShowed ?
+            dispatch(actions.updateDeviceDetailShowed(false)) : dispatch(actions.updateDeviceDetailShowed(true))
     }
 }
 
