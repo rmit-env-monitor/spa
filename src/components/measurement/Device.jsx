@@ -22,7 +22,7 @@ class Device extends Component {
                             <StatusBar name={'CO'} color={this.getAQIStatus(device.record.coAQI)} data={device.record.coAQI} />
                         </div>
                         :
-                        <div className="device-loading"><h1><i className="fa fa-circle-o-notch fa-spin"></i></h1></div>
+                        <div className="device-loading"><h1><i className="fa fa-cog fa-spin fa-2x"></i></h1></div>
                 }
             </div>
         )

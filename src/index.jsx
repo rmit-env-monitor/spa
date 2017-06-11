@@ -29,8 +29,6 @@ render(
             <Router history={browserHistory}>
                 <Route path="/" onEnter={checkTokenAvailability} component={Nearby} />
                 <Route path="measurement" onEnter={checkTokenAvailability} component={Measurement} />
-                <Route path="map" onEnter={checkTokenAvailability} component={Map} />
-                <Route path="history" onEnter={checkTokenAvailability} component={History} />
                 <Route path="login" component={Login} />
                 <Route path="register" component={Register} />
             </Router>

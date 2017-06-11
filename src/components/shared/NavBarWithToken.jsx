@@ -10,19 +10,11 @@ class NavBarWithToken extends Component {
                 <ul className="nav navbar-nav">
                     {
                         this.props.location === '/' ?
-                            <li className="active"><Link to={'/'}>Nearby</Link></li> : <li><Link to={'/'}>Nearby</Link></li>
+                            <li className="active"><Link to={'/'}>Nearby</Link></li> : <li><Link to={'/'}>Home</Link></li>
                     }
                     {
                         this.props.location.indexOf('measurement') > -1 ?
                             <li className="active"><Link to={'measurement'}>Measurement</Link></li> : <li><Link to={'measurement'}>Measurement</Link></li>
-                    }
-                    {
-                        this.props.location.indexOf('history') > -1 ?
-                            <li className="active"><Link to={'history'}>History</Link></li> : <li><Link to={'history'}>History</Link></li>
-                    }
-                    {
-                        this.props.location.indexOf('map') > -1 ?
-                            <li className="active"><Link to={'map'}>Map</Link></li> : <li><Link to={'map'}>Map</Link></li>
                     }
                 </ul>
                 <ul className="nav navbar-nav navbar-right">

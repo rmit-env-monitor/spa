@@ -5,7 +5,7 @@ import { Button, Col, Row, Panel } from 'react-bootstrap'
 class AQIPrediction extends Component {
     render() {
         return (
-            <Row>
+            <Row id="prediction">
                 <Col md={4}>
                     <img src="/images/face.png" alt="Status face" id="nearest-status" />
                     <p className="future-day"><strong>FRI</strong></p>

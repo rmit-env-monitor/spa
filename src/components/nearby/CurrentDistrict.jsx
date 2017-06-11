@@ -1,22 +1,26 @@
 import React, { Component, PropTypes } from 'react'
 import { Button, Col, Row, Panel } from 'react-bootstrap'
 
+import * as actions from '../../actions/nearbyAction'
 import * as services from '../../services/nearbyService'
+
 import Device from '../measurement/Device.jsx'
 import AQIPrediction from './AQIPrediction.jsx'
 import CurrentDistrictDetail from './CurrentDistrictDetail.jsx'
 
+import convertUnixTimestamp from '../../utilities/unixTimestampConversion'
+
 class CurrentDistrict extends Component {
     render() {
-        const { socket, reducer, nearestDevice, dispatch, summaryMd, detailMd } = this.props
+        const { socket, reducer, nearestDevice, dispatch, summaryMd, detailMd, allMd } = this.props
         return (
-            <div>
+            <Col md={allMd} id="nearest-device">
                 <Col md={summaryMd} id="summary">
                     {
                         reducer.district ? <h3 id="district-title">{reducer.city + ' - ' + reducer.district}</h3>
-                            : <h3 id="district-title">Detecting your location... <i className="fa fa-circle-o-notch fa-spin"></i></h3>
+                            : <h3 id="district-title">Detecting your location <i className="fa fa-cog fa-spin"></i></h3>
                     }
-                    <Row>
+                    <Row id="district-stt">
                         <Col md={4}>
                             {
                                 nearestDevice.record.aqi ?
@@ -29,13 +33,12 @@ class CurrentDistrict extends Component {
                             {
                                 nearestDevice.record.aqi ?
                                     <div>
-                                        <p>AIR QUALITY</p>
                                         <p id="aqi-summary"><strong>{this.getAQIStatus(nearestDevice.record.aqi).toUpperCase()}</strong></p>
-                                        <p>Last Updated: 14:00</p>
+                                        <p><strong>Last Updated:</strong> {convertUnixTimestamp(nearestDevice.record.utcDateTime)}</p>
                                     </div>
                                     :
                                     <div>
-                                        <p id="aqi-summary"><i className="fa fa-circle-o-notch fa-spin"></i></p>
+                                        <p id="aqi-summary"><i className="fa fa-cog fa-spin fa-4x"></i></p>
                                     </div>
                             }
                         </Col>
@@ -46,8 +49,21 @@ class CurrentDistrict extends Component {
                 {
                     reducer.detailedDeviceShowed ? <Col md={4}><Device device={nearestDevice} /></Col> : <div></div>
                 }
-            </div>
+                <div id="collapse-button">
+                    <a onClick={() => this.collapseExpandPane()} href="javascript:void(0)">
+                        <span id="collapse-icon"
+                            className={reducer.detailedDeviceShowed ? 'glyphicon glyphicon-chevron-left' : 'glyphicon glyphicon-chevron-right'}>
+                        </span>
+                    </a>
+                </div>
+            </Col>
         )
+    }
+
+    collapseExpandPane() {
+        const { reducer, dispatch } = this.props
+        reducer.detailedDeviceShowed ?
+            dispatch(actions.updateDeviceDetailShowed(false)) : dispatch(actions.updateDeviceDetailShowed(true))
     }
 
     getAQIStatus(air) {
