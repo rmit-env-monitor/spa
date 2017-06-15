@@ -6,15 +6,15 @@ class AQIPrediction extends Component {
     render() {
         return (
             <Row id="prediction">
-                <Col md={4}>
+                <Col xs={4}>
                     <img src="/images/face.png" alt="Status face" id="nearest-status" />
                     <p className="future-day"><strong>FRI</strong></p>
                 </Col>
-                <Col md={4}>
+                <Col xs={4}>
                     <img src="/images/face.png" alt="Status face" id="nearest-status" />
                     <p className="future-day"><strong>SAT</strong></p>
                 </Col>
-                <Col md={4}>
+                <Col xs={4}>
                     <img src="/images/face.png" alt="Status face" id="nearest-status" />
                     <p className="future-day"><strong>SUN</strong></p>
                 </Col>

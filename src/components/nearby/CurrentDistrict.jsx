@@ -14,27 +14,26 @@ class CurrentDistrict extends Component {
     render() {
         const { socket, reducer, nearestDevice, dispatch, summaryMd, detailMd, allMd } = this.props
         return (
-            <Col md={allMd} id="nearest-device">
-                <Col md={summaryMd} id="summary">
+            <Col xs={allMd} id="nearest-device">
+                <Col xs={summaryMd} id="summary">
                     {
                         reducer.district ? <h3 id="district-title">{reducer.city + ' - ' + reducer.district}</h3>
                             : <h3 id="district-title">Detecting your location <i className="fa fa-cog fa-spin"></i></h3>
                     }
                     <Row id="district-stt">
-                        <Col md={4}>
+                        <Col xs={4}>
                             {
                                 nearestDevice.record.aqi ?
-                                    <img src={this.getFaceColor(nearestDevice.record.aqi)} alt="Status face" id="nearest-status" />
-                                    :
-                                    <div></div>
+                                    <img src={this.getFaceColor(nearestDevice.record.aqi)} alt="Status face" id="nearest-status" /> : ''
                             }
                         </Col>
-                        <Col md={8}>
+                        <Col xs={8}>
                             {
                                 nearestDevice.record.aqi ?
                                     <div>
                                         <p id="aqi-summary"><strong>{this.getAQIStatus(nearestDevice.record.aqi).toUpperCase()}</strong></p>
-                                        <p><strong>Last Updated:</strong> {convertUnixTimestamp(nearestDevice.record.utcDateTime)}</p>
+                                        <p><strong>Last Updated:</strong></p>
+                                        <p>{convertUnixTimestamp(nearestDevice.record.utcDateTime)}</p>
                                     </div>
                                     :
                                     <div>
@@ -46,24 +45,8 @@ class CurrentDistrict extends Component {
                     <AQIPrediction />
                 </Col>
                 <CurrentDistrictDetail aqi={nearestDevice.record.aqi} temp={nearestDevice.record.temperature} detailMd={detailMd} />
-                {
-                    reducer.detailedDeviceShowed ? <Col md={4}><Device device={nearestDevice} /></Col> : <div></div>
-                }
-                <div id="collapse-button">
-                    <a onClick={() => this.collapseExpandPane()} href="javascript:void(0)">
-                        <span id="collapse-icon"
-                            className={reducer.detailedDeviceShowed ? 'glyphicon glyphicon-chevron-left' : 'glyphicon glyphicon-chevron-right'}>
-                        </span>
-                    </a>
-                </div>
             </Col>
         )
-    }
-
-    collapseExpandPane() {
-        const { reducer, dispatch } = this.props
-        reducer.detailedDeviceShowed ?
-            dispatch(actions.updateDeviceDetailShowed(false)) : dispatch(actions.updateDeviceDetailShowed(true))
     }
 
     getAQIStatus(air) {

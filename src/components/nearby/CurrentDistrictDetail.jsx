@@ -8,9 +8,9 @@ class CurrentDistrictDetail extends Component {
         const { aqi, temp, detailMd } = this.props
 
         return (
-            <Col md={detailMd} id="nearest-detail">
+            <Col xs={detailMd} id="nearest-detail">
                 <Row id="aqi-temp">
-                    <Col md={6} className="aqi">
+                    <Col xs={6} className="aqi">
                         <div className="aqi-area">
                             <div className="border">
                                 <img src="/images/pollution.png" alt="Status face" id="pollution" />
@@ -20,7 +20,7 @@ class CurrentDistrictDetail extends Component {
                             </div>
                         </div>
                     </Col>
-                    <Col md={6} className="temp">
+                    <Col xs={6} className="temp">
                         <div className="temp-area">
                             <div className="border">
                                 <img src="/images/temperature.png" alt="Status face" id="temp" />

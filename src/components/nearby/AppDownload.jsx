@@ -9,6 +9,7 @@ class AppDownload extends Component {
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in urna neque. Sed sed lorem eget diam semper congue. Fusce iaculis risus in nibh mattis feugiat. Aenean id commodo nulla.
                 </p>
+
             </div>
         )
     }

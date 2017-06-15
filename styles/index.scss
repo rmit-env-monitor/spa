@@ -11,9 +11,9 @@ $main-color: #e15a5a;
 }
 /* FONT */
 
-body {
-    font-family: 'KoushikiSansRegular';
-}
+// body {
+//     font-family: 'KoushikiSansRegular';
+// }
 
 .navbar {
     margin-bottom: 0;
@@ -156,12 +156,10 @@ body {
 }
 
 #nearest-device {
-    border: 2px solid $main-color;
+    border-top: 2px solid $main-color;
+    border-left: 2px solid $main-color;
+    border-bottom: 2px solid $main-color;
     height: 366px;
-    -webkit-transition: width 0.5s ease;
-    -moz-transition: width 0.5s ease;
-    -o-transition: width 0.5s ease;
-    transition: width 0.5s ease;
 }
 
 /* HOMEPAGE */
@@ -181,7 +179,7 @@ body {
     }
     .row {
         margin-bottom: 30px;
-        .col-md-8 {
+        .col-xs-8 {
             text-align: left;
         }
         .future-day {
@@ -203,7 +201,7 @@ body {
         margin-left: 10px;
         margin-right: 10px;
         font-size: 15px;
-        .col-md-6 {
+        .col-xs-6 {
             text-align: center;
         }
         #pollution, #temp {
@@ -247,21 +245,46 @@ body {
     }
 }
 
+#nearest-air-detail {
+    border-top: 2px solid $main-color;
+    border-right: 2px solid $main-color;
+    border-bottom: 2px solid $main-color;
+    width: 310px;
+    height: 366px;
+    padding-right: 15px;
+    -webkit-transition: width 1s ease;
+    -moz-transition: width 1s ease;
+    -o-transition: width 1s ease;
+    transition: width 1s ease;
+    display: inline-block;
+    overflow: hidden;
+    .device-detail {
+        overflow: hidden;
+        // width: inherit;
+    }
+}
+
+#nearest-air-detail.collapse {
+    width: 0;
+    padding-right: 0;
+}
+
 .device-detail {
     margin-top: 15px;
     margin-right: 5px;
+    .status-bar {
+        width: 303px;
+    }
 }
 
 #collapse-button {
     display: inline-block;
-    position: absolute;
     text-align: center;
     width: 20px;
     height: 40px;
-    top: 43%;
-    right: 0px;
+    margin-top: 152px;
+    left: 0%;
     background: $main-color;
-    vertical-align: middle;
     #collapse-icon {
         top: 30%;
         color: white;
