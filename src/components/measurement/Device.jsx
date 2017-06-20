@@ -12,14 +12,14 @@ class Device extends Component {
         return (
             <div className="device-detail">
                 {
-                    device.record.noAQI ?
+                    device.record.aqiValues.no2AQI ?
                         <div>
-                            <StatusBar name={'NO'} color={this.getAQIStatus(device.record.noAQI)} data={device.record.noAQI} />
-                            <StatusBar name={'SO2'} color={this.getAQIStatus(device.record.so2AQI)} data={device.record.so2AQI} />
-                            <StatusBar name={'PM2.5'} color={this.getAQIStatus(device.record.pm25AQI)} data={device.record.pm25AQI} />
-                            <StatusBar name={'PM10'} color={this.getAQIStatus(device.record.pm10AQI)} data={device.record.pm10AQI} />
-                            <StatusBar name={'O3'} color={this.getAQIStatus(device.record.o3AQI)} data={device.record.o3AQI} />
-                            <StatusBar name={'CO'} color={this.getAQIStatus(device.record.coAQI)} data={device.record.coAQI} />
+                            <StatusBar name={'NO'} color={this.getAQIStatus(device.record.aqiValues.no2AQI)} data={device.record.aqiValues.no2AQI} />
+                            <StatusBar name={'SO2'} color={this.getAQIStatus(device.record.aqiValues.so2AQI)} data={device.record.aqiValues.so2AQI} />
+                            <StatusBar name={'PM2.5'} color={this.getAQIStatus(device.record.aqiValues.pm25AQI)} data={device.record.aqiValues.pm25AQI} />
+                            <StatusBar name={'PM10'} color={this.getAQIStatus(device.record.aqiValues.pm10AQI)} data={device.record.aqiValues.pm10AQI} />
+                            <StatusBar name={'O3'} color={this.getAQIStatus(device.record.aqiValues.o3AQI)} data={device.record.aqiValues.o3AQI} />
+                            <StatusBar name={'CO'} color={this.getAQIStatus(device.record.aqiValues.coAQI)} data={device.record.aqiValues.coAQI} />
                         </div>
                         :
                         <div className="device-loading"><h1><i className="fa fa-cog fa-spin fa-2x"></i></h1></div>

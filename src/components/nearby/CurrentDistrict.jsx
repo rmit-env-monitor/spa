@@ -23,15 +23,15 @@ class CurrentDistrict extends Component {
                     <Row id="district-stt">
                         <Col xs={4}>
                             {
-                                nearestDevice.record.aqi ?
-                                    <img src={this.getFaceColor(nearestDevice.record.aqi)} alt="Status face" id="nearest-status" /> : ''
+                                nearestDevice.record.aqiValues.aqi ?
+                                    <img src={this.getFaceColor(nearestDevice.record.aqiValues.aqi)} alt="Status face" id="nearest-status" /> : ''
                             }
                         </Col>
                         <Col xs={8}>
                             {
-                                nearestDevice.record.aqi ?
+                                nearestDevice.record.aqiValues.aqi ?
                                     <div>
-                                        <p id="aqi-summary"><strong>{this.getAQIStatus(nearestDevice.record.aqi).toUpperCase()}</strong></p>
+                                        <p id="aqi-summary"><strong>{this.getAQIStatus(nearestDevice.record.aqiValues.aqi).toUpperCase()}</strong></p>
                                         <p><strong>Last Updated:</strong></p>
                                         <p>{convertUnixTimestamp(nearestDevice.record.utcDateTime)}</p>
                                     </div>
@@ -44,7 +44,7 @@ class CurrentDistrict extends Component {
                     </Row>
                     <AQIPrediction />
                 </Col>
-                <CurrentDistrictDetail aqi={nearestDevice.record.aqi} temp={nearestDevice.record.temperature} detailMd={detailMd} />
+                <CurrentDistrictDetail aqi={nearestDevice.record.aqiValues.aqi} temp={nearestDevice.record.temperature} detailMd={detailMd} />
             </Col>
         )
     }

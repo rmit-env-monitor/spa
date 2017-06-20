@@ -1,5 +1,5 @@
 /* GLOBAL VALUE */
-$main-color: #e15a5a;
+$main-color: #12b790;
 /* GLOBAL VALUE */
 
 /* FONT */
@@ -9,11 +9,10 @@ $main-color: #e15a5a;
     src: url('font/KoushikiSans-Light.woff2') format('woff2');
     src: url('font/KoushikiSans-Light.ttf') format('truetype');
 }
-/* FONT */
 
-// body {
-//     font-family: 'KoushikiSansRegular';
-// }
+body {
+    font-family: KoushikiSansRegular;
+}
 
 .navbar {
     margin-bottom: 0;
@@ -33,7 +32,7 @@ $main-color: #e15a5a;
         }
         .active {
             a, a:focus, a:hover {
-                background-color: #ba5a5a;
+                background-color: #129390;
             }
         }
     }
@@ -299,9 +298,21 @@ $main-color: #e15a5a;
     background-color: lightgray;
     text-align: center;
     width: 23%;
+    height: 366px;
     float: right;
+    padding-left: 40px;
+    padding-right: 40px;
     h4 {
         color: $main-color;
+    }
+    #app-download-title {
+        margin-top: 30px;
+    }
+    .play-store-logo {
+        width: 205px;
+    }
+    .app-store-logo {
+        width: 180px;
     }
 }
 /* HOMEPAGE */
