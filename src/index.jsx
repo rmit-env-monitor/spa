@@ -10,10 +10,8 @@ import configureStore from './store'
 import { BASE_URL } from './utilities/constants'
 import checkTokenAvailability from './utilities/checkTokenAvailability'
 
-import Map from './components/Map.jsx'
 import Measurement from './components/measurement/Measurement.jsx'
 import Nearby from './components/nearby/Nearby.jsx'
-import History from './components/History.jsx'
 import Login from './components/auth/Login.jsx'
 import Register from './components/auth/Register.jsx'
 

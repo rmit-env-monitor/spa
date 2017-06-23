@@ -27,6 +27,13 @@ export function updateDeviceDetailShowed(state) {
     }
 }
 
+export function updateNearestDevice(record) {
+    return {
+        type: types.UPDATE_NEAREST_DEVICE_RECORD,
+        record: record
+    }
+}
+
 function getCurrentCityDistrictAndNearbySuccess(city, district, nearby) {
     return {
         type: types.GET_CURRENT_CITY_DISTRICT_AND_NEARBY_SUCCESS,

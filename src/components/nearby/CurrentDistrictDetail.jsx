@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, PropTypes } from 'react'
 import { Button, Col, Row, Panel } from 'react-bootstrap'
 import Map from './Map.jsx'
 
@@ -40,7 +39,9 @@ class CurrentDistrictDetail extends Component {
 }
 
 CurrentDistrictDetail.propTypes = {
-
+    aqi: PropTypes.number,
+    temp: PropTypes.number,
+    detailMd: PropTypes.number.isRequired
 }
 
 export default CurrentDistrictDetail

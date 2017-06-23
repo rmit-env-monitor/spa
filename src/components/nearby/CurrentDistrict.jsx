@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { Button, Col, Row, Panel } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 
 import * as actions from '../../actions/nearbyAction'
 import * as services from '../../services/nearbyService'
@@ -12,7 +12,7 @@ import convertUnixTimestamp from '../../utilities/unixTimestampConversion'
 
 class CurrentDistrict extends Component {
     render() {
-        const { socket, reducer, nearestDevice, dispatch, summaryMd, detailMd, allMd } = this.props
+        const { reducer, nearestDevice, summaryMd, detailMd, allMd } = this.props
         return (
             <Col xs={allMd} id="nearest-device">
                 <Col xs={summaryMd} id="summary">
@@ -42,8 +42,10 @@ class CurrentDistrict extends Component {
                             }
                         </Col>
                     </Row>
+
                     <AQIPrediction />
                 </Col>
+
                 <CurrentDistrictDetail aqi={nearestDevice.record.aqiValues.aqi} temp={nearestDevice.record.temperature} detailMd={detailMd} />
             </Col>
         )
@@ -83,9 +85,14 @@ class CurrentDistrict extends Component {
 }
 
 CurrentDistrict.propTypes = {
-    // devices: PropTypes.array.isRequired,
+    socket: PropTypes.any.isRequired,
+    dispatch: PropTypes.any.isRequired,
+    reducer: PropTypes.any.isRequired,
     nearestDevice: PropTypes.object.isRequired,
-    socket: PropTypes.any.isRequired
+    detailedDeviceShowed: PropTypes.bool.isRequired,
+    summaryMd: PropTypes.number.isRequired,
+    detailMd: PropTypes.number.isRequired,
+    allMd: PropTypes.number.isRequired
 }
 
 export default CurrentDistrict

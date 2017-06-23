@@ -33,6 +33,11 @@ export default function nearbyReducer(state = {
         case types.SHOW_HIDE_DEVICE_DETAIL:
             return Object.assign({}, state, { detailedDeviceShowed: action.detailedDeviceShowed })
 
+        case types.UPDATE_NEAREST_DEVICE_RECORD:
+            const newNearestRecord = state.nearestDevice
+            newNearestRecord.record = action.record
+            return Object.assign({}, state, { nearestDevice: newNearestRecord })
+
         default:
             return state
     }

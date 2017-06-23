@@ -45,6 +45,8 @@ class Device extends Component {
     }
 }
 
-Device.propTypes = {}
+Device.propTypes = {
+    device: PropTypes.object.isRequired
+}
 
 export default Device

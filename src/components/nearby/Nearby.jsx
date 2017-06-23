@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { socketConnect } from 'socket.io-react'
-import { Button, Col, Row } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 
 import * as actions from '../../actions/nearbyAction'
 
@@ -12,13 +12,17 @@ import Device from '../measurement/Device.jsx'
 
 class Nearby extends Component {
     componentDidMount() {
-        const { dispatch, reducer } = this.props
+        const { dispatch, reducer, socket } = this.props
         if (reducer.city === null)
             navigator.geolocation.getCurrentPosition(position => {
                 dispatch(
                     actions.getCurrentCityDistrictNearbyCurrentDevice(position.coords.latitude, position.coords.longitude)
                 )
             })
+            
+        socket.on(reducer.nearestDevice._id, record => {
+            dispatch(actions.updateNearestDevice(record))
+        })
     }
 
     render() {
@@ -32,9 +36,11 @@ class Nearby extends Component {
                     <Row>
                         <CurrentDistrict socket={socket} dispatch={dispatch} reducer={reducer} nearestDevice={reducer.nearestDevice}
                             detailedDeviceShowed={reducer.detailedDeviceShowed} summaryMd={6} detailMd={6} allMd={6} />
+
                         <Col xs={3} id="nearest-air-detail" className={reducer.detailedDeviceShowed ? "" : "collapse"}>
                             <Device device={reducer.nearestDevice} />
                         </Col>
+
                         <div id="collapse-button">
                             <a onClick={() => this.collapseExpandPane()} href="javascript:void(0)">
                                 <span id="collapse-icon"
@@ -42,6 +48,7 @@ class Nearby extends Component {
                                 </span>
                             </a>
                         </div>
+
                         <Col xs={3} id="app-download">
                             <AppDownload />
                         </Col>
@@ -58,12 +65,8 @@ class Nearby extends Component {
     }
 }
 
-Nearby.propTypes = {}
-
 function select(state) {
-    return {
-        reducer: state.nearbyReducer
-    }
+    return { reducer: state.nearbyReducer }
 }
 
 export default connect(select)(socketConnect(Nearby))
