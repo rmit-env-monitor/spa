@@ -9,6 +9,7 @@ import Header from '../shared/Header.jsx'
 import CurrentDistrict from './CurrentDistrict.jsx'
 import AppDownload from './AppDownload.jsx'
 import Device from '../measurement/Device.jsx'
+import OtherDistricts from './other-district/OtherDistricts.jsx'
 
 class Nearby extends Component {
     componentDidMount() {
@@ -19,7 +20,7 @@ class Nearby extends Component {
                     actions.getCurrentCityDistrictNearbyCurrentDevice(position.coords.latitude, position.coords.longitude)
                 )
             })
-            
+
         socket.on(reducer.nearestDevice._id, record => {
             dispatch(actions.updateNearestDevice(record))
         })
@@ -52,6 +53,10 @@ class Nearby extends Component {
                         <Col xs={3} id="app-download">
                             <AppDownload />
                         </Col>
+                    </Row>
+
+                    <Row>
+                        <OtherDistricts devices={reducer.devices} district={reducer.district} />
                     </Row>
                 </div>
             </div>
