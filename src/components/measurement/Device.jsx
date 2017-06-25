@@ -20,6 +20,10 @@ class Device extends Component {
                             <StatusBar name={'PM10'} color={this.getAQIStatus(device.record.aqiValues.pm10AQI)} data={device.record.aqiValues.pm10AQI} />
                             <StatusBar name={'O3'} color={this.getAQIStatus(device.record.aqiValues.o3AQI)} data={device.record.aqiValues.o3AQI} />
                             <StatusBar name={'CO'} color={this.getAQIStatus(device.record.aqiValues.coAQI)} data={device.record.aqiValues.coAQI} />
+                            <hr />
+                            <StatusBar name={'UV'} color={'good'} data={device.record.uv} />
+                            <StatusBar name={'Humidity'} color={'good'} data={device.record.humidity} />
+                            <StatusBar name={'Sound'} color={'good'} data={device.record.sound} />
                         </div>
                         :
                         <div className="device-loading"><h1><i className="fa fa-cog fa-spin fa-2x"></i></h1></div>

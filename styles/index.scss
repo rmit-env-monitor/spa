@@ -14,6 +14,10 @@ body {
     font-family: KoushikiSansRegular;
 }
 
+a {
+    color: black;
+}
+
 .navbar {
     margin-bottom: 0;
 }
@@ -159,7 +163,7 @@ body {
     border-top: 2px solid $main-color;
     border-left: 2px solid $main-color;
     border-bottom: 2px solid $main-color;
-    height: 366px;
+    height: 400px;
 }
 
 #summary {
@@ -168,7 +172,7 @@ body {
     color: white;
     margin-top: 15px;
     margin-bottom: 15px;
-    height: 331.92px;
+    height: 363.92px;
     #district-title {
         margin-top: 20px;
         margin-bottom: 30px;
@@ -176,8 +180,8 @@ body {
     #nearest-status {
         width: 80px;
     }
-    .row {
-        margin-bottom: 30px;
+    #district-stt {
+        margin-top: 40px;
         .col-xs-8 {
             text-align: left;
         }
@@ -189,7 +193,7 @@ body {
         }
     }
     #prediction {
-        margin-bottom: 20px;
+        margin-top: 55px;
     }
 }
 
@@ -237,7 +241,7 @@ body {
     #nearby-map-area {
         margin-top: 15px;
         border: 1px solid $main-color;
-        height: 187px;
+        height: 219px;
         #map-nearby {
             height: 100%;
         }
@@ -249,7 +253,7 @@ body {
     border-right: 2px solid $main-color;
     border-bottom: 2px solid $main-color;
     width: 310px;
-    height: 366px;
+    height: 400px;
     padding-right: 15px;
     -webkit-transition: width 0.5s ease;
     -moz-transition: width 0.5s ease;
@@ -259,7 +263,14 @@ body {
     overflow: hidden;
     .device-detail {
         overflow: hidden;
-        // width: inherit;
+        margin-top: 15px;
+        margin-right: 5px;
+        .status-bar {
+            width: 303px;
+        }
+        hr {
+            margin-top: 0px;
+        }
     }
 }
 
@@ -268,20 +279,12 @@ body {
     padding-right: 0;
 }
 
-.device-detail {
-    margin-top: 15px;
-    margin-right: 5px;
-    .status-bar {
-        width: 303px;
-    }
-}
-
 #collapse-button {
     display: inline-block;
     text-align: center;
     width: 20px;
     height: 40px;
-    margin-top: 152px;
+    margin-top: 176px;
     left: 0%;
     background: $main-color;
     #collapse-icon {
@@ -298,7 +301,7 @@ body {
     background-color: lightgray;
     text-align: center;
     width: 23%;
-    height: 366px;
+    height: 400px;
     float: right;
     padding-left: 40px;
     padding-right: 40px;

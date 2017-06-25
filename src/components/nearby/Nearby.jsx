@@ -63,6 +63,11 @@ class Nearby extends Component {
         )
     }
 
+    componentWillUnmount() {
+        const { reducer, socket } = this.props
+        socket.off(reducer.nearestDevice._id)
+    }
+
     collapseExpandPane() {
         const { reducer, dispatch } = this.props
         reducer.detailedDeviceShowed ?
