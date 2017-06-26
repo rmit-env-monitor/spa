@@ -175,7 +175,6 @@ a {
     height: 363.92px;
     #district-title {
         margin-top: 20px;
-        margin-bottom: 30px;
     }
     #nearest-status {
         width: 80px;
@@ -185,15 +184,15 @@ a {
         .col-xs-8 {
             text-align: left;
         }
-        .future-day {
-            margin-top: 10px;
-        }
         #aqi-summary {
             font-size: 18px;
         }
     }
     #prediction {
-        margin-top: 55px;
+        margin-top: 25px;
+        .future-day {
+            margin-top: 10px;
+        }
     }
 }
 

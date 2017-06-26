@@ -12,7 +12,7 @@ class DistrictDetail extends Component {
         return (
             <Modal show={show}>
                 <Modal.Header>
-                    <Modal.Title>{district}</Modal.Title>
+                    <Modal.Title>{district} - {device.name}</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>

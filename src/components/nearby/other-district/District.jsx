@@ -15,7 +15,7 @@ class District extends Component {
         const { device, district } = this.props
         return (
             <Col xs={3} className="other-district">
-                <h4>{district}</h4>
+                <h4>{district} - {device.name}</h4>
                 <Carousel interval={0}>
                     <Carousel.Item>
                         <a href="javascript:void(0)" onClick={() => this.toggleModal()}>

@@ -17,9 +17,10 @@ class CurrentDistrict extends Component {
             <Col xs={allMd} id="nearest-device">
                 <Col xs={summaryMd} id="summary">
                     {
-                        reducer.district ? <h3 id="district-title">{reducer.city + ' - ' + reducer.district}</h3>
+                        reducer.district ? <h3 id="district-title">{reducer.city} - {reducer.district}</h3>
                             : <h3 id="district-title">Detecting your location <i className="fa fa-cog fa-spin"></i></h3>
                     }
+                    <h4>{nearestDevice.name}</h4>
                     <Row id="district-stt">
                         <Col xs={4}>
                             {
