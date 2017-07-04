@@ -3,6 +3,7 @@ import * as types from '../actions/actionTypes'
 export default function nearbyReducer(state = {
     city: null,
     district: null,
+    districts: [],
     nearestDevice: { record: { aqiValues: {} } },
     devices: [],
     nearby: [],
@@ -37,6 +38,11 @@ export default function nearbyReducer(state = {
             const newNearestRecord = state.nearestDevice
             newNearestRecord.record = action.record
             return Object.assign({}, state, { nearestDevice: newNearestRecord })
+
+        case types.UPDATE_OTHER_DISTRICT_RECORD:
+            const newDistricts = state.districts
+            newDistricts[action.index] = action.record
+            return Object.assign({}, state, { districts: newDistricts })
 
         default:
             return state

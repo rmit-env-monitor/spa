@@ -56,7 +56,7 @@ class Nearby extends Component {
                     </Row>
 
                     <Row>
-                        <OtherDistricts devices={reducer.devices} district={reducer.district} />
+                        <OtherDistricts devices={reducer.devices} district={reducer.district} socket={socket} dispatch={dispatch} />
                     </Row>
                 </div>
             </div>

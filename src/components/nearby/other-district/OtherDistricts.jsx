@@ -4,20 +4,38 @@ import { Col } from 'react-bootstrap'
 
 import District from './District.jsx'
 import NewDistrictButton from './NewDistrictButton.jsx'
+import NewStation from './NewStation.jsx'
 
 class OtherDistricts extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { newDistrictShowed: false }
+        this.closeModal = this.closeModal.bind(this)
+        this.openModal = this.openModal.bind(this)
+    }
+
     render() {
-        const { devices, district } = this.props
+        const { devices, district, dispatch, socket } = this.props
         return (
             <Col xs={9} id="other-districts">
                 {
-                    devices.map(device =>
-                        <District key={device._id} device={device} district={district} />
+                    devices.map((device, index) =>
+                        <District key={device._id} device={device} district={district} socket={socket} index={index} dispatch={dispatch} />
                     )
                 }
-                <NewDistrictButton />
+                <NewDistrictButton openModal={this.openModal} />
+
+                <NewStation show={this.state.newDistrictShowed} closeModal={this.closeModal} dispatch={dispatch} />
             </Col>
         )
+    }
+
+    closeModal() {
+        this.setState({ newDistrictShowed: false })
+    }
+
+    openModal() {
+        this.setState({ newDistrictShowed: true })
     }
 }
 

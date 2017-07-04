@@ -34,6 +34,14 @@ export function updateNearestDevice(record) {
     }
 }
 
+export function updateOtherDevice(record, index) {
+    return {
+        type: types.UPDATE_OTHER_DISTRICT_RECORD,
+        record: record,
+        index: index
+    }
+}
+
 function getCurrentCityDistrictAndNearbySuccess(city, district, nearby) {
     return {
         type: types.GET_CURRENT_CITY_DISTRICT_AND_NEARBY_SUCCESS,
