@@ -20,10 +20,10 @@ class District extends Component {
     }
 
     render() {
-        const { device, district } = this.props
+        const { device } = this.props
         return (
             <Col xs={3} className="other-district">
-                <h4>{district} - {device.name}</h4>
+                <h4>{device.district}</h4>
                 <Carousel interval={0}>
                     <Carousel.Item>
                         <a href="javascript:void(0)" onClick={() => this.toggleModal()}>
@@ -52,7 +52,7 @@ class District extends Component {
                 </Carousel>
                 <a href="javascript:void(0)"><span className="glyphicon glyphicon-option-horizontal"></span></a>
 
-                <DistrictDetail show={this.state.districtDetailShowed} closeModal={this.closeModal} device={device} district={district} />
+                <DistrictDetail show={this.state.districtDetailShowed} closeModal={this.closeModal} device={device} district={device.district} />
             </Col>
         )
     }

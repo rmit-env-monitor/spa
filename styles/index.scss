@@ -158,6 +158,14 @@ a {
     margin-bottom: 10px;
 }
 
+.modal-header {
+    background-color: $main-color;
+}
+
+#new-station-list {
+    margin-top: 15px;
+}
+
 /* NEAREST DEVICE */
 #nearest-device {
     border-top: 2px solid $main-color;

@@ -42,6 +42,39 @@ export function updateOtherDevice(record, index) {
     }
 }
 
+export function getCities() {
+    return services.getListOfCities(getListOfCitiesSuccess, getListOfCitiesError)
+}
+
+export function setSelectedCity(cityId) {
+    return {
+        type: types.SET_SELECTED_CITY,
+        cityId: cityId
+    }
+}
+
+export function getDistrictOfCity(city) {
+    return services.getListOfDistrictOfCity(city, getListOfDistrictOfCitySuccess, getListOfDistrictOfCityError)
+}
+
+export function setSelectedDistrict(districtId) {
+    return {
+        type: types.SET_SELECTED_DISTRICT,
+        districtId: districtId
+    }
+}
+
+export function getDistrictDeviceList(city, district) {
+    return services.getDistrictDeviceList(city, district, getDeviceSuccess, getDeviceError)
+}
+
+export function addNewDevice(device) {
+    return {
+        type: types.ADD_NEW_DEVICE,
+        device: device
+    }
+}
+
 function getCurrentCityDistrictAndNearbySuccess(city, district, nearby) {
     return {
         type: types.GET_CURRENT_CITY_DISTRICT_AND_NEARBY_SUCCESS,
@@ -55,5 +88,47 @@ function getDeviceListOfCurrentLocationSuccess(data) {
     return {
         type: types.GET_DEVICES_IN_CURRENT_DISTRICT_SUCCESS,
         devices: data
+    }
+}
+
+function getListOfCitiesSuccess(data) {
+    return {
+        type: types.GET_CITIES_SUCCESS,
+        cities: data
+    }
+}
+
+function getListOfCitiesError(data) {
+    return {
+        type: types.GET_CITIES_ERROR,
+        message: data
+    }
+}
+
+function getListOfDistrictOfCitySuccess(data) {
+    return {
+        type: types.GET_DISTRICT_SUCCESS,
+        districts: data
+    }
+}
+
+function getListOfDistrictOfCityError(data) {
+    return {
+        type: types.GET_DISTRICT_ERROR,
+        message: data
+    }
+}
+
+function getDeviceSuccess(data) {
+    return {
+        type: types.GET_DEVICE_LIST_SUCCESS,
+        devices: data
+    }
+}
+
+function getDeviceError(data) {
+    return {
+        type: types.GET_DEVICE_LIST_ERROR,
+        message: data
     }
 }

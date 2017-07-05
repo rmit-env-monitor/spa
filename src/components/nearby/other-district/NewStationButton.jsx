@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Col } from 'react-bootstrap'
 
-class NewDistrictButton extends Component {
+class NewStationButton extends Component {
     render() {
         const { openModal } = this.props
         return (
@@ -15,8 +15,8 @@ class NewDistrictButton extends Component {
     }
 }
 
-NewDistrictButton.propTypes = {
+NewStationButton.propTypes = {
 
 }
 
-export default NewDistrictButton
+export default NewStationButton

@@ -8,6 +8,13 @@ export default function nearbyReducer(state = {
     devices: [],
     nearby: [],
     detailedDeviceShowed: true,
+    // For add new station //
+    citiesList: [],
+    selectedCity: null,
+    districtsList: [],
+    selectedDistrict: null,
+    newStationsList: [],
+    // For add new station //
     message: null
 }, action) {
     switch (action.type) {
@@ -23,9 +30,9 @@ export default function nearbyReducer(state = {
 
         case types.GET_DEVICES_IN_CURRENT_DISTRICT_SUCCESS:
             const deviceLength = action.devices.length
-            if (deviceLength < 2) {
+            if (deviceLength > 0 && deviceLength < 2) {
                 return Object.assign({}, state, { nearestDevice: action.devices[0], devices: [] })
-            } else {
+            } else if (deviceLength >= 2) {
                 const newNearestDevice = action.devices[0]
                 const newDevicesaction = action.devices.slice(1, deviceLength)
                 return Object.assign({}, state, { nearestDevice: newNearestDevice, devices: newDevicesaction })
@@ -43,6 +50,31 @@ export default function nearbyReducer(state = {
             const newDistricts = state.districts
             newDistricts[action.index] = action.record
             return Object.assign({}, state, { districts: newDistricts })
+
+        case types.GET_CITIES_SUCCESS:
+            return Object.assign({}, state, { citiesList: action.cities })
+
+        case types.GET_CITIES_ERROR:
+            return Object.assign({}, state, { message: action.message })
+
+        case types.SET_SELECTED_CITY:
+            return Object.assign({}, state, { selectedCity: action.cityId })
+
+        case types.GET_DISTRICT_SUCCESS:
+            return Object.assign({}, state, { districtsList: action.districts })
+
+        case types.GET_DISTRICT_ERROR:
+            return Object.assign({}, state, { message: action.message })
+
+        case types.SET_SELECTED_DISTRICT:
+            return Object.assign({}, state, { selectedDistrict: action.districtId })
+
+        case types.GET_DEVICE_LIST_SUCCESS:
+            return Object.assign({}, state, { newStationsList: action.devices })
+
+        case types.ADD_NEW_DEVICE:
+            state.devices.push(action.device)
+            return Object.assign({}, state, { devices: state.devices })
 
         default:
             return state

@@ -23,6 +23,42 @@ export function getOneDevice(city, district) {
     return baseService(GET_METHOD, '/api/web/device?city=' + city + '&district=' + district)
 }
 
+export function getListOfCities(success, error) {
+    return dispatch => {
+        return baseService(GET_METHOD, '/api/web/devices/cities')
+            .then(res => {
+                dispatch(success(res.data))
+            })
+            .catch(err => {
+                dispatch(error(err))
+            })
+    }
+}
+
+export function getListOfDistrictOfCity(city, success, error) {
+    return dispatch => {
+        return baseService(GET_METHOD, '/api/web/devices/districts?city=' + city)
+            .then(res => {
+                dispatch(success(res.data))
+            })
+            .catch(err => {
+                dispatch(error(err))
+            })
+    }
+}
+
+export function getDistrictDeviceList(city, district, success, error) {
+    return dispatch => {
+        return baseService(GET_METHOD, '/api/web/devices?city=' + city + '&district=' + district)
+            .then(res => {
+                dispatch(success(res.data))
+            })
+            .catch(err => {
+                dispatch(error(err))
+            })
+    }
+}
+
 function getNearbyDistricts(city, district, dispatch, success, deviceListSuccess) {
     return baseService(GET_METHOD, '/api/web/nearby?city=' + city + '&district=' + district)
         .then(res => {

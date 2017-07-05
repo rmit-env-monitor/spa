@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Col } from 'react-bootstrap'
 
 import District from './District.jsx'
-import NewDistrictButton from './NewDistrictButton.jsx'
+import NewStationButton from './NewStationButton.jsx'
 import NewStation from './NewStation.jsx'
 
 class OtherDistricts extends Component {
@@ -15,7 +15,7 @@ class OtherDistricts extends Component {
     }
 
     render() {
-        const { devices, district, dispatch, socket } = this.props
+        const { devices, district, dispatch, socket, citiesList, districtsList, selectedCity, newStationsList } = this.props
         return (
             <Col xs={9} id="other-districts">
                 {
@@ -23,9 +23,11 @@ class OtherDistricts extends Component {
                         <District key={device._id} device={device} district={district} socket={socket} index={index} dispatch={dispatch} />
                     )
                 }
-                <NewDistrictButton openModal={this.openModal} />
-
-                <NewStation show={this.state.newDistrictShowed} closeModal={this.closeModal} dispatch={dispatch} />
+                {
+                    devices.length < 5 ? <NewStationButton openModal={this.openModal} /> : null
+                }
+                <NewStation show={this.state.newDistrictShowed} closeModal={this.closeModal} dispatch={dispatch}
+                    citiesList={citiesList} districtsList={districtsList} selectedCity={selectedCity} newStationsList={newStationsList} />
             </Col>
         )
     }
