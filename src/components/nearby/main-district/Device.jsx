@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { Row, Col } from 'react-bootstrap'
 
 import StatusBar from './StatusBar.jsx'
-import { getAQIStatus } from '../../utilities/getColor'
+import { getAQIStatus } from '../../../utilities/getColor'
 
 class Device extends Component {
     render() {

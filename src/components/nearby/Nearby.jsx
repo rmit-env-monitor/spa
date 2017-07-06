@@ -6,9 +6,9 @@ import { Col, Row } from 'react-bootstrap'
 import * as actions from '../../actions/nearbyAction'
 
 import Header from '../shared/Header.jsx'
-import CurrentDistrict from './CurrentDistrict.jsx'
-import AppDownload from './AppDownload.jsx'
-import Device from '../measurement/Device.jsx'
+import CurrentDistrict from './main-district/CurrentDistrict.jsx'
+import AppDownload from './app-download/AppDownload.jsx'
+import Device from './main-district/Device.jsx'
 import OtherDistricts from './other-district/OtherDistricts.jsx'
 
 class Nearby extends Component {

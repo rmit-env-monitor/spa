@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Button, Row, Col } from 'react-bootstrap'
 
-import StatusBar from '../../measurement/StatusBar.jsx'
+import StatusBar from '../main-district/StatusBar.jsx'
 import { getAQIStatus } from '../../../utilities/getColor'
 
 class DistrictDetail extends Component {

@@ -10,7 +10,6 @@ import configureStore from './store'
 import { BASE_URL } from './utilities/constants'
 import checkTokenAvailability from './utilities/checkTokenAvailability'
 
-import Measurement from './components/measurement/Measurement.jsx'
 import Nearby from './components/nearby/Nearby.jsx'
 import Login from './components/auth/Login.jsx'
 import Register from './components/auth/Register.jsx'
@@ -26,7 +25,6 @@ render(
         <SocketProvider socket={socket}>
             <Router history={browserHistory}>
                 <Route path="/" onEnter={checkTokenAvailability} component={Nearby} />
-                <Route path="measurement" onEnter={checkTokenAvailability} component={Measurement} />
                 <Route path="login" component={Login} />
                 <Route path="register" component={Register} />
             </Router>

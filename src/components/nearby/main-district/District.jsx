@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { Button, Modal, Panel } from 'react-bootstrap'
 
-import * as services from '../../services/nearbyService'
+import * as services from '../../../../services/nearbyService'
 import DistrictDevice from '../measurement/DistrictDevice.jsx'
 
 class District extends Component {

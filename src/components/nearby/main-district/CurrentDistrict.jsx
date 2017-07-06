@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import { Col, Row } from 'react-bootstrap'
 
-import * as actions from '../../actions/nearbyAction'
-import * as services from '../../services/nearbyService'
+import * as actions from '../../../actions/nearbyAction'
+import * as services from '../../../services/nearbyService'
 
-import Device from '../measurement/Device.jsx'
+import Device from './Device.jsx'
 import AQIPrediction from './AQIPrediction.jsx'
 import CurrentDistrictDetail from './CurrentDistrictDetail.jsx'
 
-import convertUnixTimestamp from '../../utilities/unixTimestampConversion'
+import convertUnixTimestamp from '../../../utilities/unixTimestampConversion'
 
 class CurrentDistrict extends Component {
     render() {
