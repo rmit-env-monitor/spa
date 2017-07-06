@@ -394,4 +394,12 @@ a {
         color: $main-color;
         font-size: 100px;
     }
+
+    .device-actions {
+        .dropdown-menu {
+            top: 36%;
+            left: 84%;
+            border-radius: 0px;
+        }
+    }
 }

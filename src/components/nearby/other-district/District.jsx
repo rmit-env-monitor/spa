@@ -26,31 +26,34 @@ class District extends Component {
                 <h4>{device.district}</h4>
                 <Carousel interval={0}>
                     <Carousel.Item>
-                        <a href="javascript:void(0)" onClick={() => this.toggleModal()}>
-                            <div className="status-img">
-                                <div className="aqi-area">
-                                    <div className="border">
-                                        <img src="/images/pollution.png" alt="Status face" className="pollution" />
-                                        <p className="value"><strong>{device.record.aqiValues.aqi}</strong></p>
-                                    </div>
+                        <div className="status-img">
+                            <div className="aqi-area">
+                                <div className="border">
+                                    <img src="/images/pollution.png" alt="Status face" className="pollution" />
+                                    <p className="value"><strong>{device.record.aqiValues.aqi}</strong></p>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <a href="javascript:void(0)" onClick={() => this.toggleModal()}>
-                            <div className="status-img">
-                                <div className="temp-area">
-                                    <div className="border">
-                                        <img src="/images/temperature.png" alt="Status face" className="temp" />
-                                        <p className="value"><strong>{device.record.temperature}</strong></p>
-                                    </div>
+                        <div className="status-img">
+                            <div className="temp-area">
+                                <div className="border">
+                                    <img src="/images/temperature.png" alt="Status face" className="temp" />
+                                    <p className="value"><strong>{device.record.temperature}</strong></p>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </Carousel.Item>
                 </Carousel>
-                <a href="javascript:void(0)"><span className="glyphicon glyphicon-option-horizontal"></span></a>
+                <div className="device-actions">
+                    <a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="glyphicon glyphicon-option-horizontal"></span></a>
+                    <ul className="dropdown-menu">
+                        <li><a href="#">Remove</a></li>
+                        <li><a href="javascript:void(0)" onClick={() => this.toggleModal()}>View detail</a></li>
+                        <li><a href="#">Make default</a></li>
+                    </ul>
+                </div>
 
                 <DistrictDetail show={this.state.districtDetailShowed} closeModal={this.closeModal} device={device} district={device.district} />
             </Col>
