@@ -75,6 +75,13 @@ export function addNewDevice(device) {
     }
 }
 
+export function removeDevice(index) {
+    return {
+        type: types.REMOVE_DEVICE,
+        index: index
+    }
+}
+
 function getCurrentCityDistrictAndNearbySuccess(city, district, nearby) {
     return {
         type: types.GET_CURRENT_CITY_DISTRICT_AND_NEARBY_SUCCESS,

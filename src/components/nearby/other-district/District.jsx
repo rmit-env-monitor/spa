@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Col, Carousel, Modal } from 'react-bootstrap'
 
 import DistrictDetail from './DistrictDetail.jsx'
-import { updateOtherDevice } from '../../../actions/nearbyAction'
+import { updateOtherDevice, removeDevice } from '../../../actions/nearbyAction'
 
 class District extends Component {
     constructor(props) {
@@ -49,9 +49,9 @@ class District extends Component {
                 <div className="device-actions">
                     <a href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="glyphicon glyphicon-option-horizontal"></span></a>
                     <ul className="dropdown-menu">
-                        <li><a href="#">Remove</a></li>
+                        <li><a href="javascript:void(0)" onClick={() => this.removeDevice()}>Remove</a></li>
                         <li><a href="javascript:void(0)" onClick={() => this.toggleModal()}>View detail</a></li>
-                        <li><a href="#">Make default</a></li>
+                        <li><a href="javascript:void(0)">Make default</a></li>
                     </ul>
                 </div>
 
@@ -75,6 +75,11 @@ class District extends Component {
         this.setState({
             districtDetailShowed: false
         })
+    }
+
+    removeDevice() {
+        const {dispatch, index} = this.props
+        dispatch(removeDevice(index))
     }
 }
 

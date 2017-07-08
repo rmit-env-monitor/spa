@@ -76,6 +76,9 @@ export default function nearbyReducer(state = {
             state.devices.push(action.device)
             return Object.assign({}, state, { devices: state.devices })
 
+        case types.REMOVE_DEVICE:
+            state.devices.splice(action.index, 1)
+            return Object.assign({}, state, { devices: state.devices })
         default:
             return state
     }
