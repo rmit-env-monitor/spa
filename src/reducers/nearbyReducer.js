@@ -79,6 +79,13 @@ export default function nearbyReducer(state = {
         case types.REMOVE_DEVICE:
             state.devices.splice(action.index, 1)
             return Object.assign({}, state, { devices: state.devices })
+
+        case types.SWAP_DEFAULT_DEVICE:
+            let temp = state.devices[action.newDefaultIndex]
+            state.devices[action.newDefaultIndex] = state.nearestDevice
+            state.nearestDevice = temp
+            return Object.assign({}, state, { devices: state.devices, nearestDevice: state.nearestDevice })
+
         default:
             return state
     }
