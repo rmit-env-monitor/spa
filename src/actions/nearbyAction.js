@@ -89,6 +89,20 @@ export function swapDefaultDevice(newDefaultIndex) {
     }
 }
 
+export function saveMap(map) {
+    return {
+        type: types.SAVE_MAP,
+        map: map
+    }
+}
+
+export function saveMarker(marker) {
+    return {
+        type: types.SAVE_MARKER,
+        marker: marker
+    }
+}
+
 function getCurrentCityDistrictAndNearbySuccess(city, district, nearby) {
     return {
         type: types.GET_CURRENT_CITY_DISTRICT_AND_NEARBY_SUCCESS,

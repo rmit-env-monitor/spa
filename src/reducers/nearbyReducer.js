@@ -8,6 +8,8 @@ export default function nearbyReducer(state = {
     devices: [],
     nearby: [],
     detailedDeviceShowed: true,
+    map: null,
+    marker: null,
     // For add new station //
     citiesList: [],
     selectedCity: null,
@@ -35,7 +37,11 @@ export default function nearbyReducer(state = {
             } else if (deviceLength >= 2) {
                 const newNearestDevice = action.devices[0]
                 const newDevicesaction = action.devices.slice(1, deviceLength)
-                return Object.assign({}, state, { nearestDevice: newNearestDevice, devices: newDevicesaction })
+                const location = { lat: newNearestDevice.lat, lng: newNearestDevice.lng }
+                state.marker.setPosition({ lat: newNearestDevice.lat, lng: newNearestDevice.lng })
+                state.marker.setLabel({ text: newNearestDevice.record.aqiValues.aqi.toString() })
+                state.map.setCenter({ lat: newNearestDevice.lat, lng: newNearestDevice.lng })
+                return Object.assign({}, state, { nearestDevice: newNearestDevice, devices: newDevicesaction, map: state.map, marker: state.marker })
             }
 
         case types.SHOW_HIDE_DEVICE_DETAIL:
@@ -85,6 +91,11 @@ export default function nearbyReducer(state = {
             state.devices[action.newDefaultIndex] = state.nearestDevice
             state.nearestDevice = temp
             return Object.assign({}, state, { devices: state.devices, nearestDevice: state.nearestDevice })
+        case types.SAVE_MAP:
+            return Object.assign({}, state, { map: action.map })
+
+        case types.SAVE_MARKER:
+            return Object.assign({}, state, { marker: action.marker })
 
         default:
             return state

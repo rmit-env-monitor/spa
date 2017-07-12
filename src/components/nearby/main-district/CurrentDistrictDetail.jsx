@@ -4,7 +4,7 @@ import Map from './Map.jsx'
 
 class CurrentDistrictDetail extends Component {
     render() {
-        const { aqi, temp, detailMd } = this.props
+        const { aqi, temp, detailMd, lat, lng, dispatch } = this.props
 
         return (
             <Col xs={detailMd} id="nearest-detail">
@@ -31,7 +31,7 @@ class CurrentDistrictDetail extends Component {
                     </Col>
                 </Row>
                 <div id="nearby-map-area">
-                    <Map />
+                    <Map aqi={aqi} lat={lat} lng={lng} dispatch={dispatch} />
                 </div>
             </Col>
         )

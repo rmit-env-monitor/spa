@@ -12,7 +12,7 @@ import convertUnixTimestamp from '../../../utilities/unixTimestampConversion'
 
 class CurrentDistrict extends Component {
     render() {
-        const { reducer, nearestDevice, summaryMd, detailMd, allMd } = this.props
+        const { reducer, nearestDevice, summaryMd, detailMd, allMd, dispatch } = this.props
         return (
             <Col xs={allMd} id="nearest-device">
                 <Col xs={summaryMd} id="summary">
@@ -47,7 +47,8 @@ class CurrentDistrict extends Component {
                     <AQIPrediction />
                 </Col>
 
-                <CurrentDistrictDetail aqi={nearestDevice.record.aqiValues.aqi} temp={nearestDevice.record.temperature} detailMd={detailMd} />
+                <CurrentDistrictDetail aqi={nearestDevice.record.aqiValues.aqi} temp={nearestDevice.record.temperature}
+                    detailMd={detailMd} lat={nearestDevice.lat} lng={nearestDevice.lng} dispatch={dispatch} />
             </Col>
         )
     }
