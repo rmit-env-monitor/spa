@@ -38,9 +38,9 @@ export default function nearbyReducer(state = {
                 const newNearestDevice = action.devices[0]
                 const newDevicesaction = action.devices.slice(1, deviceLength)
                 const location = { lat: newNearestDevice.lat, lng: newNearestDevice.lng }
-                state.marker.setPosition({ lat: newNearestDevice.lat, lng: newNearestDevice.lng })
+                state.marker.setPosition(location)
                 state.marker.setLabel({ text: newNearestDevice.record.aqiValues.aqi.toString() })
-                state.map.setCenter({ lat: newNearestDevice.lat, lng: newNearestDevice.lng })
+                state.map.setCenter(location)
                 return Object.assign({}, state, { nearestDevice: newNearestDevice, devices: newDevicesaction, map: state.map, marker: state.marker })
             }
 
@@ -50,7 +50,8 @@ export default function nearbyReducer(state = {
         case types.UPDATE_NEAREST_DEVICE_RECORD:
             const newNearestRecord = state.nearestDevice
             newNearestRecord.record = action.record
-            return Object.assign({}, state, { nearestDevice: newNearestRecord })
+            state.marker.setLabel({ text: newNearestRecord.record.aqiValues.aqi.toString() })
+            return Object.assign({}, state, { nearestDevice: newNearestRecord, marker: state.marker })
 
         case types.UPDATE_OTHER_DISTRICT_RECORD:
             const newDistricts = state.districts
@@ -90,7 +91,11 @@ export default function nearbyReducer(state = {
             let temp = state.devices[action.newDefaultIndex]
             state.devices[action.newDefaultIndex] = state.nearestDevice
             state.nearestDevice = temp
-            return Object.assign({}, state, { devices: state.devices, nearestDevice: state.nearestDevice })
+            const location = { lat: state.nearestDevice.lat, lng: state.nearestDevice.lng }
+            state.marker.setPosition(location)
+            state.marker.setLabel({ text: state.nearestDevice.record.aqiValues.aqi.toString() })
+            state.map.setCenter(location)
+            return Object.assign({}, state, { devices: state.devices, nearestDevice: state.nearestDevice, map: state.map, marker: state.marker })
         case types.SAVE_MAP:
             return Object.assign({}, state, { map: action.map })
 
