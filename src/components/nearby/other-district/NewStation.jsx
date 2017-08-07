@@ -48,7 +48,6 @@ class NewStation extends Component {
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Location</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -57,7 +56,6 @@ class NewStation extends Component {
                                         newStationsList.map((station, key) =>
                                             <tr key={key}>
                                                 <td>{station.name}</td>
-                                                <td>122 Nam Kỳ Khởi Nghĩa, Bến Nghé, Quận 1, Hồ Chí Minh, Vietnam</td>
                                                 <td>
                                                     <Button bsStyle="primary" onClick={() => this.addNewDevice(key)}>Select</Button>
                                                 </td>
