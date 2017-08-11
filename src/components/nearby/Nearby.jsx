@@ -10,6 +10,7 @@ import CurrentDistrict from './main-district/CurrentDistrict.jsx'
 import AppDownload from './app-download/AppDownload.jsx'
 import Device from './main-district/Device.jsx'
 import OtherDistricts from './other-district/OtherDistricts.jsx'
+import StationRanking from './station-ranking/StationRanking.jsx'
 
 class Nearby extends Component {
     componentDidMount() {
@@ -57,7 +58,9 @@ class Nearby extends Component {
 
                     <Row>
                         <OtherDistricts devices={reducer.devices} district={reducer.district} socket={socket} dispatch={dispatch}
-                            citiesList={reducer.citiesList} districtsList={reducer.districtsList} selectedCity={reducer.selectedCity} newStationsList={reducer.newStationsList} />
+                            citiesList={reducer.citiesList} districtsList={reducer.districtsList} selectedCity={reducer.selectedCity}
+                            newStationsList={reducer.newStationsList} />
+                        <StationRanking />
                     </Row>
                 </div>
             </div>
