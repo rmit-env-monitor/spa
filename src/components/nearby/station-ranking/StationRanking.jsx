@@ -2,9 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Col, Row } from 'react-bootstrap'
 
+import Station from './Station.jsx'
+import { getStationRanking } from '../../../actions/nearbyAction'
+
 class StationRanking extends Component {
+    componentDidMount() {
+        const { dispatch, city, deviceId } = this.props
+        dispatch(getStationRanking(city, deviceId))
+    }
+
     render() {
-        const aaa = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         return (
             <Col xs={3} className="station-ranking">
                 <div className="title">
@@ -12,15 +19,8 @@ class StationRanking extends Component {
                 </div>
                 <div className="rank">
                     {
-                        aaa.map((a, b) =>
-                            <Row>
-                                <Col xs={6}>
-                                    <p className="station-name">Name</p>
-                                </Col>
-                                <Col xs={6}>
-                                    <p className="station-value">Value</p>
-                                </Col>
-                            </Row>
+                        this.props.stations.map((station, index) =>
+                            <Station key={index} station={station} index={index + 1} />
                         )
                     }
                 </div>

@@ -131,6 +131,30 @@ a {
     background-color: maroon;
 }
 
+.text-good {
+    color: green;
+}
+
+.text-moderate {
+    color: #fec60d;
+}
+
+.text-sensitive {
+    color: orange;
+}
+
+.text-unhealthy {
+    color: red;
+}
+
+.text-very-unhealthy {
+    color: purple;
+}
+
+.text-hazardous {
+    color: maroon;
+}
+
 .container-fluid {
     margin: 15px;
     margin-right: auto;
@@ -426,6 +450,13 @@ a {
         height: fit-content;
         .station-name, .station-value {
             font-size: 15px;
+        }
+        .row {
+            width: 100%;
+            margin: 0;
+            .div {
+                text-align: center;
+            }
         }
     }
 }

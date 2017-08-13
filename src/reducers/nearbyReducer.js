@@ -17,6 +17,7 @@ export default function nearbyReducer(state = {
     selectedDistrict: null,
     newStationsList: [],
     // For add new station //
+    stationRanking: [],
     message: null
 }, action) {
     switch (action.type) {
@@ -101,6 +102,12 @@ export default function nearbyReducer(state = {
 
         case types.SAVE_MARKER:
             return Object.assign({}, state, { marker: action.marker })
+
+        case types.GET_STATION_RANKING_SUCCESS:
+            return Object.assign({}, state, { stationRanking: action.stations })
+
+        case types.GET_STATION_RANKING_ERROR:
+            return Object.assign({}, state, { message: action.message })
 
         default:
             return state

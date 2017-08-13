@@ -103,6 +103,24 @@ export function saveMarker(marker) {
     }
 }
 
+export function getStationRanking(city, deviceId) {
+    return services.getStationRanking(city, deviceId, getStationRankingSuccess, getStationRankingError)
+}
+
+function getStationRankingSuccess(stations) {
+    return {
+        type: types.GET_STATION_RANKING_SUCCESS,
+        stations: stations
+    }
+}
+
+function getStationRankingError(err) {
+    return {
+        type: types.GET_STATION_RANKING_ERROR,
+        message: err
+    }
+}
+
 function getCurrentCityDistrictAndNearbySuccess(city, district, nearby) {
     return {
         type: types.GET_CURRENT_CITY_DISTRICT_AND_NEARBY_SUCCESS,

@@ -59,6 +59,18 @@ export function getDistrictDeviceList(city, district, success, error) {
     }
 }
 
+export function getStationRanking(city, deviceId, success, error) {
+    return dispatch => {
+        return baseService(GET_METHOD, '/api/web/station-ranking?city=' + city + '&deviceId=' + deviceId)
+            .then(res => {
+                dispatch(success(res.data))
+            })
+            .catch(err => {
+                dispatch(error(err))
+            })
+    }
+}
+
 function getNearbyDistricts(city, district, dispatch, success, deviceListSuccess) {
     return baseService(GET_METHOD, '/api/web/nearby?city=' + city + '&district=' + district)
         .then(res => {
