@@ -156,9 +156,10 @@ a {
 }
 
 .container-fluid {
-    margin: 15px;
+    margin-top: 15px;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 50px;
     width: 1350px;
     max-width: none !important;
 }
@@ -456,6 +457,37 @@ a {
             margin: 0;
             .div {
                 text-align: center;
+            }
+        }
+    }
+}
+// Footer
+.footer {
+    width: 100%;
+    height: 300px;
+    color: white;
+    background-color: $main-color;
+    .row {
+        padding-top: 60px;
+        .general {
+            .app-title {
+                margin-bottom: 30px;
+                margin-top: 10px;
+            }
+        }
+        .contact, .subcribe {
+            h4 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 17px;
+            }
+            .input-group-addon {
+                background-color: white;
+            }
+            .copyright {
+                font-size: 14px;
+                margin-top: 20px;
             }
         }
     }

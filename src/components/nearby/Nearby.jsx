@@ -11,6 +11,7 @@ import AppDownload from './app-download/AppDownload.jsx'
 import Device from './main-district/Device.jsx'
 import OtherDistricts from './other-district/OtherDistricts.jsx'
 import StationRanking from './station-ranking/StationRanking.jsx'
+import Footer from '../shared/Footer.jsx'
 
 class Nearby extends Component {
     componentDidMount() {
@@ -68,6 +69,7 @@ class Nearby extends Component {
                         }
                     </Row>
                 </div>
+                <Footer />
             </div>
         )
     }
