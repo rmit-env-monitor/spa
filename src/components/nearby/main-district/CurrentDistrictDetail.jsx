@@ -14,7 +14,7 @@ class CurrentDistrictDetail extends Component {
                             <div className="border">
                                 <img src="/images/pollution.png" alt="Status face" id="pollution" />
                                 {
-                                    aqi ? <p className="value"><strong>{aqi}</strong></p> : <p className="value"><i className="fa fa-cog fa-spin fa-2x"></i></p>
+                                    aqi ? <p className="value"><strong>{aqi}</strong></p> : <p className="value"><i className="fa fa-circle-o-notch fa-spin fa-2x"></i></p>
                                 }
                             </div>
                         </div>
@@ -24,7 +24,7 @@ class CurrentDistrictDetail extends Component {
                             <div className="border">
                                 <img src="/images/temperature.png" alt="Status face" id="temp" />
                                 {
-                                    temp ? <p className="value"><strong>{temp} Cel</strong></p> : <p className="value"><i className="fa fa-cog fa-spin fa-2x"></i></p>
+                                    temp ? <p className="value"><strong>{temp} Cel</strong></p> : <p className="value"><i className="fa fa-circle-o-notch fa-spin fa-2x"></i></p>
                                 }
                             </div>
                         </div>

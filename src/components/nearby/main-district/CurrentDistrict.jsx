@@ -18,7 +18,7 @@ class CurrentDistrict extends Component {
                 <Col xs={summaryMd} id="summary">
                     {
                         reducer.district ? <h3 id="district-title">{reducer.city} - {nearestDevice.district}</h3>
-                            : <h3 id="district-title">Detecting your location <i className="fa fa-cog fa-spin"></i></h3>
+                            : <h3 id="district-title">Detecting your location</h3>
                     }
                     <h4>{nearestDevice.name}</h4>
                     <Row id="district-stt">
@@ -38,7 +38,7 @@ class CurrentDistrict extends Component {
                                     </div>
                                     :
                                     <div>
-                                        <p id="aqi-summary"><i className="fa fa-cog fa-spin fa-4x"></i></p>
+                                        <p id="aqi-summary"><i className="fa fa-circle-o-notch fa-spin fa-4x"></i></p>
                                     </div>
                             }
                         </Col>

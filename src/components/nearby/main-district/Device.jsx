@@ -25,7 +25,7 @@ class Device extends Component {
                             <StatusBar name={'Sound'} color={'good'} data={device.record.sound} />
                         </div>
                         :
-                        <div className="device-loading"><h1><i className="fa fa-cog fa-spin fa-2x"></i></h1></div>
+                        <div className="device-loading"><h1><i className="fa fa-circle-o-notch fa-spin fa-2x"></i></h1></div>
                 }
             </div>
         )
