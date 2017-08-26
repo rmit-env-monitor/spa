@@ -13,6 +13,7 @@ import checkTokenAvailability from './utilities/checkTokenAvailability'
 import Nearby from './components/nearby/Nearby.jsx'
 import Login from './components/auth/Login.jsx'
 import Register from './components/auth/Register.jsx'
+import Error500 from './components/shared/500.jsx'
 
 const store = configureStore()
 const socket = io.connect(BASE_URL)
@@ -27,6 +28,7 @@ render(
                 <Route path="/" onEnter={checkTokenAvailability} component={Nearby} />
                 <Route path="login" component={Login} />
                 <Route path="register" component={Register} />
+                <Route path="500" component={Error500} />
             </Router>
         </SocketProvider>
     </Provider>,
