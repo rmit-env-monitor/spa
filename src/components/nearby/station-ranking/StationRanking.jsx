@@ -20,7 +20,7 @@ class StationRanking extends Component {
                 <div className="rank">
                     {
                         this.props.stations.map((station, index) =>
-                            <Station key={index} station={station} index={index + 1} />
+                            <Station key={index} station={station} />
                         )
                     }
                 </div>

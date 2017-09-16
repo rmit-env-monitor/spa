@@ -6,12 +6,12 @@ import { getAQIStatusForText } from '../../../utilities/getColor'
 
 class Station extends Component {
     render() {
-        const { index, station } = this.props
+        const { station } = this.props
 
         return (
             <Row>
                 <Col xs={2}>
-                    <p className="station-name">{index}</p>
+                    <p className="station-name">{station.idx}</p>
                 </Col>
                 <Col xs={8}>
                     <p className="station-name">{station.name}</p>
