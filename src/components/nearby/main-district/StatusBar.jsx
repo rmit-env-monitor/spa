@@ -10,7 +10,13 @@ class StatusBar extends Component {
                 </Col>
                 <Col xs={9}>
                     <div className="progress">
-                        <div className={'progress-bar ' + this.props.color} role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                        <div
+                            className={'progress-bar ' + this.props.color}
+                            role="progressbar"
+                            aria-valuenow="100"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                        >
                             <span>{this.props.data}</span>
                         </div>
                     </div>

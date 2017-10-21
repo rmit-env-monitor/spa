@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Col, Carousel, Modal } from 'react-bootstrap'
 
-import DistrictDetail from './DistrictDetail.jsx'
 import { updateOtherDevice, removeDevice, swapDefaultDevice } from '../../../actions/nearbyAction'
+
+import DistrictDetail from './DistrictDetail.jsx'
 
 class District extends Component {
     constructor(props) {
@@ -89,7 +90,11 @@ class District extends Component {
 }
 
 District.propTypes = {
-
+    device: PropTypes.object.isRequired,
+    district: PropTypes.string.isRequired,
+    socket: PropTypes.any.isRequired,
+    index: PropTypes.number.isRequired,
+    dispatch: PropTypes.any.isRequired
 }
 
 export default District

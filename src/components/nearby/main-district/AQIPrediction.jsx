@@ -23,8 +23,4 @@ class AQIPrediction extends Component {
     }
 }
 
-AQIPrediction.propTypes = {
-
-}
-
 export default AQIPrediction

@@ -19,7 +19,10 @@ class Nearby extends Component {
         if (reducer.city === null)
             navigator.geolocation.getCurrentPosition(position => {
                 dispatch(
-                    actions.getCurrentCityDistrictNearbyCurrentDevice(position.coords.latitude, position.coords.longitude)
+                    actions.getCurrentCityDistrictNearbyCurrentDevice(
+                        position.coords.latitude,
+                        position.coords.longitude
+                    )
                 )
             })
 
@@ -37,35 +40,60 @@ class Nearby extends Component {
 
                 <div className="container-fluid">
                     <Row>
-                        <CurrentDistrict socket={socket} dispatch={dispatch} reducer={reducer} nearestDevice={reducer.nearestDevice}
-                            detailedDeviceShowed={reducer.detailedDeviceShowed} summaryMd={6} detailMd={6} allMd={6} />
+                        <CurrentDistrict
+                            socket={socket}
+                            dispatch={dispatch}
+                            reducer={reducer}
+                            nearestDevice={reducer.nearestDevice}
+                            detailedDeviceShowed={reducer.detailedDeviceShowed}
+                            summaryMd={6}
+                            detailMd={6}
+                            allMd={6}
+                        />
 
-                        <Col xs={3} id="nearest-air-detail" className={reducer.detailedDeviceShowed ? "" : "collapse"}>
+                        <Col
+                            xs={3}
+                            id="nearest-air-detail"
+                            className={reducer.detailedDeviceShowed ? "" : "collapse"}
+                        >
                             <Device device={reducer.nearestDevice} />
                         </Col>
 
                         <div id="collapse-button">
                             <a onClick={() => this.collapseExpandPane()} href="javascript:void(0)">
-                                <span id="collapse-icon"
-                                    className={reducer.detailedDeviceShowed ? 'glyphicon glyphicon-chevron-left' : 'glyphicon glyphicon-chevron-right'}>
-                                </span>
+                                <span
+                                    id="collapse-icon"
+                                    className={reducer.detailedDeviceShowed ? 'glyphicon glyphicon-chevron-left' : 'glyphicon glyphicon-chevron-right'}
+                                ></span>
                             </a>
                         </div>
 
-                        <Col xs={3} id="app-download">
+                        <Col
+                            xs={3}
+                            id="app-download"
+                        >
                             <AppDownload />
                         </Col>
                     </Row>
 
                     <Row>
-                        <OtherDistricts devices={reducer.devices} district={reducer.district} socket={socket} dispatch={dispatch}
-                            citiesList={reducer.citiesList} districtsList={reducer.districtsList} selectedCity={reducer.selectedCity}
-                            newStationsList={reducer.newStationsList} />
-                        {
-                            reducer.nearestDevice._id ?
-                                <StationRanking city={reducer.city} deviceId={reducer.nearestDevice._id} dispatch={dispatch} stations={reducer.stationRanking} />
-                                :
-                                null
+                        <OtherDistricts
+                            devices={reducer.devices}
+                            district={reducer.district}
+                            socket={socket}
+                            dispatch={dispatch}
+                            citiesList={reducer.citiesList}
+                            districtsList={reducer.districtsList}
+                            selectedCity={reducer.selectedCity}
+                            newStationsList={reducer.newStationsList}
+                        />
+                        {reducer.nearestDevice._id ?
+                            <StationRanking
+                                city={reducer.city}
+                                deviceId={reducer.nearestDevice._id}
+                                dispatch={dispatch}
+                                stations={reducer.stationRanking}
+                            /> : null
                         }
                     </Row>
                 </div>
@@ -82,7 +110,9 @@ class Nearby extends Component {
     collapseExpandPane() {
         const { reducer, dispatch } = this.props
         reducer.detailedDeviceShowed ?
-            dispatch(actions.updateDeviceDetailShowed(false)) : dispatch(actions.updateDeviceDetailShowed(true))
+            dispatch(actions.updateDeviceDetailShowed(false))
+            :
+            dispatch(actions.updateDeviceDetailShowed(true))
     }
 }
 

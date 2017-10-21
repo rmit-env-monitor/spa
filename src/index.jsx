@@ -32,6 +32,5 @@ render(
             </Router>
         </SocketProvider>
     </Provider>,
-
     document.getElementById('app')
 )

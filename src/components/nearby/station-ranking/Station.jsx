@@ -25,7 +25,7 @@ class Station extends Component {
 }
 
 Station.propTypes = {
-
+    station: PropTypes.object.isRequired
 }
 
 export default Station

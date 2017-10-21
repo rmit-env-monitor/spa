@@ -18,16 +18,32 @@ class OtherDistricts extends Component {
         const { devices, district, dispatch, socket, citiesList, districtsList, selectedCity, newStationsList } = this.props
         return (
             <Col xs={9} id="other-districts">
-                {
-                    devices.map((device, index) =>
-                        <District key={device._id} device={device} district={district} socket={socket} index={index} dispatch={dispatch} />
-                    )
+                {devices.map((device, index) =>
+                    <District
+                        key={device._id}
+                        device={device}
+                        district={district}
+                        socket={socket}
+                        index={index}
+                        dispatch={dispatch}
+                    />
+                )}
+
+                {devices.length < 5 ?
+                    <NewStationButton openModal={this.openModal} />
+                    :
+                    null
                 }
-                {
-                    devices.length < 5 ? <NewStationButton openModal={this.openModal} /> : null
-                }
-                <NewStation show={this.state.newDistrictShowed} closeModal={this.closeModal} dispatch={dispatch}
-                    citiesList={citiesList} districtsList={districtsList} selectedCity={selectedCity} newStationsList={newStationsList} />
+
+                <NewStation
+                    show={this.state.newDistrictShowed}
+                    closeModal={this.closeModal}
+                    dispatch={dispatch}
+                    citiesList={citiesList}
+                    districtsList={districtsList}
+                    selectedCity={selectedCity}
+                    newStationsList={newStationsList}
+                />
             </Col>
         )
     }
@@ -42,7 +58,13 @@ class OtherDistricts extends Component {
 }
 
 OtherDistricts.propTypes = {
-    devices: PropTypes.array.isRequired
+    devices: PropTypes.array.isRequired,
+    district: PropTypes.string,
+    socket: PropTypes.any.isRequired,
+    dispatch: PropTypes.any.isRequired,
+    citiesList: PropTypes.array.isRequired,
+    selectedCity: PropTypes.string,
+    newStationsList: PropTypes.array.isRequired
 }
 
 export default OtherDistricts

@@ -24,21 +24,17 @@ class NewStation extends Component {
                         <Col xs={6}>
                             <select className="form-control measurement" onChange={e => this.loadDistricts(e)}>
                                 <option value="">Choose city</option>
-                                {
-                                    citiesList.map((value, key) =>
-                                        <option key={key} value={key}>{value}</option>
-                                    )
-                                }
+                                {citiesList.map((value, key) =>
+                                    <option key={key} value={key}>{value}</option>
+                                )}
                             </select>
                         </Col>
                         <Col xs={6}>
                             <select className="form-control measurement" onChange={e => this.loadDistrictDevices(e)}>
                                 <option value="">Choose district</option>
-                                {
-                                    districtsList.map((value, key) =>
-                                        <option key={key} value={key}>{value}</option>
-                                    )
-                                }
+                                {districtsList.map((value, key) =>
+                                    <option key={key} value={key}>{value}</option>
+                                )}
                             </select>
                         </Col>
                     </Row>
@@ -52,16 +48,14 @@ class NewStation extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {
-                                        newStationsList.map((station, key) =>
-                                            <tr key={key}>
-                                                <td>{station.name}</td>
-                                                <td>
-                                                    <Button bsStyle="primary" onClick={() => this.addNewDevice(key)}>Select</Button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    }
+                                    {newStationsList.map((station, key) =>
+                                        <tr key={key}>
+                                            <td>{station.name}</td>
+                                            <td>
+                                                <Button bsStyle="primary" onClick={() => this.addNewDevice(key)}>Select</Button>
+                                            </td>
+                                        </tr>
+                                    )}
                                 </tbody>
                             </Table>
                         </Col>
@@ -95,7 +89,13 @@ class NewStation extends Component {
 }
 
 NewStation.propTypes = {
-
+    show: PropTypes.bool.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    dispatch: PropTypes.any.isRequired,
+    citiesList: PropTypes.array.isRequired,
+    districtsList: PropTypes.array.isRequired,
+    selectedCity: PropTypes.number,
+    newStationsList: PropTypes.array.isRequired
 }
 
 export default NewStation

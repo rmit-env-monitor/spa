@@ -18,11 +18,9 @@ class StationRanking extends Component {
                     <p>STATION RANKING</p>
                 </div>
                 <div className="rank">
-                    {
-                        this.props.stations.map((station, index) =>
-                            <Station key={index} station={station} />
-                        )
-                    }
+                    {this.props.stations.map((station, index) =>
+                        <Station key={index} station={station} />
+                    )}
                 </div>
             </Col>
         )
@@ -30,6 +28,10 @@ class StationRanking extends Component {
 }
 
 StationRanking.propTypes = {
+    city: PropTypes.string.isRequired,
+    deviceId: PropTypes.string.isRequired,
+    dispatch: PropTypes.any.isRequired,
+    stations: PropTypes.array.isRequired
 }
 
 export default StationRanking

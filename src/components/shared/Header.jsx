@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
 import * as constants from '../../utilities/constants'
+
 import NavBarNoToken from './NavBarNoToken.jsx'
 import NavBarWithToken from './NavBarWithToken.jsx'
 
@@ -21,11 +22,10 @@ class Header extends Component {
                             {constants.APPNAME}
                         </Link>
                     </div>
-                    {
-                        localStorage.token ?
-                            <NavBarWithToken location={this.props.location} />
-                            :
-                            <NavBarNoToken />
+                    {localStorage.token ?
+                        <NavBarWithToken location={this.props.location} />
+                        :
+                        <NavBarNoToken />
                     }
                 </div>
             </nav>
