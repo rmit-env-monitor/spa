@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'react-bootstrap'
 import { Control, Form, Errors } from 'react-redux-form'
 import Loader from 'react-loader'
+import { Redirect } from 'react-router-dom'
 
 import * as authAction from '../../actions/authAction'
 import clearLocalStorage from '../../utilities/clearLocalStorage'
@@ -12,6 +13,11 @@ import { changeSpinLoaded } from '../../actions/authAction'
 import Header from '../shared/Header.jsx'
 
 class Login extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { redirectToMain: false }
+    }
+
     componentWillMount() {
         clearLocalStorage()
         this.props.dispatch({ type: 'RESET' })
@@ -20,6 +26,8 @@ class Login extends Component {
     render() {
         const { auth, location } = this.props
         const required = val => val && val.length
+
+        if (this.state.redirectToMain) return <Redirect to="/" />
 
         return (
             <div>
@@ -82,9 +90,8 @@ class Login extends Component {
     }
 
     redirectToMain() {
-        const { router } = this.props
         this.changeSpin(true)
-        router.push('/')
+        this.setState({ redirectToMain: true })
     }
 
     handleLoginSubmit(value) {

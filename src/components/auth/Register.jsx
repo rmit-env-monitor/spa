@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'react-bootstrap'
 import { Control, Form, Errors } from 'react-redux-form'
 import Loader from 'react-loader'
+import { Redirect } from 'react-router-dom'
 
 import * as authAction from '../../actions/authAction'
 import options from '../../utilities/spinOptions'
@@ -11,6 +12,11 @@ import { changeSpinLoaded } from '../../actions/authAction'
 import Header from '../shared/Header.jsx'
 
 class Register extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { redirectToMain: false }
+    }
+
     componentWillMount() {
         const { dispatch } = this.props
         dispatch(changeSpinLoaded(true))
@@ -20,6 +26,8 @@ class Register extends Component {
         const { auth, location } = this.props
         const usernameRequired = val => val && val.length
         const passwordRequired = val => val && val.length > 5
+
+        if (this.state.redirectToMain) return <Redirect to="/" />
 
         return (
             <div>
@@ -100,9 +108,8 @@ class Register extends Component {
     }
 
     redirectToMain() {
-        const { router } = this.props
         this.changeSpin(true)
-        router.push('/')
+        this.setState({ redirectToMain: true })
     }
 
     handleRegister(value) {

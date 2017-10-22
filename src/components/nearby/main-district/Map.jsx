@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import GoogleMapsLoader from 'google-maps'
 
 import { saveMap, saveMarker } from '../../../actions/nearbyAction'
@@ -14,7 +15,7 @@ class Map extends Component {
         const { aqi, lat, lng, dispatch } = this.props
         GoogleMapsLoader.load(google => {
             let location = { lat: 10.776651, lng: 106.683750 }
-            
+
             let map = new google.maps.Map(document.getElementById('map-nearby'), {
                 zoom: 15,
                 center: location,
