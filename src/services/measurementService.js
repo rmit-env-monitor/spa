@@ -4,7 +4,7 @@ import baseService from './baseService'
 import * as constants from '../utilities/constants'
 
 export function callGoogleAPIForLocation(lat, lng, success, error) {
-    const URL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=true'
+    const URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=true`
 
     return dispatch => {
         return axios.get(URL)
@@ -31,7 +31,7 @@ export function getListOfCities(success, error) {
 
 export function getListOfDistrictOfCity(city, success, error) {
     return dispatch => {
-        return baseService(constants.GET_METHOD, '/api/web/devices/districts?city=' + city)
+        return baseService(constants.GET_METHOD, `/api/web/devices/districts?city=${city}`)
             .then(res => {
                 dispatch(success(res.data))
             })
@@ -43,7 +43,7 @@ export function getListOfDistrictOfCity(city, success, error) {
 
 export function getDeviceList(city, district, success, error) {
     return dispatch => {
-        return baseService(constants.GET_METHOD, '/api/web/devices?city=' + city + '&district=' + district)
+        return baseService(constants.GET_METHOD, `/api/web/devices?city=${city}&district=${district}`)
             .then(res => {
                 dispatch(success(res.data))
             })
@@ -54,5 +54,5 @@ export function getDeviceList(city, district, success, error) {
 }
 
 export function getLatestDeviceRecord(deviceID) {
-    return baseService(constants.GET_METHOD, '/api/web/records/' + deviceID)
+    return baseService(constants.GET_METHOD, `api/web/records/${deviceID}`)
 }

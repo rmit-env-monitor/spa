@@ -11,7 +11,7 @@ export default function baseService(method, link, data) {
         return axios({
             method: method,
             url: link,
-            headers: { 'Authorization': 'Bearer ' + token }
+            headers: { 'Authorization': `Bearer ${token}` }
         })
     }
 
@@ -19,6 +19,6 @@ export default function baseService(method, link, data) {
         method: method,
         url: link,
         data: data,
-        headers: { 'Authorization': 'Bearer ' + token }
+        headers: { 'Authorization': `Bearer ${token}` }
     })
 }

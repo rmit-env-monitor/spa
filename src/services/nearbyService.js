@@ -6,7 +6,7 @@ import { GET_METHOD } from '../utilities/constants'
 export function getCurrentCityDistrictAndNearby(lat, lng, success, deviceListSuccess) {
     return dispatch => {
         // Get current district and city from lat and lng.
-        axios.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=true')
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=true`)
             .then(res => {
                 const currentCityDistrict = getCityAndDistrict(res.data)
                 // Get list of nearby districts.
@@ -16,11 +16,11 @@ export function getCurrentCityDistrictAndNearby(lat, lng, success, deviceListSuc
 }
 
 export function getDeviceList(city, district) {
-    return baseService(GET_METHOD, '/api/web/devices?city=' + city + '&district=' + district)
+    return baseService(GET_METHOD, `/api/web/devices?city=${city}&district=${district}`)
 }
 
 export function getOneDevice(city, district) {
-    return baseService(GET_METHOD, '/api/web/device?city=' + city + '&district=' + district)
+    return baseService(GET_METHOD, `/api/web/device?city=${city}&district=${district}`)
 }
 
 export function getListOfCities(success, error) {
@@ -37,7 +37,7 @@ export function getListOfCities(success, error) {
 
 export function getListOfDistrictOfCity(city, success, error) {
     return dispatch => {
-        return baseService(GET_METHOD, '/api/web/devices/districts?city=' + city)
+        return baseService(GET_METHOD, `/api/web/devices/districts?city=${city}`)
             .then(res => {
                 dispatch(success(res.data))
             })
@@ -49,7 +49,7 @@ export function getListOfDistrictOfCity(city, success, error) {
 
 export function getDistrictDeviceList(city, district, success, error) {
     return dispatch => {
-        return baseService(GET_METHOD, '/api/web/devices?city=' + city + '&district=' + district)
+        return baseService(GET_METHOD, `/api/web/devices?city=${city}&district=${district}`)
             .then(res => {
                 dispatch(success(res.data))
             })
@@ -61,7 +61,7 @@ export function getDistrictDeviceList(city, district, success, error) {
 
 export function getStationRanking(city, deviceId, success, error) {
     return dispatch => {
-        return baseService(GET_METHOD, '/api/web/station-ranking?city=' + city + '&deviceId=' + deviceId)
+        return baseService(GET_METHOD, `/api/web/station-ranking?city=${city}&deviceId=${deviceId}`)
             .then(res => {
                 dispatch(success(res.data))
             })
@@ -72,7 +72,7 @@ export function getStationRanking(city, deviceId, success, error) {
 }
 
 function getNearbyDistricts(city, district, dispatch, success, deviceListSuccess) {
-    return baseService(GET_METHOD, '/api/web/nearby?city=' + city + '&district=' + district)
+    return baseService(GET_METHOD, `/api/web/nearby?city=${city}&district=${district}`)
         .then(res => {
             dispatch(success(city, district, res.data))
             // Get device list of current location.
