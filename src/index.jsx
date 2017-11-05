@@ -24,18 +24,18 @@ GoogleMapsLoader.KEY = 'AIzaSyDzU42Qi6au_pg_ip8QHMuqxk9qa1iWPJQ'
 GoogleMapsLoader.LIBRARIES = ['visualization']
 
 render(
-    <Provider store={store}>
-        <SocketProvider socket={socket}>
-            <Router history={customHistory}>
-                <Switch>
-                    <Route exact path="/" onEnter={checkTokenAvailability} component={Nearby} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/register" component={Register} />
-                    <Route path="/500" component={Error500} />
-                </Switch>
-            </Router>
-        </SocketProvider>
-    </Provider>,
+  <Provider store={store}>
+    <SocketProvider socket={socket}>
+      <Router history={customHistory}>
+        <Switch>
+          <Route exact path="/" onEnter={checkTokenAvailability} component={Nearby} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/500" component={Error500} />
+        </Switch>
+      </Router>
+    </SocketProvider>
+  </Provider>,
 
-    document.getElementById('app')
+  document.getElementById('app')
 )

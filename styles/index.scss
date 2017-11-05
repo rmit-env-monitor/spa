@@ -5,490 +5,492 @@ $light-gray: #f5f7f7;
 
 /* FONT */
 @font-face {
-    font-family: 'KoushikiSansRegular';
-    src: url('font/KoushikiSans-Light.woff') format('woff');
-    src: url('font/KoushikiSans-Light.woff2') format('woff2');
-    src: url('font/KoushikiSans-Light.ttf') format('truetype');
+  font-family: 'KoushikiSansRegular';
+  src: url('font/KoushikiSans-Light.woff') format('woff');
+  src: url('font/KoushikiSans-Light.woff2') format('woff2');
+  src: url('font/KoushikiSans-Light.ttf') format('truetype');
 }
 
 body {
-    font-family: KoushikiSansRegular;
+  font-family: KoushikiSansRegular;
 }
 
 a {
-    color: black;
+  color: black;
 }
 
 .navbar {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-.navbar-inverse {
-    background-color: $main-color;
-    border-color: $main-color;
-    .navbar-brand {
+.header {
+  background-color: $main-color;
+  border-color: $main-color;
+  .logo {
+    color: white;
+  }
+  .navigations {
+    .left-navbar,
+    .right-navbar {
+      a,
+      a:focus,
+      a:hover {
         color: white;
+      }
+      .left-navbar__link_active {
+        background-color: #129390;
+      }
     }
-    .navbar-nav {
-        li {
-            a {
-                color: white;
-            }
-        }
-        .active {
-            a, a:focus, a:hover {
-                background-color: #129390;
-            }
-        }
-    }
-}
-
-#map {
-    position: relative;
-    height: 94vh;
-    width: 100%;
-}
-
-.form-signin-heading {
-    text-align: center;
-    color: $main-color;
-}
-
-.form-control {
-    border-radius: 0;
+  }
 }
 
 .login-form {
-    max-width: 400px;
-    padding: 15px;
-    margin: 0 auto;
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+  .login-form__title {
+    text-align: center;
+    color: $main-color;
+  }
+  .login-form__textbox_square {
+    border-radius: 0;
+  }
+  .login-form__alert_square {
+    border-radius: 0;
+  }
+}
+
+#map {
+  position: relative;
+  height: 94vh;
+  width: 100%;
+}
+
+.form-control {
+  border-radius: 0;
 }
 
 .measurement-form {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .measurement {
-    display: inline-block;
-    width: 100%;
+  display: inline-block;
+  width: 100%;
 }
 
 .space {
-    width: 15px;
-    display: inline-block;
+  width: 15px;
+  display: inline-block;
 }
 
 .btn {
-    border-radius: 0;
-}
-
-.alert {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 .loader {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
 }
 
 .progress {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 .progress-bar {
-    width: 100%;
-    span {
-        font-size: 15px;
-    }
+  width: 100%;
+  span {
+    font-size: 15px;
+  }
 }
 
 .good {
-    background-color: green;
+  background-color: green;
 }
 
 .moderate {
-    background-color: #fec60d;
+  background-color: #fec60d;
 }
 
 .sensitive {
-    background-color: orange;
+  background-color: orange;
 }
 
 .unhealthy {
-    background-color: red;
+  background-color: red;
 }
 
 .very-unhealthy {
-    background-color: purple;
+  background-color: purple;
 }
 
 .hazardous {
-    background-color: maroon;
+  background-color: maroon;
 }
 
 .text-good {
-    color: green;
+  color: green;
 }
 
 .text-moderate {
-    color: #fec60d;
+  color: #fec60d;
 }
 
 .text-sensitive {
-    color: orange;
+  color: orange;
 }
 
 .text-unhealthy {
-    color: red;
+  color: red;
 }
 
 .text-very-unhealthy {
-    color: purple;
+  color: purple;
 }
 
 .text-hazardous {
-    color: maroon;
+  color: maroon;
 }
 
 .container-fluid {
-    margin-top: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 50px;
-    width: 1350px;
-    max-width: none !important;
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+  width: 1350px;
+  max-width: none !important;
 }
 
 .modal-content {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 .panel {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 .panel-body {
-    padding: 0;
+  padding: 0;
 }
 
 #nearby-city {
-    display: inline-block;
+  display: inline-block;
 }
 
 .nearby-index {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .modal-header {
-    background-color: $main-color;
+  background-color: $main-color;
 }
 
 #new-station-list {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 /* NEAREST DEVICE */
 #nearest-device {
-    border-top: 2px solid $main-color;
-    border-left: 2px solid $main-color;
-    border-bottom: 2px solid $main-color;
-    height: 400px;
+  border-top: 2px solid $main-color;
+  border-left: 2px solid $main-color;
+  border-bottom: 2px solid $main-color;
+  height: 400px;
 }
 
 #summary {
-    text-align: center;
-    background: $main-color;
-    color: white;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    height: 363.92px;
-    #district-title {
-        margin-top: 20px;
+  text-align: center;
+  background: $main-color;
+  color: white;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 363.92px;
+  #district-title {
+    margin-top: 20px;
+  }
+  #nearest-status {
+    width: 80px;
+  }
+  #district-stt {
+    margin-top: 40px;
+    .col-xs-8 {
+      text-align: left;
     }
-    #nearest-status {
-        width: 80px;
+    #aqi-summary {
+      font-size: 18px;
     }
-    #district-stt {
-        margin-top: 40px;
-        .col-xs-8 {
-            text-align: left;
-        }
-        #aqi-summary {
-            font-size: 18px;
-        }
+  }
+  #prediction {
+    margin-top: 25px;
+    .future-day {
+      margin-top: 10px;
     }
-    #prediction {
-        margin-top: 25px;
-        .future-day {
-            margin-top: 10px;
-        }
-    }
+  }
 }
 
 #nearest-detail {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    #aqi-temp {
-        margin-left: 10px;
-        margin-right: 10px;
-        font-size: 15px;
-        .col-xs-6 {
-            text-align: center;
-        }
-        #pollution, #temp {
-            height: 30px;
-            margin-top: 25px;
-        }
-        .temp {
-            padding-right: 0;
-        }
-        .value {
-            margin-top: 10px;
-        }
-        .aqi {
-            padding-left: 0;
-        }
-        .aqi-area, .temp-area {
-            border: 5px solid $main-color;
-            border-radius: 50%;
-            width: 130px;
-            height: 130px;
-        }
-        .temp-area {
-            float: right;
-        }
-        .border {
-            border: 2px solid $main-color;
-            border-radius: 50%;
-            width: 110px;
-            height: 110px;
-            margin: 5px;
-        }
+  margin-top: 15px;
+  margin-bottom: 15px;
+  #aqi-temp {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 15px;
+    .col-xs-6 {
+      text-align: center;
     }
+    #pollution, #temp {
+      height: 30px;
+      margin-top: 25px;
+    }
+    .temp {
+      padding-right: 0;
+    }
+    .value {
+      margin-top: 10px;
+    }
+    .aqi {
+      padding-left: 0;
+    }
+    .aqi-area, .temp-area {
+      border: 5px solid $main-color;
+      border-radius: 50%;
+      width: 130px;
+      height: 130px;
+    }
+    .temp-area {
+      float: right;
+    }
+    .border {
+      border: 2px solid $main-color;
+      border-radius: 50%;
+      width: 110px;
+      height: 110px;
+      margin: 5px;
+    }
+  }
 
-    #nearby-map-area {
-        margin-top: 15px;
-        border: 1px solid $main-color;
-        height: 219px;
-        #map-nearby {
-            height: 100%;
-        }
+  #nearby-map-area {
+    margin-top: 15px;
+    border: 1px solid $main-color;
+    height: 219px;
+    #map-nearby {
+      height: 100%;
     }
+  }
 }
 
 #nearest-air-detail {
-    border-top: 2px solid $main-color;
-    border-right: 2px solid $main-color;
-    border-bottom: 2px solid $main-color;
-    width: 310px;
-    height: 400px;
-    padding-right: 15px;
-    -webkit-transition: width 0.5s ease;
-    -moz-transition: width 0.5s ease;
-    -o-transition: width 0.5s ease;
-    transition: width 0.5s ease;
-    display: inline-block;
+  border-top: 2px solid $main-color;
+  border-right: 2px solid $main-color;
+  border-bottom: 2px solid $main-color;
+  width: 310px;
+  height: 400px;
+  padding-right: 15px;
+  -webkit-transition: width 0.5s ease;
+  -moz-transition: width 0.5s ease;
+  -o-transition: width 0.5s ease;
+  transition: width 0.5s ease;
+  display: inline-block;
+  overflow: hidden;
+  .device-detail {
     overflow: hidden;
-    .device-detail {
-        overflow: hidden;
-        margin-top: 15px;
-        margin-right: 5px;
-        .status-bar {
-            width: 303px;
-        }
-        hr {
-            margin-top: 0px;
-        }
+    margin-top: 15px;
+    margin-right: 5px;
+    .status-bar {
+      width: 303px;
     }
+    hr {
+      margin-top: 0px;
+    }
+  }
 }
 
 #nearest-air-detail.collapse {
-    width: 0;
-    padding-right: 0;
+  width: 0;
+  padding-right: 0;
 }
 
 #collapse-button {
-    display: inline-block;
-    text-align: center;
-    width: 20px;
-    height: 40px;
-    margin-top: 176px;
-    left: 0%;
-    background: $main-color;
-    #collapse-icon {
-        top: 30%;
-        color: white;
-    }
+  display: inline-block;
+  text-align: center;
+  width: 20px;
+  height: 40px;
+  margin-top: 176px;
+  left: 0%;
+  background: $main-color;
+  #collapse-icon {
+    top: 30%;
+    color: white;
+  }
 }
 
 .device-loading {
-    text-align: center;
+  text-align: center;
 }
 
 #app-download {
-    background-color: $light-gray;
-    text-align: center;
-    width: 23%;
-    height: 400px;
-    float: right;
-    padding-left: 40px;
-    padding-right: 40px;
-    h4 {
-        color: $main-color;
-    }
-    #app-download-title {
-        margin-top: 30px;
-    }
-    .play-store-logo {
-        width: 205px;
-    }
-    .app-store-logo {
-        width: 180px;
-    }
+  background-color: $light-gray;
+  text-align: center;
+  width: 23%;
+  height: 400px;
+  float: right;
+  padding-left: 40px;
+  padding-right: 40px;
+  h4 {
+    color: $main-color;
+  }
+  #app-download-title {
+    margin-top: 30px;
+  }
+  .play-store-logo {
+    width: 205px;
+  }
+  .app-store-logo {
+    width: 180px;
+  }
 }
 /* NEAREST DEVICE */
 #other-districts {
-    padding: 0px;
-    margin-top: 30px;
-    width: 985px;
-    .other-district {
-        background-color: $main-color;
-        text-align: center;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        width: 188px;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        .carousel-indicators {
-            visibility: hidden;
-        }
-        .item {
+  padding: 0px;
+  margin-top: 30px;
+  width: 985px;
+  .other-district {
+    background-color: $main-color;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 188px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    .carousel-indicators {
+      visibility: hidden;
+    }
+    .item {
+      margin-top: 10px;
+    }
+    .carousel-control {
+      background-image: none;
+      text-shadow: 0 0 0;
+      opacity: 1;
+      width: 5%;
+      .glyphicon-chevron-left, .glyphicon-chevron-right {
+        color: black;
+      }
+    }
+    .status-img {
+      padding-left: 30px;
+      padding-right: 40px;
+      .aqi-area, .temp-area {
+        border: 5px solid black;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+        .border {
+          border: 2px solid black;
+          border-radius: 50%;
+          height: 80px;
+          width: 80px;
+          margin: 5px;
+          .pollution, .temp {
+            height: 25px;
             margin-top: 10px;
+          }
+          .value {
+            margin-top: 10px;
+          }
         }
-        .carousel-control {
-            background-image: none;
-            text-shadow: 0 0 0;
-            opacity: 1;
-            width: 5%;
-            .glyphicon-chevron-left, .glyphicon-chevron-right {
-                color: black;
-            }
-        }
-        .status-img {
-            padding-left: 30px;
-            padding-right: 40px;
-            .aqi-area, .temp-area {
-                border: 5px solid black;
-                border-radius: 50%;
-                height: 100px;
-                width: 100px;
-                .border {
-                    border: 2px solid black;
-                    border-radius: 50%;
-                    height: 80px;
-                    width: 80px;
-                    margin: 5px;
-                    .pollution, .temp {
-                        height: 25px;
-                        margin-top: 10px;
-                    }
-                    .value {
-                        margin-top: 10px;
-                    }
-                }
-            }
-        }
-        .glyphicon-option-horizontal {
-            float: right;
-        }
+      }
     }
-    .other-district:nth-child(5n) {
-        margin-right: 0px;
+    .glyphicon-option-horizontal {
+      float: right;
     }
-    #add-district-button {
-        border: 4px solid $main-color;
-        width: 193px;
-        height: 193px;
-        text-align: center;
-        line-height: 193px;
-        vertical-align: center;
-        color: $main-color;
-        font-size: 100px;
-    }
+  }
+  .other-district:nth-child(5n) {
+    margin-right: 0px;
+  }
+  #add-district-button {
+    border: 4px solid $main-color;
+    width: 193px;
+    height: 193px;
+    text-align: center;
+    line-height: 193px;
+    vertical-align: center;
+    color: $main-color;
+    font-size: 100px;
+  }
 
-    .device-actions {
-        .dropdown-menu {
-            top: 36%;
-            left: 84%;
-            border-radius: 0px;
-        }
+  .device-actions {
+    .dropdown-menu {
+      top: 36%;
+      left: 84%;
+      border-radius: 0px;
     }
+  }
 }
 
 .station-ranking {
-    width: 23%;
-    margin: 30px 0px 0px 54px;
-    padding: 0px;
-    text-align: center;
-    .title {
-        color: white;
-        height: 40px;
-        background-color: #565656;
-        p {
-            font-size: 20px;
-            display: inline-block;
-            margin-top: 6px;
-        }
+  width: 23%;
+  margin: 30px 0px 0px 54px;
+  padding: 0px;
+  text-align: center;
+  .title {
+    color: white;
+    height: 40px;
+    background-color: #565656;
+    p {
+      font-size: 20px;
+      display: inline-block;
+      margin-top: 6px;
     }
-    .rank {
-        background-color: $light-gray;
-        padding: 15px 0px 15px 0px;
-        height: fit-content;
-        .station-name, .station-value {
-            font-size: 15px;
-        }
-        .row {
-            width: 100%;
-            margin: 0;
-            .div {
-                text-align: center;
-            }
-        }
+  }
+  .rank {
+    background-color: $light-gray;
+    padding: 15px 0px 15px 0px;
+    height: fit-content;
+    .station-name, .station-value {
+      font-size: 15px;
     }
+    .row {
+      width: 100%;
+      margin: 0;
+      .div {
+        text-align: center;
+      }
+    }
+  }
 }
 // Footer
 .footer {
-    width: 100%;
-    height: 300px;
-    color: white;
-    background-color: $main-color;
-    .row {
-        padding-top: 60px;
-        .general {
-            .app-title {
-                margin-bottom: 30px;
-                margin-top: 10px;
-            }
-        }
-        .contact, .subcribe {
-            h4 {
-                font-size: 20px;
-            }
-            p {
-                font-size: 17px;
-            }
-            .input-group-addon {
-                background-color: white;
-            }
-            .copyright {
-                font-size: 14px;
-                margin-top: 20px;
-            }
-        }
+  width: 100%;
+  height: 300px;
+  color: white;
+  background-color: $main-color;
+  .row {
+    padding-top: 60px;
+    .general {
+      .app-title {
+        margin-bottom: 30px;
+        margin-top: 10px;
+      }
     }
+    .contact, .subcribe {
+      h4 {
+        font-size: 20px;
+      }
+      p {
+        font-size: 17px;
+      }
+      .input-group-addon {
+        background-color: white;
+      }
+      .copyright {
+        font-size: 14px;
+        margin-top: 20px;
+      }
+    }
+  }
 }
