@@ -64,6 +64,23 @@ class Register extends Component {
           />
           <br />
 
+          <Control.text
+            model=".email"
+            maxLength="50"
+            className="form-control login-form__textbox_square"
+            placeholder="Email"
+            validators={{ usernameRequired }}
+            validateOn="change"
+            type="email"
+          />
+          <Errors
+            className="text-danger login-form__alert-text"
+            model=".email"
+            messages={{ usernameRequired: "Email is required!" }}
+            show="touched"
+          />
+          <br />
+
           <Control
             type="password"
             model=".password"
@@ -117,7 +134,10 @@ class Register extends Component {
   handleRegister(value) {
     const { dispatch } = this.props
     this.changeSpin(false)
-    dispatch(authAction.register(value, l => this.changeSpin(l), () => this.redirectToMain()))
+    dispatch(authAction.register(value,
+      l => this.changeSpin(l),
+      () => this.redirectToMain()
+    ))
   }
 }
 
