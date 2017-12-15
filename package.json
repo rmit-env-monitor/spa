@@ -2,9 +2,6 @@
   "name": "not-alone-spa",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-    "node": "6.9.5"
-  },
   "scripts": {
     "start": "node dev-server.js",
     "build": "gulp && webpack -p --config ./webpack.config.prod.js --progress",
@@ -44,6 +41,7 @@
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6",
     "redux-reset": "^0.3.0",
+    "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
     "socket.io-client": "^2.0.3",
     "socket.io-react": "^1.1.2",

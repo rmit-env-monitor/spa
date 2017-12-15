@@ -7,7 +7,8 @@ RUN apt-get update \
 && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
 && apt-get update \
 && apt-get install -y nodejs \
-&& apt-get install -y make
+&& apt-get install -y make \
+&& apt-get install yarn
 
 # Create directory
 RUN mkdir -p /var/app
