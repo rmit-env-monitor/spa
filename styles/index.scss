@@ -58,6 +58,9 @@ a {
   .login-form__alert_square {
     border-radius: 0;
   }
+  &__google-login {
+    width: 370px;
+  }
 }
 
 #map {

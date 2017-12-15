@@ -37,7 +37,7 @@ class Login extends Component {
           onSubmit={val => this.handleLoginSubmit(val)}
           className="login-form"
         >
-          <h2 className="login-form__title">Sign in to Environmental Monitor</h2>
+          <h2 className="login-form__title">LOGIN</h2>
           <Errors className="alert alert-danger login-form__alert_square" model="deep.login" show="touched" />
 
           <Control.text
@@ -75,6 +75,10 @@ class Login extends Component {
           <Button bsStyle="primary" bsSize="large" block type="submit" className="login-form__submit-button">
             Login
           </Button>
+          <hr />
+          <a href="javascript:void(0)">
+            <img className="login-form__google-login" src="/images/btn_google_signin_light_normal_web@2x.png" alt="Google Login" />
+          </a>
         </Form>
         <Loader
           loaded={auth.loaded}
