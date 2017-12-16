@@ -1,28 +1,42 @@
-const path = require('path')
-const express = require('express')
-const webpack = require('webpack')
-const webpackMiddleware = require('webpack-dev-middleware')
-const compression = require('compression')
+const webpack = require("webpack");
+const webpackDevServer = require("webpack-dev-server");
 
-var config = require('./webpack.config.js')
+var config = require("./webpack.config.js");
+const options = {
+  contentBase: "./dist",
+  publicPath: config.output.publicPath,
+  host: "localhost",
+  historyApiFallback: true,
+  compress: true,
+  stats: {
+    colors: true,
+    hash: false,
+    version: false,
+    timings: true,
+    assets: true,
+    chunks: false,
+    modules: false,
+    reasons: false,
+    children: false,
+    source: false,
+    errors: true,
+    errorDetails: false,
+    warnings: true,
+    publicPath: false
+  },
+  headers: {
+    "X-Powered-By": ""
+  },
+  port: 8000,
+  open: true,
+  openPage: ""
+};
 
-const app = express()
-const compiler = webpack(config)
+webpackDevServer.addDevServerEntrypoints(config, options);
 
-app.set('port', (process.env.PORT || 8000))
-app.use(compression())
-app.use(express.static(__dirname + '/dist'))
-app.use(webpackMiddleware(compiler, {
-    stats: {
-        colors: true
-    }
-}))
-app.disable('x-powered-by')
+const compiler = webpack(config);
+const server = new webpackDevServer(compiler, options);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'))
-})
-
-app.listen(app.get('port'), '0.0.0.0', () => {
-    console.log('Listening on port ' + app.get('port'))
-})  
+server.listen(options.port, "0.0.0.0", () => {
+  console.log(`Listening on port ${options.port}`);
+});
