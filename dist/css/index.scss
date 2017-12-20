@@ -5,10 +5,10 @@ $light-gray: #f5f7f7;
 
 /* FONT */
 @font-face {
-  font-family: 'KoushikiSansRegular';
-  src: url('font/KoushikiSans-Light.woff') format('woff');
-  src: url('font/KoushikiSans-Light.woff2') format('woff2');
-  src: url('font/KoushikiSans-Light.ttf') format('truetype');
+  font-family: "KoushikiSansRegular";
+  src: url("font/KoushikiSans-Light.woff") format("woff");
+  src: url("font/KoushikiSans-Light.woff2") format("woff2");
+  src: url("font/KoushikiSans-Light.ttf") format("truetype");
 }
 
 body {
@@ -245,7 +245,8 @@ a {
     .col-xs-6 {
       text-align: center;
     }
-    #pollution, #temp {
+    #pollution,
+    #temp {
       height: 30px;
       margin-top: 25px;
     }
@@ -258,7 +259,8 @@ a {
     .aqi {
       padding-left: 0;
     }
-    .aqi-area, .temp-area {
+    .aqi-area,
+    .temp-area {
       border: 5px solid $main-color;
       border-radius: 50%;
       width: 130px;
@@ -380,14 +382,16 @@ a {
       text-shadow: 0 0 0;
       opacity: 1;
       width: 5%;
-      .glyphicon-chevron-left, .glyphicon-chevron-right {
+      .glyphicon-chevron-left,
+      .glyphicon-chevron-right {
         color: black;
       }
     }
     .status-img {
       padding-left: 30px;
       padding-right: 40px;
-      .aqi-area, .temp-area {
+      .aqi-area,
+      .temp-area {
         border: 5px solid black;
         border-radius: 50%;
         height: 100px;
@@ -398,7 +402,8 @@ a {
           height: 80px;
           width: 80px;
           margin: 5px;
-          .pollution, .temp {
+          .pollution,
+          .temp {
             height: 25px;
             margin-top: 10px;
           }
@@ -454,7 +459,8 @@ a {
     background-color: $light-gray;
     padding: 15px 0px 15px 0px;
     height: fit-content;
-    .station-name, .station-value {
+    .station-name,
+    .station-value {
       font-size: 15px;
     }
     .row {
@@ -480,7 +486,8 @@ a {
         margin-top: 10px;
       }
     }
-    .contact, .subcribe {
+    .contact,
+    .subcribe {
       h4 {
         font-size: 20px;
       }
@@ -496,4 +503,8 @@ a {
       }
     }
   }
+}
+
+.react-google-oauth-button-login {
+  width: 100% !important;
 }

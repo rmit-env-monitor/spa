@@ -1,33 +1,35 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Button } from 'react-bootstrap'
-import { Control, Form, Errors } from 'react-redux-form'
-import Loader from 'react-loader'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Button } from "react-bootstrap";
+import { Control, Form, Errors } from "react-redux-form";
+import Loader from "react-loader";
+import { Redirect } from "react-router-dom";
+import { GoogleAPI, GoogleLogin } from "react-google-oauth";
 
-import * as authAction from '../../actions/authAction'
-import clearLocalStorage from '../../utilities/clearLocalStorage'
-import options from '../../utilities/spinOptions'
-import { changeSpinLoaded } from '../../actions/authAction'
+import * as authAction from "../../actions/authAction";
+import clearLocalStorage from "../../utilities/clearLocalStorage";
+import options from "../../utilities/spinOptions";
+import { changeSpinLoaded } from "../../actions/authAction";
+import { GOOGLE_CLIENT_ID } from "../../utilities/constants";
 
-import Header from '../shared/Header.jsx'
+import Header from "../shared/Header.jsx";
 
 class Login extends Component {
   constructor(props) {
-    super(props)
-    this.state = { redirectToMain: false }
+    super(props);
+    this.state = { redirectToMain: false };
   }
 
   componentWillMount() {
-    clearLocalStorage()
-    this.props.dispatch({ type: 'RESET' })
+    clearLocalStorage();
+    this.props.dispatch({ type: "RESET" });
   }
 
   render() {
-    const { auth, location } = this.props
-    const required = val => val && val.length
+    const { auth, location } = this.props;
+    const required = val => val && val.length;
 
-    if (this.state.redirectToMain) return <Redirect to="/" />
+    if (this.state.redirectToMain) return <Redirect to="/" />;
 
     return (
       <div>
@@ -38,8 +40,11 @@ class Login extends Component {
           className="login-form"
         >
           <h2 className="login-form__title">LOGIN</h2>
-          <Errors className="alert alert-danger login-form__alert_square" model="deep.login" show="touched" />
-
+          <Errors
+            className="alert alert-danger login-form__alert_square"
+            model="deep.login"
+            show="touched"
+          />
           <Control.text
             model=".username"
             maxLength="50"
@@ -71,43 +76,54 @@ class Login extends Component {
             show="touched"
           />
           <br />
-
-          <Button bsStyle="primary" bsSize="large" block type="submit" className="login-form__submit-button">
+          <Button
+            bsStyle="primary"
+            bsSize="large"
+            block
+            type="submit"
+            className="login-form__submit-button"
+          >
             Login
           </Button>
           <hr />
-          <a href="javascript:void(0)">
-            <img className="login-form__google-login" src="/images/btn_google_signin_light_normal_web@2x.png" alt="Google Login" />
-          </a>
+          <GoogleAPI clientId={GOOGLE_CLIENT_ID}>
+            <GoogleLogin onLoginSuccess={res => this.getGoogleInfo(res)} />
+          </GoogleAPI>
         </Form>
-        <Loader
-          loaded={auth.loaded}
-          options={options}
-          className="spinner"
-        />
+        <Loader loaded={auth.loaded} options={options} className="spinner" />
       </div>
-    )
+    );
   }
 
   changeSpin(loaded) {
-    const { dispatch } = this.props
-    dispatch(changeSpinLoaded(loaded))
+    const { dispatch } = this.props;
+    dispatch(changeSpinLoaded(loaded));
   }
 
   redirectToMain() {
-    this.changeSpin(true)
-    this.setState({ redirectToMain: true })
+    this.changeSpin(true);
+    this.setState({ redirectToMain: true });
   }
 
   handleLoginSubmit(value) {
-    const { dispatch } = this.props
-    this.changeSpin(false)
-    dispatch(authAction.authenticate(value, l => this.changeSpin(l), () => this.redirectToMain()))
+    const { dispatch } = this.props;
+    this.changeSpin(false);
+    dispatch(
+      authAction.authenticate(
+        value,
+        l => this.changeSpin(l),
+        () => this.redirectToMain()
+      )
+    );
+  }
+
+  getGoogleInfo(res) {
+    console.log(res);
   }
 }
 
 function select(state) {
-  return { auth: state.authReducer }
+  return { auth: state.authReducer };
 }
 
-export default connect(select)(Login)
+export default connect(select)(Login);
