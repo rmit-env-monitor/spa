@@ -1,12 +1,10 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { takeEvery } from "redux-saga/effects";
 
-import { getGoogleAuthUrl } from "../services/authService";
-import {
-  FETCH_GOOGLE_URL_REQUESTED,
-  FETCH_GOOGLE_URL,
-  FETCH_GOOGLE_URL_ERROR
-} from "../actions/actionTypes";
+import { sendGoogleData } from "./authSaga";
+import { FETCH_GOOGLE_URL_REQUESTED } from "../actions/actionTypes";
 
-function* rootSaga() {}
+function* rootSaga() {
+  yield takeEvery(FETCH_GOOGLE_URL_REQUESTED, sendGoogleData);
+}
 
 export default rootSaga;

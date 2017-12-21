@@ -38,6 +38,18 @@ export function postRegister(data, changeSpin, redirectToMain) {
   };
 }
 
+export function loginRegisterWithGoogle(data) {
+  return new Promise((resolve, reject) => {
+    baseService(constants.POST_METHOD, "/auth/google", data)
+      .then(res => {
+        resolve(res.data);
+      })
+      .catch(err => {
+        reject(err.message);
+      });
+  });
+}
+
 function setModelDirty(dispatch, model, data) {
   dispatch(actions.setErrors(model, data));
 }
