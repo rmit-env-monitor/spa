@@ -32,7 +32,6 @@ render(
           <Route
             exact
             path="/"
-            onEnter={checkTokenAvailability}
             component={Nearby}
           />
           <Route path="/login" component={Login} />

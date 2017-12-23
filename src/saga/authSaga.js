@@ -1,16 +1,12 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 
 import { loginRegisterWithGoogle } from "../services/authService";
-import {
-  FETCH_GOOGLE_URL,
-  FETCH_GOOGLE_URL_ERROR
-} from "../actions/actionTypes";
+import { SAVE_GOOGLE_USER_ERROR } from "../actions/actionTypes";
 
 export function* sendGoogleData(action) {
   try {
-    const keys = yield call(loginRegisterWithGoogle, action.user);
-    yield put({ type: FETCH_GOOGLE_URL, keys });
+    yield call(loginRegisterWithGoogle, action.user);
   } catch (e) {
-    yield put({ type: FETCH_GOOGLE_URL_ERROR, message: e.message });
+    yield put({ type: SAVE_GOOGLE_USER_ERROR, message: e.message });
   }
 }

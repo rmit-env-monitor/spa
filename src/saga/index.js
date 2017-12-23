@@ -1,10 +1,10 @@
 import { takeEvery } from "redux-saga/effects";
 
 import { sendGoogleData } from "./authSaga";
-import { FETCH_GOOGLE_URL_REQUESTED } from "../actions/actionTypes";
+import { SAVE_GOOGLE_USER_REQUESTED } from "../actions/actionTypes";
 
 function* rootSaga() {
-  yield takeEvery(FETCH_GOOGLE_URL_REQUESTED, sendGoogleData);
+  yield takeEvery(SAVE_GOOGLE_USER_REQUESTED, sendGoogleData);
 }
 
 export default rootSaga;

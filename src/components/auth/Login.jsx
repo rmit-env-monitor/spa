@@ -11,7 +11,7 @@ import clearLocalStorage from "../../utilities/clearLocalStorage";
 import options from "../../utilities/spinOptions";
 import { changeSpinLoaded } from "../../actions/authAction";
 import { GOOGLE_CLIENT_ID } from "../../utilities/constants";
-import { FETCH_GOOGLE_URL_REQUESTED } from "../../actions/actionTypes";
+import { SAVE_GOOGLE_USER_REQUESTED } from "../../actions/actionTypes";
 
 import Header from "../shared/Header.jsx";
 
@@ -119,17 +119,17 @@ class Login extends Component {
   }
 
   getGoogleInfo(res) {
-    console.log(res);
-    this.props.dispatch({
-      type: FETCH_GOOGLE_URL_REQUESTED,
+    const { dispatch, history } = this.props;
+    localStorage.setItem("google_access_token", res.Zi.access_token);
+    localStorage.setItem("google_id_token", res.Zi.id_token);
+    dispatch({
+      type: SAVE_GOOGLE_USER_REQUESTED,
       user: {
         username: res.w3.ig,
-        email: res.w3.U3,
-        accessToken: res.Zi.access_token,
-        expiresAt: res.Zi.expires_at,
-        refreshToken: res.Zi.id_token
+        email: res.w3.U3
       }
     });
+    history.push("/");
   }
 }
 
