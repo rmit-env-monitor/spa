@@ -4698,6 +4698,10 @@ react-dom@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-facebook-login@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/react-facebook-login/-/react-facebook-login-3.7.2.tgz#a67b55c3ba3e72328813e7e75886af352b62b0b5"
+
 react-google-oauth@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-google-oauth/-/react-google-oauth-1.0.0.tgz#da65f41a4568cc69e44abc0b58fe0b4a97ab228e"

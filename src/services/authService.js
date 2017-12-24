@@ -38,9 +38,9 @@ export function postRegister(data, changeSpin, redirectToMain) {
   };
 }
 
-export function loginRegisterWithGoogle(data) {
+export function loginRegisterOAuth(data) {
   return new Promise((resolve, reject) => {
-    baseService(constants.POST_METHOD, "/auth/google", data)
+    baseService(constants.POST_METHOD, "/auth/oauth", data)
       .then(res => {
         resolve(res.data);
       })

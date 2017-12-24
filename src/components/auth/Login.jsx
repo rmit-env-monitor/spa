@@ -5,13 +5,19 @@ import { Control, Form, Errors } from "react-redux-form";
 import Loader from "react-loader";
 import { Redirect } from "react-router-dom";
 import { GoogleAPI, GoogleLogin } from "react-google-oauth";
+import FacebookLogin from "react-facebook-login";
 
 import * as authAction from "../../actions/authAction";
 import clearLocalStorage from "../../utilities/clearLocalStorage";
 import options from "../../utilities/spinOptions";
 import { changeSpinLoaded } from "../../actions/authAction";
-import { GOOGLE_CLIENT_ID } from "../../utilities/constants";
-import { SAVE_GOOGLE_USER_REQUESTED } from "../../actions/actionTypes";
+import {
+  GOOGLE_CLIENT_ID,
+  GOOGLE_AUTH,
+  FB_AUTH,
+  FB_APP_ID
+} from "../../utilities/constants";
+import { SAVE_OAUTH_REQUESTED } from "../../actions/actionTypes";
 
 import Header from "../shared/Header.jsx";
 
@@ -88,8 +94,18 @@ class Login extends Component {
           </Button>
           <hr />
           <GoogleAPI clientId={GOOGLE_CLIENT_ID}>
-            <GoogleLogin onLoginSuccess={res => this.getGoogleInfo(res)} />
+            <GoogleLogin
+              onLoginSuccess={res => this.saveOauthInfo(res, GOOGLE_AUTH)}
+              text="LOGIN WITH GOOGLE"
+            />
           </GoogleAPI>
+          <FacebookLogin
+            appId={FB_APP_ID}
+            autoLoad={false}
+            fields="name,email,picture"
+            callback={res => this.saveOauthInfo(res, FB_AUTH)}
+            icon="fa-facebook-official"
+          />,
         </Form>
         <Loader loaded={auth.loaded} options={options} className="spinner" />
       </div>
@@ -118,15 +134,32 @@ class Login extends Component {
     );
   }
 
-  getGoogleInfo(res) {
+  saveOauthInfo(res, oauthType) {
     const { dispatch } = this.props;
-    dispatch({
-      type: SAVE_GOOGLE_USER_REQUESTED,
-      user: {
-        username: res.w3.ig,
-        email: res.w3.U3
-      }
-    });
+    switch (oauthType) {
+      case GOOGLE_AUTH:
+        dispatch({
+          type: SAVE_OAUTH_REQUESTED,
+          user: {
+            username: res.w3.ig,
+            email: res.w3.U3,
+            type: oauthType
+          }
+        });
+        return;
+      case FB_AUTH:
+        dispatch({
+          type: SAVE_OAUTH_REQUESTED,
+          user: {
+            username: res.name,
+            email: res.email,
+            type: oauthType
+          }
+        });
+        return;
+      default:
+        return;
+    }
   }
 }
 

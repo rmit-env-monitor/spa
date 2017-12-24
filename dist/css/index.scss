@@ -505,6 +505,11 @@ a {
   }
 }
 
-.react-google-oauth-button-login {
+.react-google-oauth-button-login,
+.kep-login-facebook {
   width: 100% !important;
+}
+
+.kep-login-facebook {
+  margin-top: 20px;
 }
