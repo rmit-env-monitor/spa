@@ -1,3 +1,3 @@
 export default () => {
-  return localStorage.token || localStorage.google_id_token
+  return localStorage.token;
 };

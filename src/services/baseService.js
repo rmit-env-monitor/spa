@@ -6,15 +6,8 @@ axios.defaults.headers["Accept"] = "application/json";
 axios.defaults.headers["Content-Type"] = "application/json; charset=utf-8";
 
 export default function baseService(method, link, data) {
-  const token = localStorage.token || localStorage.google_id_token || "";
-  let authorizationHeader = "";
-  if (localStorage.token) {
-    authorizationHeader = `Bearer ${token}`;
-  } else if (localStorage.google_id_token) {
-    authorizationHeader = `Google ${token}`;
-  } else {
-    authorizationHeader = `Bearer  `;
-  }
+  const token = localStorage.token || "";
+  const authorizationHeader = `Bearer ${token}`;
 
   if (method == constants.GET_METHOD) {
     return axios({
