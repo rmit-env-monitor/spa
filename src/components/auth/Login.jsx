@@ -120,8 +120,10 @@ class Login extends Component {
 
   getGoogleInfo(res) {
     const { dispatch, history } = this.props;
+
     localStorage.setItem("google_access_token", res.Zi.access_token);
     localStorage.setItem("google_id_token", res.Zi.id_token);
+    localStorage.setItem("username", res.w3.ig);
     dispatch({
       type: SAVE_GOOGLE_USER_REQUESTED,
       user: {
