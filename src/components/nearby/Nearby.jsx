@@ -18,15 +18,16 @@ import Footer from "../shared/Footer.jsx";
 class Nearby extends Component {
   componentDidMount() {
     const { dispatch, reducer, socket } = this.props;
-    if (reducer.city === null)
+    if (reducer.city === null) {
       navigator.geolocation.getCurrentPosition(position => {
         dispatch(
-          actions.getCurrentCityDistrictNearbyCurrentDevice(
+          actions.getNearbyMainData(
             position.coords.latitude,
             position.coords.longitude
           )
         );
       });
+    }
 
     socket.on(reducer.nearestDevice._id, record => {
       dispatch(actions.updateNearestDevice(record));
@@ -35,7 +36,7 @@ class Nearby extends Component {
 
   render() {
     const { location, reducer, socket, dispatch } = this.props;
-    
+
     if (!isTokenAvailable()) return <Redirect to="/login" />;
 
     return (
