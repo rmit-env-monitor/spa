@@ -17,18 +17,6 @@ export function getOneDevice(city, district) {
   );
 }
 
-export function getListOfCities(success, error) {
-  return dispatch => {
-    return baseService(GET_METHOD, "/api/web/devices/cities")
-      .then(res => {
-        dispatch(success(res.data));
-      })
-      .catch(err => {
-        dispatch(error(err));
-      });
-  };
-}
-
 export function getListOfDistrictOfCity(city, success, error) {
   return dispatch => {
     return baseService(GET_METHOD, `/api/web/devices/districts?city=${city}`)
@@ -110,6 +98,18 @@ export function getStationRanking(info) {
       GET_METHOD,
       `/api/web/station-ranking?city=${info.city}&deviceId=${info.deviceId}`
     )
+      .then(res => {
+        resolve(res.data);
+      })
+      .catch(err => {
+        reject(err.message);
+      });
+  });
+}
+
+export function getListOfCities() {
+  return new Promise((resolve, reject) => {
+    return baseService(GET_METHOD, "/api/web/devices/cities")
       .then(res => {
         resolve(res.data);
       })

@@ -21,6 +21,12 @@ export function getStationRanking(city, deviceId) {
     }
   };
 }
+
+export function getCities() {
+  return {
+    type: types.GET_CITIES_REQUESTED
+  };
+}
 // SAGA actions
 
 export function updateShowColorIndex(isShowed) {
@@ -58,10 +64,6 @@ export function updateOtherDevice(record, index) {
     record: record,
     index: index
   };
-}
-
-export function getCities() {
-  return services.getListOfCities(getListOfCitiesSuccess, getListOfCitiesError);
 }
 
 export function setSelectedCity(cityId) {
@@ -127,20 +129,6 @@ export function saveMarker(marker) {
   return {
     type: types.SAVE_MARKER,
     marker: marker
-  };
-}
-
-function getListOfCitiesSuccess(data) {
-  return {
-    type: types.GET_CITIES_SUCCESS,
-    cities: data
-  };
-}
-
-function getListOfCitiesError(data) {
-  return {
-    type: types.GET_CITIES_ERROR,
-    message: data
   };
 }
 

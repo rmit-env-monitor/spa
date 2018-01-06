@@ -68,6 +68,12 @@ export default function nearbyReducer(
     case types.GET_STATION_RANKING_ERROR:
       return Object.assign({}, state, { message: action.e });
 
+    case types.GET_CITIES_SUCCESS:
+      return Object.assign({}, state, { citiesList: action.data });
+
+    case types.GET_CITIES_ERROR:
+      return Object.assign({}, state, { message: action.message });
+
     case types.UPDATE_NEARBY_DEVICE_LATEST_RECORD:
       const newDevices = state.devices;
       newDevices[action.id].record = action.record;
@@ -93,12 +99,6 @@ export default function nearbyReducer(
       const newDistricts = state.districts;
       newDistricts[action.index] = action.record;
       return Object.assign({}, state, { districts: newDistricts });
-
-    case types.GET_CITIES_SUCCESS:
-      return Object.assign({}, state, { citiesList: action.cities });
-
-    case types.GET_CITIES_ERROR:
-      return Object.assign({}, state, { message: action.message });
 
     case types.SET_SELECTED_CITY:
       return Object.assign({}, state, { selectedCity: action.cityId });

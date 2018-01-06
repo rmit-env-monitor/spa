@@ -4,7 +4,8 @@ import {
   getCurrentCityDistrict,
   getNearby,
   getLocationStations,
-  getStationRanking
+  getStationRanking,
+  getListOfCities
 } from "../services/nearbyService";
 import {
   GET_CURRENT_CITY_DISTRICT_SUCCESS,
@@ -12,7 +13,9 @@ import {
   GET_NEARBY_DISTRICT_SUCCESS,
   GET_LOCATION_STATION_SUCCESS,
   GET_STATION_RANKING_SUCCESS,
-  GET_STATION_RANKING_ERROR
+  GET_STATION_RANKING_ERROR,
+  GET_CITIES_SUCCESS,
+  GET_CITIES_ERROR
 } from "../actions/actionTypes";
 
 export function* currentCityDistrict(action) {
@@ -39,5 +42,14 @@ export function* stationRanking(action) {
     yield put({ type: GET_STATION_RANKING_SUCCESS, data });
   } catch (e) {
     yield put({ type: GET_STATION_RANKING_ERROR, e });
+  }
+}
+
+export function* availableCities() {
+  try {
+    const data = yield call(getListOfCities);
+    yield put({ type: GET_CITIES_SUCCESS, data });
+  } catch (e) {
+    yield put({ type: GET_CITIES_ERROR, e });
   }
 }
