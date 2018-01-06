@@ -7,6 +7,7 @@ import GoogleMapsLoader from "google-maps";
 import { SocketProvider } from "socket.io-react";
 import io from "socket.io-client";
 import createBrowserHistory from "history/createBrowserHistory";
+import "react-placeholder/lib/reactPlaceholder.css";
 
 import configureStore from "./store";
 import { BASE_URL } from "./utilities/constants";
