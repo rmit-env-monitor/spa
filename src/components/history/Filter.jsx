@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { DateRangePicker } from "react-dates";
 import moment from "moment";
 import { connect } from "react-redux";
-import { DropdownButton, MenuItem } from "react-bootstrap";
 
 import {
   saveFromAndToDate,
