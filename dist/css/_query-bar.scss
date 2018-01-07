@@ -1,0 +1,14 @@
+.c-query-bar {
+  &__item {
+    margin-right: 20px;
+    display: inline-block;
+    height: 100%;
+    > select {
+      height: 52px;
+    }
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}

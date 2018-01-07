@@ -8,7 +8,9 @@ class History extends Component {
     return (
       <React.Fragment>
         <Header location={location.pathname} />
-        <Filter />
+        <div className="c-history">
+          <Filter />
+        </div>
       </React.Fragment>
     );
   }
