@@ -7,7 +7,7 @@ import GoogleMapsLoader from "google-maps";
 import { SocketProvider } from "socket.io-react";
 import io from "socket.io-client";
 import createBrowserHistory from "history/createBrowserHistory";
-import "react-placeholder/lib/reactPlaceholder.css";
+import 'react-dates/initialize';
 
 import configureStore from "./store";
 import { BASE_URL } from "./utilities/constants";
@@ -17,6 +17,7 @@ import Nearby from "./components/nearby/Nearby.jsx";
 import Login from "./components/auth/Login.jsx";
 import Register from "./components/auth/Register.jsx";
 import Error500 from "./components/shared/500.jsx";
+import History from "./components/history/History.jsx";
 
 const store = configureStore();
 const socket = io.connect(BASE_URL);
@@ -30,14 +31,11 @@ render(
     <SocketProvider socket={socket}>
       <Router history={customHistory}>
         <Switch>
-          <Route
-            exact
-            path="/"
-            component={Nearby}
-          />
+          <Route exact path="/" component={Nearby} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/500" component={Error500} />
+          <Route path="/history" component={History} />
         </Switch>
       </Router>
     </SocketProvider>

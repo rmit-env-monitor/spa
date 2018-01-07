@@ -7,7 +7,9 @@ const config = {
   entry: [
     "./src/index.jsx",
     "./dist/css/index.scss",
-    "./dist/css/font-awesome-4.7.0/css/font-awesome.min.css"
+    "./dist/css/font-awesome-4.7.0/css/font-awesome.min.css",
+    "./node_modules/react-placeholder/lib/reactPlaceholder.css",
+    "./node_modules/react-dates/lib/css/_datepicker.css"
   ],
 
   output: {
