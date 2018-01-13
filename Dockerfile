@@ -15,8 +15,7 @@ RUN mkdir -p /var/app
 WORKDIR /var/app
 
 # Install packages
-RUN npm install -g npm-check-updates \
-&& npm rebuild node-sass --force
+RUN yarn global add npm-check-updates
 
 # Install app dependencies
 COPY . /var/app
