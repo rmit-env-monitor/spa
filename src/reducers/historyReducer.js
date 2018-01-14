@@ -3,7 +3,8 @@ import {
   HISTORY_GET_CITIES_LIST_SUCCESS,
   HISTORY_GET_DISTRICTS_LIST_SUCCESS,
   HISTORY_SAVE_SELECTED_CITY,
-  HISTORY_SAVE_SELECTED_DISTRICT
+  HISTORY_SAVE_SELECTED_DISTRICT,
+  HISTORY_GET_AQI_GRAPH_INFO_SUCCESS
 } from "../actions/actionTypes";
 
 export default function historyReducer(
@@ -13,7 +14,8 @@ export default function historyReducer(
     cities: [],
     chosenCity: null,
     districts: [],
-    chosenDistrict: null
+    chosenDistrict: null,
+    aqiHistory: []
   },
   action
 ) {
@@ -35,6 +37,9 @@ export default function historyReducer(
 
     case HISTORY_SAVE_SELECTED_DISTRICT:
       return Object.assign({}, state, { chosenDistrict: action.district });
+
+    case HISTORY_GET_AQI_GRAPH_INFO_SUCCESS:
+      return Object.assign({}, state, { aqiHistory: action.data });
 
     default:
       return state;

@@ -3,13 +3,15 @@ import PropTypes from "prop-types";
 import { DateRangePicker } from "react-dates";
 import moment from "moment";
 import { connect } from "react-redux";
+import { Button } from "react-bootstrap";
 
 import {
   saveFromAndToDate,
   getCitiesList,
   getDistrictsList,
   saveSelectedCity,
-  saveSelectedDistrict
+  saveSelectedDistrict,
+  getHistoryAQI
 } from "../../actions/historyAction";
 
 class Filter extends Component {
@@ -72,7 +74,13 @@ class Filter extends Component {
             startDatePlaceholderText="From"
             endDatePlaceholderText="To"
             focusedInput={this.state.focusedInput}
+            isOutsideRange={() => false}
           />
+        </div>
+        <div className="c-query-bar__item">
+          <Button bsStyle="info" onClick={() => this.onClickShow()}>
+            Show
+          </Button>
         </div>
       </div>
     );
@@ -96,6 +104,16 @@ class Filter extends Component {
 
   onDistrictSelect(district) {
     this.props.dispatch(saveSelectedDistrict(district));
+  }
+
+  onClickShow() {
+    const { reducer, dispatch } = this.props;
+    dispatch(
+      getHistoryAQI(
+        reducer.chosenFromDate.valueOf() / 1000,
+        reducer.chosenToDate.valueOf() / 1000
+      )
+    );
   }
 }
 

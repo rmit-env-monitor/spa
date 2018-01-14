@@ -12,3 +12,18 @@ export function getDistrictsByCity(city) {
       });
   });
 }
+
+export function getHistoryAQI(query) {
+  return new Promise((resolve, reject) => {
+    baseService(
+      GET_METHOD,
+      `/api/web/history?startDate=${query.start}&endDate=${query.end}`
+    )
+      .then(res => {
+        resolve(res.data);
+      })
+      .catch(err => {
+        reject(err.message);
+      });
+  });
+}

@@ -6,7 +6,8 @@ import {
   GET_STATION_RANKING_REQUESTED,
   GET_CITIES_REQUESTED,
   HISTORY_GET_CITIES_LIST_REQUESTED,
-  HISTORY_GET_DISTRICTS_LIST_REQUESTED
+  HISTORY_GET_DISTRICTS_LIST_REQUESTED,
+  HISTORY_GET_AQI_GRAPH_INFO_REQUESTED
 } from "../actions/actionTypes";
 import { sendGoogleData } from "./authSaga";
 import {
@@ -14,7 +15,11 @@ import {
   stationRanking,
   availableCities
 } from "./nearbySaga";
-import { getCitiesListHistory, getDistrictsByCityHistory } from "./historySaga";
+import {
+  getCitiesListHistory,
+  getDistrictsByCityHistory,
+  getHistoryData
+} from "./historySaga";
 
 function* rootSaga() {
   yield takeEvery(SAVE_OAUTH_REQUESTED, sendGoogleData);
@@ -26,6 +31,7 @@ function* rootSaga() {
     HISTORY_GET_DISTRICTS_LIST_REQUESTED,
     getDistrictsByCityHistory
   );
+  yield takeEvery(HISTORY_GET_AQI_GRAPH_INFO_REQUESTED, getHistoryData);
 }
 
 export default rootSaga;

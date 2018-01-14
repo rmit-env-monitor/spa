@@ -17,5 +17,5 @@ WORKDIR /var/app
 # Install packages
 RUN yarn global add npm-check-updates
 
-# Install app dependencies
+# Copy current files
 COPY . /var/app
